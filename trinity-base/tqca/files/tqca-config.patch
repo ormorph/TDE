@@ -1,0 +1,54 @@
+--- configure.orig	2018-11-04 23:42:27.210860314 +0300
++++ configure	2018-11-05 00:00:22.813787306 +0300
+@@ -26,10 +26,50 @@
+ 			shift
+ 			;;
+ 
+-		--debug)
++		--debug*)
+ 			QC_DEBUG="Y"
+ 			shift
+ 			;;
++		--build*)
++			expr "${1}" 
++			shift
++			;;
++
++		--host*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--mandir*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--infodir*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--datadir*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--sysconfdir*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--localstatedir*)
++			expr "${1}" 
++			shift
++                        ;;
++
++		--libdir*)
++			expr "${1}" 
++			shift
++                        ;;
++
+ 		--help) show_usage; exit ;;
+ 		*) show_usage; exit ;;
+ 	esac

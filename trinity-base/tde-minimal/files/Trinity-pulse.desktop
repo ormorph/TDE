@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=TDE Pulse
+Comment=Log in using the TDE window manager (without a session manager)
+Exec=padsp /opt/trinity/bin/starttde
+TryExec=/opt/trinity/bin/starttde
+Icon=
+Type=Application

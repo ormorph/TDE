@@ -1,0 +1,10 @@
+<layman>
+<overlay type="git" src="https://github.com/ormorph/TDE.git" contact="" status="unofficial" name="TDE">
+<link>
+http://www.trinitydesktop.org/
+</link>
+<description>
+Gentoo overlay for Trinity Desktop Environment
+</description>
+</overlay>
+</layman>
