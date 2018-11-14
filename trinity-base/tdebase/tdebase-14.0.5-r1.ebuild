@@ -31,6 +31,31 @@ DEPEND="
 	xinerama? ( x11-libs/libXinerama )
 	upower? ( sys-power/upower )
 	>=trinity-base/tdelibs-14.0.5
+	dev-libs/libconfig
+	dev-libs/cyrus-sasl
+	sys-apps/lm_sensors
+	dev-libs/libgamin
+	dev-libs/glib:2
+	x11-libs/libXext
+	x11-libs/libxcb
+	x11-libs/libX11
+	x11-libs/libXtst
+	media-libs/libsndfile
+	net-libs/libasyncns
+	media-gfx/graphite2
+	x11-libs/libXfixes
+	x11-libs/libXau
+	x11-libs/libXdmcp
+	media-libs/flac
+	media-libs/libogg
+	media-libs/libvorbis
+	sys-apps/file
+	sys-apps/attr
+	x11-libs/libICE
+	x11-libs/libSM
+	net-dns/libidn
+	sys-apps/acl
+	x11-libs/libXext
 "
 RDEPEND="$DEPEND"
 
