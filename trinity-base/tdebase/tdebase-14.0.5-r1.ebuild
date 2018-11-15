@@ -14,29 +14,44 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/${PN}-R${P
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE+=" +arts +pam samba +upower xinerama +xrandr +xrender"
+IUSE+=" +arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender"
 
 DEPEND="
 	dev-qt/tqtinterface
 	sys-libs/libraw1394
-	media-libs/openexr
+	openexr? ( media-libs/openexr )
 	www-misc/htdig
 	dev-libs/libbsd
-	x11-misc/xscreensaver
-	media-libs/mesa
+	xscreensaver? ( x11-misc/xscreensaver
+			x11-libs/libXScrnSaver )
+	opengl? ( media-libs/mesa )
+	ldap? ( net-nds/openldap )
+	sensors? ( sys-apps/lm_sensors )
 	net-libs/libtirpc
+	net-libs/libnsl
 	arts? ( trinity-base/arts )
 	samba? ( net-fs/samba )
+	tsak? ( virtual/libudev )
 	xrandr? ( x11-libs/libXrandr )
 	xinerama? ( x11-libs/libXinerama )
 	upower? ( sys-power/upower )
+	avahi? ( trinity-base/avahi-tqt )
+	dbus? ( sys-apps/dbus
+		dev-libs/dbus-tqt
+		dev-libs/dbus-1-tqt )
+	media-libs/libart_lgpl
+	x11-base/xorg-server
+	x11-libs/libXdamage
+	sys-apps/usbutils
+	sys-apps/usbutils
+	x11-libs/libfontenc
+	x11-base/xorg-proto
+	x11-apps/bdftopcf
 	>=trinity-base/tdelibs-14.0.5
 	dev-libs/libconfig
 	dev-libs/cyrus-sasl
-	sys-apps/lm_sensors
 	dev-libs/libgamin
 	dev-libs/glib:2
-	x11-libs/libXext
 	x11-libs/libxcb
 	x11-libs/libX11
 	x11-libs/libXtst
@@ -45,17 +60,13 @@ DEPEND="
 	media-gfx/graphite2
 	x11-libs/libXfixes
 	x11-libs/libXau
-	x11-libs/libXdmcp
+	xdmcp? ( x11-libs/libXdmcp )
 	media-libs/flac
 	media-libs/libogg
 	media-libs/libvorbis
-	sys-apps/file
-	sys-apps/attr
-	x11-libs/libICE
 	x11-libs/libSM
 	net-dns/libidn
 	sys-apps/acl
-	x11-libs/libXext
 "
 RDEPEND="$DEPEND"
 
@@ -105,9 +116,10 @@ src_configure() {
 
 		-DWITH_ALL_OPTIONS=ON
 		-DWITH_SASL=ON
-		-DWITH_LDAP=ON
+		-DWITH_LDAP=$(usex ldap)
 		-DWITH_SAMBA=$(usex samba)
 #		-DWITH_OPENEXR=OFF  #flag
+		-DWITH_OPENEXR=$(usex openexr)
 		-DWITH_XCOMPOSITE=ON
 		-DWITH_XCURSOR=ON
 		-DWITH_XFIXES=ON
@@ -116,9 +128,10 @@ src_configure() {
 #  %{?!with_libconfig:-DWITH_LIBCONFIG=OFF} \
 		-DWITH_PCRE=ON
 # %{?!with_xtest:-DWITH_XTEST=OFF} \
-		-DWITH_OPENGL=ON
+		-DWITH_OPENGL=$(usex opengl)
 #  %{?!with_xscreensaver:-DWITH_XSCREENSAVER=OFF} \
 #  %{?!with_libart:-DWITH_LIBART=OFF} \
+		-DWITH_XSCREENSAVER=$(usex xscreensaver)
 		-DWITH_LIBUSB=ON
 		-DWITH_LIBRAW1394=ON
 		-DWITH_SUDO_TDESU_BACKEND=OFF
@@ -127,18 +140,20 @@ src_configure() {
 #		-DWITH_PAM=ON
 		-DWITH_USBIDS="/usr/share/misc/usb.ids"
 		-DWITH_SHADOW=OFF
-		-DWITH_XDMCP=ON
+		-DWITH_XDMCP=$(usex xdmcp)
 		-DWITH_XINERAMA=$(usex xinerama)
 		-DWITH_ARTS=$(usex arts)
 		-DWITH_I8K=ON
-		-DWITH_SENSORS=ON
+		-DWITH_SENSORS=$(usex sensors)
 #		{?with_hal:-DWITH_HAL=ON} \
 #		%{?!with_tdehwlib:-DWITH_TDEHWLIB=OFF} \
+		-DWITH_TDEHWLIB=$(usex tsak)
 		-DWITH_UPOWER=$(usex upower)
 #		 %{?!with_elficon:-DWITH_ELFICON=OFF} \
 		-DWITH_ELFICON=OFF
 
 		-DBUILD_ALL=ON
+		-DBUILD_TSAK=$(usex tsak)
 #		%if 0%{?suse_version}
 #		-DKCHECKPASS_PAM_SERVICE="xdm"
 #		-DTDM_PAM_SERVICE="xdm"
@@ -151,6 +166,7 @@ src_configure() {
 #		%{!?with_kbdledsync:-DBUILD_TDEKBDLEDSYNC=OFF} \
 #		%{!?with_tsak:-DBUILD_TSAK=OFF} \
 #		%if 0%{?fedora} >= 22 || 0%{?suse_version} >= 1320
+		-DBUILD_TDEKBDLEDSYNC=ON
 		-DHTDIG_SEARCH_BINARY="/usr/bin/htdig"
 
 
