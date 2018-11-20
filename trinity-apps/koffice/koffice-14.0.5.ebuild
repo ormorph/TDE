@@ -14,7 +14,7 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/applicatio
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="+lcms bzip2 paper ruby freetype +png utempter +graphicsmagick +postgres wpd +wv2 +opengl xi sqlite"
+IUSE="+lcms +bzip2 +paper +ruby +freetype +png +utempter +graphicsmagick +postgres +wpd +wv2 +opengl +xi +sqlite"
 SLOT="0"
 
 DEPEND="
