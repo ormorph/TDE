@@ -18,6 +18,7 @@ IUSE="+xine visual "
 DEPEND="
 	sys-apps/dbus
 	dev-qt/tqtinterface
+	trinity-base/tdelibs
 	xine? ( media-libs/xine-lib )
 	visual? ( media-libs/libvisual )
 "

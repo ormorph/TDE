@@ -17,6 +17,7 @@ IUSE=""
 
 DEPEND="
 	trinity-base/tdebase
+	trinity-base/tdepim
 	dev-util/cmake
 	sys-devel/libtool
 	app-misc/fdupes

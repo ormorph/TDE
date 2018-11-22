@@ -19,6 +19,7 @@ SLOT="0"
 
 DEPEND="
 	dev-qt/tqtinterface
+	trinity-base/tdelibs
 	dev-libs/glib:2
 	media-libs/audiofile
 	mp3? ( media-libs/libmad )
@@ -39,6 +40,12 @@ pkg_setup() {
 	else
 		export LIBDIRSUFFIX=""
 	fi
+}
+
+src_prepare() {
+	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
+	eapply_user
 }
 
 src_configure() {
