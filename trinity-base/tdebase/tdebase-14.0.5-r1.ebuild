@@ -14,7 +14,7 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/${PN}-R${P
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE+=" +arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender"
+IUSE+=" +arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest"
 
 DEPEND="
 	dev-qt/tqtinterface
@@ -24,7 +24,7 @@ DEPEND="
 	dev-libs/libbsd
 	xscreensaver? ( x11-misc/xscreensaver
 			x11-libs/libXScrnSaver )
-	opengl? ( media-libs/mesa )
+	opengl? ( dev-qt/tqtinterface[opengl] )
 	ldap? ( net-nds/openldap )
 	sensors? ( sys-apps/lm_sensors )
 	net-libs/libtirpc
@@ -124,10 +124,12 @@ src_configure() {
 		-DWITH_XCURSOR=ON
 		-DWITH_XFIXES=ON
 #  %{?!with_xrandr:-DWITH_XRANDR=OFF}
+		-DWITH_XRANDR=$(usex xrandr)
 		-DWITH_XRENDER=$(usex xrender)
 #  %{?!with_libconfig:-DWITH_LIBCONFIG=OFF} \
 		-DWITH_PCRE=ON
 # %{?!with_xtest:-DWITH_XTEST=OFF} \
+		-DWITH_XTEST=$(usex xtest)
 		-DWITH_OPENGL=$(usex opengl)
 #  %{?!with_xscreensaver:-DWITH_XSCREENSAVER=OFF} \
 #  %{?!with_libart:-DWITH_LIBART=OFF} \

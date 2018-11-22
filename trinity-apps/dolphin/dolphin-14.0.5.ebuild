@@ -5,10 +5,10 @@ EAPI="6"
 
 inherit versionator eutils desktop flag-o-matic gnome2-utils
 
-DESCRIPTION="The package for web developpment"
+DESCRIPTION="Dolphin focuses on being only a file manager"
 HOMEPAGE="http://trinitydesktop.org/"
 
-SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/${PN}-R${PV}.tar.bz2"
+SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/applications/${PN}-R${PV}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -16,16 +16,13 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	sys-devel/libtool
 	trinity-base/tdelibs
-        trinity-base/tdesdk
-        dev-libs/libxslt
-        dev-libs/libgcrypt
-        dev-libs/libxml2
+	trinity-base/tdebase
+	dev-util/desktop-file-utils
 "
 RDEPEND="$DEPEND"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/applications/${PN}"
 
 TDEDIR="/opt/trinity"
 
@@ -38,7 +35,6 @@ src_prepare() {
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export CXXFLAGS="${CXXFLAGS} -std=c++11"
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	emake -f admin/Makefile.common
 	./configure --prefix="${TDEDIR}" \

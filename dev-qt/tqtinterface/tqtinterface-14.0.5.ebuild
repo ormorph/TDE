@@ -13,10 +13,17 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/dependenci
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="opengl"
 SLOT="0"
 
 DEPEND="dev-qt/tqt3
+	opengl? ( dev-qt/tqt3[opengl] )
+	dev-util/cmake
+	virtual/pkgconfig
+	sys-fs/e2fsprogs
+	sys-apps/util-linux
+	x11-base/xorg-server
+	x11-libs/libXi
 "
 
 RDEPEND="${RDEPEND}"

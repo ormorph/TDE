@@ -17,6 +17,20 @@ IUSE=""
 
 DEPEND="
 	trinity-base/tdebase
+	dev-util/cmake
+	sys-devel/libtool
+	app-misc/fdupes
+	virtual/acl
+	net-dns/libidn
+	app-admin/gamin
+	dev-libs/libpcre
+	dev-util/desktop-file-utils
+	dev-libs/libxslt
+	dev-libs/libxml2
+	dev-vcs/subversion
+	net-libs/neon
+	dev-lang/perl
+	dev-libs/openssl
 "
 RDEPEND="$DEPEND"
 
@@ -39,6 +53,8 @@ src_configure() {
 	mycmakeargs=(
 	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
 	-DLIB_SUFFIX=${LIBDIRSUFFIX}
+	-DWITH_DBSEARCHENGINE=ON
+	-DWITH_KCAL=ON
 	-DBUILD_ALL=ON
 	)
 

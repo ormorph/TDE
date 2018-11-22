@@ -15,7 +15,7 @@ LICENSE="GPL2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="cups debug doc examples firebird ipv6 mysql nas nis opengl postgres sqlite xinerama"
+IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama"
 
 RDEPEND="
 	virtual/jpeg:0
@@ -28,13 +28,33 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXrandr
 	x11-libs/libSM
+	dev-lang/perl
+	media-libs/giflib
+	media-libs/fontconfig
+	dev-util/desktop-file-utils
+	sys-devel/make
+	sys-apps/sed
+	sys-apps/findutils
+	app-arch/tar
+	dev-libs/glib:2
+	sys-fs/e2fsprogs
+	sys-apps/util-linux
+	x11-libs/libXext
+	x11-libs/libX11
+	x11-libs/libICE
+	x11-libs/libXt
+	x11-libs/libXmu
+	x11-libs/libXi
+	net-libs/libnsl
+	net-libs/libtirpc
 	cups? ( net-print/cups )
 	firebird? ( dev-db/firebird )
 	mysql? ( virtual/mysql )
 	nas? ( media-libs/nas )
-	opengl? ( virtual/opengl virtual/glu )
+	opengl? ( virtual/opengl virtual/glu media-libs/mesa )
 	postgres? ( dev-db/postgresql:= )
-	xinerama? ( x11-libs/libXinerama )"
+	xinerama? ( x11-libs/libXinerama )
+	sqlite? ( dev-db/sqlite )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	xinerama? ( x11-proto/xineramaproto )"
