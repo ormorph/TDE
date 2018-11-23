@@ -14,7 +14,7 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/applicatio
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa -artswrappersuid jack mp3 nas vorbis"
+IUSE="alsa jack mp3 nas vorbis"
 SLOT="0"
 
 DEPEND="
@@ -45,6 +45,7 @@ pkg_setup() {
 src_prepare() {
 	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
+	sed 's/x-mplayer2.desktop//' -i ${S}/kaffeine/mimetypes/application/Makefile.am
 	eapply_user
 }
 
@@ -59,20 +60,4 @@ src_configure() {
 
 src_compile() {
 	emake || die
-}
-#src_install() {
-#	cmake-utils_src_install
-
-	# used for realtime priority, but off by default as it is a security hazard
-#	use artswrappersuid && chmod u+s "${D}/${PREFIX}/bin/artswrapper"
-#}
-
-pkg_postinst() {
-	if ! use artswrappersuid ; then
-		elog "Run chmod u+s ${PREFIX}/bin/artswrapper to let artsd use realtime priority"
-		elog "and so avoid possible skips in sound. However, on untrusted systems this"
-		elog "creates the possibility of a DoS attack that'll use 100% cpu at realtime"
-		elog "priority, and so is off by default. See bug #7883."
-		elog "Or, you can set the local artswrappersuid USE flag to make the ebuild do this."
-	fi
 }
