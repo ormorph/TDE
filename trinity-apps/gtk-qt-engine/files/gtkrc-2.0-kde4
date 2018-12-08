@@ -1,0 +1,13 @@
+# This file was written by TDE
+# You can edit it in the Trinity control center, under "GTK Styles and Fonts"
+
+include "/usr/share/themes/Qt/gtk-2.0/gtkrc"
+
+style "user-font"
+{
+	font_name="Tahoma 10"
+}
+widget_class "*" style "user-font"
+
+gtk-theme-name="Qt"
+gtk-font-name="Tahoma 10"
