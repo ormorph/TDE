@@ -21,6 +21,7 @@ DEPEND="
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
 	dev-libs/glib:2
+	media-libs/xine-lib
 	media-libs/audiofile
 	mp3? ( media-libs/libmad )
 	nas? ( media-libs/nas )

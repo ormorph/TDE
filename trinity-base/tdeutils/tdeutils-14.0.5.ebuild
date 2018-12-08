@@ -19,6 +19,8 @@ SLOT="0"
 
 DEPEND="
 	dev-qt/tqtinterface
+	trinity-base/tdelibs
+	trinity-base/tdebase
 	dev-libs/glib:2
 	sys-devel/gettext
 	dev-util/cmake
