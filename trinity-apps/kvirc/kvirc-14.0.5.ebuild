@@ -34,6 +34,7 @@ S="${WORKDIR}/applications/${PN}"
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
+MAKEOPTS="-j1"
 
 pkg_setup() {
 	if [[ "$ARCH" == "amd64" ]]; then
@@ -47,8 +48,8 @@ src_prepare() {
         cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	sed -i "${S}/admin/acinclude.m4.in" \
-       -i "${S}/src/kvilib/tal/kvi_tal_application.cpp" \
-       -e "/TDEApplication/ s|\")|\", true, true, true)|"
+-i "${S}/src/kvilib/tal/kvi_tal_application.cpp" \
+-e "/TDEApplication/ s|\")|\", true, true, true)|"
         eapply_user
 }
 
@@ -80,4 +81,5 @@ src_configure() {
 		--with-qt-moc="${TDEDIR}/bin/tqmoc"
 )
 	./configure ${myconf[@]}
+	
 }
