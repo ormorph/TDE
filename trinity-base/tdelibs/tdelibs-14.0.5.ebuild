@@ -47,7 +47,7 @@ MY_DEPEND="dev-qt/tqtinterface
 	lzma? ( app-arch/xz-utils )
 	xrandr? ( >=x11-libs/libXrandr-1.2 )
 	xcomposite? ( x11-libs/libXcomposite )"
-# NOTE: upstream lacks avahi support, so the use flag is currenly masked
+# NOTE: upstream lacks avahi support, so the usex flag is currenly masked
 # TODO: add elfres support via libr (not in portage now)
 
 DEPEND+=" ${MY_DEPEND}
@@ -91,25 +91,25 @@ src_configure() {
 		-DWITH_PCRE=ON
 		-DWITH_HSPELL=OFF
 		-DWITH_GCC_VISIBILITY=ON
-		-DWITH_ALSA=$(usex alsa)
-		-DWITH_AVAHI=$(usex avahi)
-		-DWITH_CUPS=$(usex cups)
-		-DWITH_INOTIFY=$(usex kernel_linux)
-		-DWITH_JASPER=$(usex jpeg2k)
-		-DWITH_LUA=$(usex lua)
-		-DWITH_LZMA=$(usex lzma)
-		-DWITH_OPENEXR=$(usex openexr)
-		-DWITH_ASPELL=$(usex spell)
-		-DWITH_GAMIN=$(usex fam)
-		-DWITH_TIFF=$(usex tiff)
-		-DWITH_UTEMPTER=$(usex utempter)
-		-DWITH_UPOWER=$(usex upower)
-		-DWITH_UDISKS=$(usex old_udisks)
-		-DWITH_UDISKS2=$(usex udisks)
-		-DWITH_CONSOLEKIT=$(usex consolekit)
-		-DWITH_WITH_NETWORK_MANAGER_BACKEND=$(usex networkmanager)
-		-DWITH_XCOMPOSITE=$(usex  xcomposite)
-		-DWITH_XRANDR=$(usex  xrandr)
+		-DWITH_ALSA=$(usex alsa ON OFF)
+		-DWITH_AVAHI=$(usex avahi ON OFF)
+		-DWITH_CUPS=$(usex cups ON OFF)
+		-DWITH_INOTIFY=$(usex kernel_linux ON OFF)
+		-DWITH_JASPER=$(usex jpeg2k ON OFF)
+		-DWITH_LUA=$(usex lua ON OFF)
+		-DWITH_LZMA=$(usex lzma ON OFF)
+		-DWITH_OPENEXR=$(usex openexr ON OFF)
+		-DWITH_ASPELL=$(usex spell ON OFF)
+		-DWITH_GAMIN=$(usex fam ON OFF)
+		-DWITH_TIFF=$(usex tiff ON OFF)
+		-DWITH_UTEMPTER=$(usex utempter ON OFF)
+		-DWITH_UPOWER=$(usex upower ON OFF)
+		-DWITH_UDISKS=$(usex old_udisks ON OFF)
+		-DWITH_UDISKS2=$(usex udisks ON OFF)
+		-DWITH_CONSOLEKIT=$(usex consolekit ON OFF)
+		-DWITH_NETWORK_MANAGER_BACKEND=$(usex networkmanager ON OFF)
+		-DWITH_XCOMPOSITE=$(usex  xcomposite ON OFF)
+		-DWITH_XRANDR=$(usex  xrandr ON OFF)
 	)
 
 	cmake-utils_src_configure
@@ -121,7 +121,7 @@ src_install() {
 	cmake-utils_src_install
 
 	dodir /etc/env.d
-	# KDE implies that the install path is listed first in TDEDIRS and the user
+	# KDE implies that the install path is listed first in TDEDIRS and the usexr
 	# directory (implicitly added) to be the last entry. Doing otherwise breaks
 	# certain functionality. Do not break this (once again *sigh*), but read the code.
 	# KDE saves the installed path implicitly and so this is not needed, /usr
@@ -158,11 +158,11 @@ EOF
 }
 
 pkg_postinst () {
-	if use sudo; then
-		einfo "Remember sudo use flag sets only the defauld value"
-		einfo "It can be overriden on a user-level by adding:"
-		einfo "  [super-user-command]"
-		einfo "    super-user-command=su"
+	if usex sudo; then
+		einfo "Remember sudo usex flag sets only the defauld value"
+		einfo "It can be overriden on a usexr-level by adding:"
+		einfo "  [super-usexr-command]"
+		einfo "    super-usexr-command=su"
 		einfo "To the kdeglobal config file which is should be usually"
 		einfo "located in the ~/.trinity/share/config/ directory."
 	fi
