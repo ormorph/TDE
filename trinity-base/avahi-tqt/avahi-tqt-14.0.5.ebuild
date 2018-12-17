@@ -15,9 +15,23 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="trinity-base/tdenv
+DEPEND="
 	sys-apps/dbus
-	dev-qt/tqtinterface"
+	dev-util/cmake
+	dev-qt/tqtinterface
+	virtual/pkgconfig
+	sys-devel/libtool
+	dev-libs/glib:2
+	sys-devel/gettext
+	x11-base/xorg-server
+	x11-libs/libXi
+	dev-libs/dbus-1-tqt
+	dev-libs/dbus-tqt
+	sys-libs/libcap
+	net-dns/avahi
+	dev-libs/expat
+	media-libs/nas
+	x11-libs/libXt"
 RDEPEND="$DEPEND"
 
 S="${WORKDIR}/dependencies/${PN}"
@@ -29,8 +43,12 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	mycmakeargs=(
 	-DQT_INCLUDE_DIR="${TQT}/include"
-	-DCMAKE_CXX_FLAGS="-L${TQT}/lib"
+	-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -L${TQT}/lib -DNDEBUG"
 	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
+	-DCMAKE_SKIP_RPATH=ON
+	-DCMAKE_VERBOSE_MAKEFILE=ON
+	-DWITH_GCC_VISIBILITY=OFF
 	)
 
 	 cmake-utils_src_configure
