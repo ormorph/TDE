@@ -67,7 +67,7 @@ DEPEND="
 	x11-libs/libSM
 	net-dns/libidn
 	sys-apps/acl
-	virtual/libusb
+	virtual/libusb:0
 "
 RDEPEND="$DEPEND"
 
