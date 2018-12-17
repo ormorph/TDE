@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libgamin
 	dev-util/desktop-file-utils
 	net-dns/libidn
-	virtual/libusb
+	virtual/libusb:0
 	media-libs/libmng
 	media-libs/tiff:0
 	dev-libs/libpcre
