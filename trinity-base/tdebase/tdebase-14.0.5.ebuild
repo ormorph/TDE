@@ -139,10 +139,8 @@ src_configure() {
 		-DWITH_LIBRAW1394=ON
 		-DWITH_SUDO_TDESU_BACKEND=OFF
 		-DWITH_SUDO_KONSOLE_SUPER_USER_COMMAND=OFF
-		-DWITH_PAM=$(usex pam)
 #		-DWITH_PAM=ON
 		-DWITH_USBIDS="/usr/share/misc/usb.ids"
-		-DWITH_SHADOW=OFF
 		-DWITH_XDMCP=$(usex xdmcp)
 		-DWITH_XINERAMA=$(usex xinerama)
 		-DWITH_ARTS=$(usex arts)
@@ -157,15 +155,6 @@ src_configure() {
 
 		-DBUILD_ALL=ON
 		-DBUILD_TSAK=$(usex tsak)
-#		%if 0%{?suse_version}
-#		-DKCHECKPASS_PAM_SERVICE="xdm"
-#		-DTDM_PAM_SERVICE="xdm"
-#		-DTDESCREENSAVER_PAM_SERVICE="xdm"
-#		%else
-#		-DKCHECKPASS_PAM_SERVICE="kcheckpass-trinity" \
-#		-DTDM_PAM_SERVICE="tdm-trinity" \
-#		-DTDESCREENSAVER_PAM_SERVICE="tdescreensaver-trinity" \
-#		%endif
 #		%{!?with_kbdledsync:-DBUILD_TDEKBDLEDSYNC=OFF} \
 #		%{!?with_tsak:-DBUILD_TSAK=OFF} \
 #		%if 0%{?fedora} >= 22 || 0%{?suse_version} >= 1320
@@ -179,9 +168,16 @@ src_configure() {
 
 	if use pam ; then
 	mycmakeargs+=(
-		-DKCHECKPASS_PAM_SERVICE="kcheckpass-trinity" \
-		-DTDM_PAM_SERVICE="tdm-trinity" \
-		-DTDESCREENSAVER_PAM_SERVICE="tdescreensaver-trinity" \
+		-DWITH_PAM=ON
+		-DWITH_SHADOW=OFF
+		-DKCHECKPASS_PAM_SERVICE="kcheckpass-trinity"
+		-DTDM_PAM_SERVICE="tdm-trinity"
+		-DTDESCREENSAVER_PAM_SERVICE="tdescreensaver-trinity"
+	)
+	else
+	 mycmakeargs+=(
+                -DWITH_PAM=OFF
+                -DWITH_SHADOW=ON
 	)
 	fi
 
