@@ -14,7 +14,7 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/${PN}-R${P
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE+=" +arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest"
+IUSE+=" +arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon"
 
 DEPEND="
 	dev-qt/tqtinterface
@@ -39,6 +39,7 @@ DEPEND="
 	dbus? ( sys-apps/dbus
 		dev-libs/dbus-tqt
 		dev-libs/dbus-1-tqt )
+	elficon? ( trinity-apps/libr )
 	media-libs/libart_lgpl
 	x11-base/xorg-server
 	x11-libs/libXdamage
@@ -151,7 +152,7 @@ src_configure() {
 		-DWITH_TDEHWLIB=$(usex tsak)
 		-DWITH_UPOWER=$(usex upower)
 #		 %{?!with_elficon:-DWITH_ELFICON=OFF} \
-		-DWITH_ELFICON=OFF
+		-DWITH_ELFICON=$(usex elficon ON OFF)
 
 		-DBUILD_ALL=ON
 		-DBUILD_TSAK=$(usex tsak)
