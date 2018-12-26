@@ -39,7 +39,8 @@ DEPEND="
 	dbus? ( sys-apps/dbus
 		dev-libs/dbus-tqt
 		dev-libs/dbus-1-tqt )
-	elficon? ( trinity-apps/libr )
+	elficon? ( trinity-apps/libr 
+		trinity-base/tdelibs[elficon] )
 	media-libs/libart_lgpl
 	x11-base/xorg-server
 	x11-libs/libXdamage

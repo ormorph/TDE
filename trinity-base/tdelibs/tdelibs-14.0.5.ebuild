@@ -15,7 +15,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS=
 IUSE+=" alsa avahi cups consolekit fam jpeg2k lua lzma networkmanager openexr
-	spell sudo tiff utempter upower udisks old_udisks xcomposite +xrandr"
+	spell sudo tiff utempter upower udisks old_udisks xcomposite +xrandr elficon"
 
 MY_DEPEND="dev-qt/tqtinterface
 	>=dev-libs/libxslt-1.1.16
@@ -46,7 +46,8 @@ MY_DEPEND="dev-qt/tqtinterface
 	networkmanager? ( net-misc/networkmanager )
 	lzma? ( app-arch/xz-utils )
 	xrandr? ( >=x11-libs/libXrandr-1.2 )
-	xcomposite? ( x11-libs/libXcomposite )"
+	xcomposite? ( x11-libs/libXcomposite )
+	elficon? ( trinity-apps/libr )"
 # NOTE: upstream lacks avahi support, so the usex flag is currenly masked
 # TODO: add elfres support via libr (not in portage now)
 
@@ -110,6 +111,7 @@ src_configure() {
 		-DWITH_NETWORK_MANAGER_BACKEND=$(usex networkmanager ON OFF)
 		-DWITH_XCOMPOSITE=$(usex  xcomposite ON OFF)
 		-DWITH_XRANDR=$(usex  xrandr ON OFF)
+		-DWITH_ELFICON=$(usex elficon ON OF )
 	)
 
 	cmake-utils_src_configure
