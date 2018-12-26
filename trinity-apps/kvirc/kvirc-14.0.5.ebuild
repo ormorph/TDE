@@ -36,16 +36,9 @@ TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 MAKEOPTS="-j1"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
-        cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	sed -i "${S}/admin/acinclude.m4.in" \
 -i "${S}/src/kvilib/tal/kvi_tal_application.cpp" \

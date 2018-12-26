@@ -17,6 +17,14 @@ IUSE=""
 
 DEPEND="
 	trinity-base/tdebase
+	virtual/pkgconfig
+	sys-devel/autoconf
+	sys-devel/gettext
+	sys-devel/automake
+	sys-devel/libtool
+	sys-devel/m4
+	dev-util/desktop-file-utils
+	app-misc/fdupes
 "
 RDEPEND="$DEPEND"
 
@@ -25,16 +33,10 @@ S="${WORKDIR}/${PN}"
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	eapply_user
 }
@@ -45,6 +47,7 @@ src_configure() {
 	emake -f admin/Makefile.common
 	./configure --prefix=${TDEDIR} \
 		--with-qt-dir=${TDEDIR} \
+		--libdir=${TDEDIR}/$(get_libdir) \
 		--disable-kig-python-scripting
 
 }

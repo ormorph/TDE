@@ -35,7 +35,8 @@ TDEDIR="/opt/trinity"
 
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	eapply_user
 }

@@ -17,6 +17,10 @@ IUSE=""
 
 DEPEND="
 	sys-devel/libtool
+	sys-devel/gettext
+        sys-devel/autoconf
+        sys-devel/automake
+        virtual/pkgconfig
 	trinity-base/tdelibs
         trinity-base/tdesdk
         dev-libs/libxslt
@@ -31,7 +35,8 @@ TDEDIR="/opt/trinity"
 
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	eapply_user
 }

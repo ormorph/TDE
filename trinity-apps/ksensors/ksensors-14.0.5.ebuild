@@ -22,6 +22,10 @@ DEPEND="
 	virtual/pkgconfig
 	app-misc/fdupes
 	sys-devel/autoconf
+        sys-devel/gettext
+        sys-devel/automake
+        sys-devel/libtool
+        sys-devel/m4
 	sys-apps/lm_sensors
 "
 RDEPEND="$DEPEND"
@@ -32,7 +36,8 @@ TDEDIR="/opt/trinity"
 
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	eapply_user
 }

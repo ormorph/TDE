@@ -37,16 +37,9 @@ S="${WORKDIR}/applications/${PN}"
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
-        cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+        libtoolize -c
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
         eapply_user
 }

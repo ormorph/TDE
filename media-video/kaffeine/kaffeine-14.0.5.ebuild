@@ -14,12 +14,25 @@ SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/applicatio
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa jack mp3 nas vorbis"
+IUSE="alsa jack mp3 nas vorbis xinerama gstreamer lame"
 SLOT="0"
 
 DEPEND="
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
+	sys-devel/libtool
+	sys-devel/gettext
+	sys-devel/autoconf
+	sys-devel/automake
+	virtual/pkgconfig
+	dev-libs/libcdio
+	media-sound/cdparanoia
+	x11-libs/libXext
+	x11-libs/libXtst
+	xinerama? ( x11-libs/libXinerama )
+	gstreamer? ( media-libs/gstreamer:1.0 
+		media-plugins/gst-plugins-meta )
+	lame? ( media-sound/lame )
 	dev-libs/glib:2
 	media-libs/xine-lib
 	media-libs/audiofile
@@ -44,7 +57,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	sed 's/x-mplayer2.desktop//' -i ${S}/kaffeine/mimetypes/application/Makefile.am
 	eapply_user
@@ -56,7 +70,18 @@ src_configure() {
 	export QTDIR=$TQT
 	export LIBDIR=/opt/trinity/$(get_libdir)
 	emake -f admin/Makefile.common
-	./configure --prefix=${TDEDIR=}
+	./configure --prefix=${TDEDIR=} \
+		--disable-dependency-tracking \
+		--disable-debug \
+		--enable-new-ldflags \
+		--enable-final \
+		--enable-closure \
+		--enable-rpath \
+		--disable-gcc-hidden-visibility \
+		$(use_with xinerama ) \
+		$(use_with gstreamer ) \
+		$(use_with lame ) \
+		--without-dvb
 }
 
 src_compile() {
