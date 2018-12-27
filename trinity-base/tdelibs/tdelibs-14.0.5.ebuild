@@ -111,7 +111,7 @@ src_configure() {
 		-DWITH_NETWORK_MANAGER_BACKEND=$(usex networkmanager ON OFF)
 		-DWITH_XCOMPOSITE=$(usex  xcomposite ON OFF)
 		-DWITH_XRANDR=$(usex  xrandr ON OFF)
-		-DWITH_ELFICON=$(usex elficon ON OF )
+		-DWITH_ELFICON=$(usex elficon ON OFF )
 	)
 
 	cmake-utils_src_configure
