@@ -146,6 +146,7 @@ CONFIG_PROTECT="${TDEDIR}/share/config ${TDEDIR}/env ${TDEDIR}/shutdown /usr/sha
 #TDE_EXTRA_FSYNC=1
 XDG_DATA_DIRS="${TDEDIR}/share"
 PKG_CONFIG_PATH="${TDEDIR}/$(get_libdir)/pkgconfig"
+XDG_CONFIG_DIRS="${TDEDIR}/etc/xdg"
 EOF
 
 	# Make sure the target for the revdep-rebuild stuff exists. Fixes bug 184441.
