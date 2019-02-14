@@ -18,20 +18,27 @@ IUSE="xscreensaver gnokii"
 SLOT="0"
 
 DEPEND="
-	dev-qt/tqtinterface
+	trinity-base/tdelibs
+	trinity-base/tdebase
 	dev-libs/glib:2
 	trinity-base/arts
 	trinity-base/tdelibs
 	trinity-base/libcaldav
+	trinity-base/libcarddav
 	dev-util/cmake
 	app-misc/fdupes
 	dev-util/desktop-file-utils
 	app-crypt/gpgme
+	app-admin/gamin
+	net-misc/curl
+	dev-libs/cyrus-sasl
 	sys-devel/flex
 	dev-libs/libical
 	dev-libs/boost
 	dev-libs/libpcre
 	net-dns/libidn:0
+	dev-libs/libical
+	dev-libs/libgpg-error
 	dev-libs/openssl
 	xscreensaver? ( x11-misc/xscreensaver )
 	gnokii? ( app-mobilephone/gnokii )
