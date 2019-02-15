@@ -7,7 +7,7 @@ EAPI="6"
 inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
 
 
-DESCRIPTION=""
+DESCRIPTION="Personal Information Management apps from the official Trinity release"
 HOMEPAGE="http://trinitydesktop.org/"
 
 SRC_URI="http://mirror.ppa.trinitydesktop.org/trinity/releases/R${PV}/${PN}-R${PV}.tar.bz2"
