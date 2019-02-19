@@ -28,6 +28,7 @@ RDEPEND=">=trinity-base/tde-minimal-14.0.5
 	trinity-apps/tde-style-lipstik
 	trinity-apps/tde-style-qtcurve
 	trinity-apps/twin-style-crystal
+	trinity-apps/kbfx
 "
 
 S=${WORKDIR}
