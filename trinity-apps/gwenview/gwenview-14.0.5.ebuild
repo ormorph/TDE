@@ -19,6 +19,7 @@ DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
 	trinity-apps/gwenview-i18n
+	trinity-lib/exiv2
 	dev-util/desktop-file-utils
 	sys-devel/autoconf
 	sys-devel/automake

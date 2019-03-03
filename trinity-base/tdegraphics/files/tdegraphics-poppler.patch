@@ -1,0 +1,201 @@
+diff -urN tdegraphics-14.0.5.orig/CMakeLists.txt tdegraphics-14.0.5/CMakeLists.txt
+--- tdegraphics-14.0.5.orig/CMakeLists.txt	2019-03-03 01:40:01.793612193 +0300
++++ tdegraphics-14.0.5/CMakeLists.txt	2019-03-03 01:40:18.735611849 +0300
+@@ -153,3 +153,14 @@
+ ##### write configure files #####################
+ 
+ configure_file( config.h.cmake config.h @ONLY )
++
++MESSAGE(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
+diff -urN tdegraphics-14.0.5.orig/config.h.cmake tdegraphics-14.0.5/config.h.cmake
+--- tdegraphics-14.0.5.orig/config.h.cmake	2019-03-03 01:40:01.828612192 +0300
++++ tdegraphics-14.0.5/config.h.cmake	2019-03-03 01:40:17.719611869 +0300
+@@ -1,6 +1,9 @@
+ #cmakedefine VERSION "@VERSION@"
+ 
+ // poppler-tqt
++#cmakedefine HAVE_POPPLER_072
++#cmakedefine HAVE_POPPLER_071
++#cmakedefine HAVE_POPPLER_070
+ #cmakedefine HAVE_POPPLER_064
+ #cmakedefine HAVE_POPPLER_058
+ #cmakedefine HAVE_POPPLER_030
+diff -urN tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake
+--- tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake	2019-03-03 01:40:02.352612182 +0300
++++ tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake	2019-03-03 01:40:17.722611869 +0300
+@@ -24,24 +24,16 @@
+   HAVE_POPPLER_030 )
+ tde_restore( CMAKE_REQUIRED_INCLUDES CMAKE_REQUIRED_LIBRARIES )
+ 
+-if( NOT DEFINED HAVE_POPPLER_058 )
+-  message( STATUS "Performing Test HAVE_POPPLER_058" )
+-  if( NOT POPPLER_VERSION VERSION_LESS "0.58" )
+-    set( HAVE_POPPLER_058 1 CACHE INTERNAL "" FORCE )
+-    message( STATUS "Performing Test HAVE_POPPLER_058 - Success" )
+-  else( )
+-    set( HAVE_POPPLER_058 "" CACHE INTERNAL "" FORCE )
+-    message( STATUS "Performing Test HAVE_POPPLER_058 - Failed" )
++foreach( _poppler_ver 0.58 0.64 0.70 0.71 0.72 )
++  string( REPLACE "." "" _poppler_str "${_poppler_ver}" )
++  if( NOT DEFINED HAVE_POPPLER_${_poppler_str} )
++    message( STATUS "Performing Test HAVE_POPPLER_${_poppler_str}" )
++    if( NOT POPPLER_VERSION VERSION_LESS "${_poppler_ver}" )
++      set( HAVE_POPPLER_${_poppler_str} 1 CACHE INTERNAL "" FORCE )
++      message( STATUS "Performing Test HAVE_POPPLER_${_poppler_str} - Success" )
++    else( )
++      set( HAVE_POPPLER_${_poppler_str} "" CACHE INTERNAL "" FORCE )
++      message( STATUS "Performing Test HAVE_POPPLER_${_poppler_str} - Failed" )
++    endif( )
+   endif( )
+-endif( )
+-
+-if( NOT DEFINED HAVE_POPPLER_064 )
+-  message( STATUS "Performing Test HAVE_POPPLER_064" )
+-  if( NOT POPPLER_VERSION VERSION_LESS "0.64" )
+-    set( HAVE_POPPLER_064 1 CACHE INTERNAL "" FORCE )
+-    message( STATUS "Performing Test HAVE_POPPLER_064 - Success" )
+-  else( )
+-    set( HAVE_POPPLER_064 "" CACHE INTERNAL "" FORCE )
+-    message( STATUS "Performing Test HAVE_POPPLER_064 - Failed" )
+-  endif( )
+-endif( )
++endforeach( )
+diff -urN tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc
+--- tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc	2019-03-03 01:40:02.352612182 +0300
++++ tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc	2019-03-03 01:44:41.557606509 +0300
+@@ -33,7 +33,9 @@
+ #include <DateInfo.h>
+ #include "poppler-private.h"
+ 
++#if !defined(HAVE_POPPLER_071)
+ #undef bool
++#endif
+ 
+ namespace Poppler {
+ 
+@@ -133,7 +135,7 @@
+   for ( int i = 0; i < items->getLength(); ++i ) {
+     TQString fontName;
+     if (((::FontInfo*)items->get(i))->getName())
+-      fontName = ((::FontInfo*)items->get(i))->getName()->getCString();
++      fontName = ((::FontInfo*)items->get(i))->getName()->GOO_GET_CSTR();
+ 
+     FontInfo font(fontName,
+                   ((::FontInfo*)items->get(i))->getEmbedded(),
+@@ -141,7 +143,11 @@
+                   (Poppler::FontInfo::Type)((::FontInfo*)items->get(i))->getType());
+     fontList->append(font);
+   }
++# if defined(HAVE_POPPLER_070)
++  deleteGooList<::FontInfo>(items);
++# else
+   deleteGooList(items, ::FontInfo);
++# endif
+   return true;
+ }
+ 
+diff -urN tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-page.cc tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-page.cc
+--- tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-page.cc	2019-03-03 01:40:02.353612181 +0300
++++ tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-page.cc	2019-03-03 01:40:17.727611869 +0300
+@@ -125,7 +125,7 @@
+ {
+   TextOutputDev *output_dev;
+   GooString *s;
+-  PDFRectangle *rect;
++  const PDFRectangle *rect;
+   TQString result;
+   ::Page *p;
+ 
+@@ -151,7 +151,7 @@
+     s = output_dev->getText(r.m_x1, y1, r.m_x2, y2);
+   }
+ 
+-  result = TQString::fromUtf8(s->getCString());
++  result = TQString::fromUtf8(s->GOO_GET_CSTR());
+ 
+   delete output_dev;
+   delete s;
+@@ -183,7 +183,7 @@
+   for (int i = 0; i < word_list->getLength(); i++) {
+     TextWord *word = word_list->get(i);
+     GooString *word_str = word->getText();
+-    TQString string = TQString::fromUtf8(word_str->getCString());
++    TQString string = TQString::fromUtf8(word_str->GOO_GET_CSTR());
+     delete word_str;
+     double xMin, yMin, xMax, yMax;
+     word->getBBox(&xMin, &yMin, &xMax, &yMax);
+@@ -303,13 +303,13 @@
+ 	{
+           LinkLaunch * e = (LinkLaunch *)a;
+           GooString * p = e->getParams();
+-          popplerLink = new LinkExecute( linkArea, e->getFileName()->getCString(), p ? p->getCString() : 0 );
++          popplerLink = new LinkExecute( linkArea, e->getFileName()->GOO_GET_CSTR(), p ? p->GOO_GET_CSTR() : 0 );
+ 	}
+         break;
+ 
+         case actionNamed:
+ 	{
+-          const char * name = ((LinkNamed *)a)->getName()->getCString();
++          const char * name = ((LinkNamed *)a)->getName()->GOO_GET_CSTR();
+           if ( !strcmp( name, "NextPage" ) )
+               popplerLink = new LinkAction( linkArea, LinkAction::PageNext );
+           else if ( !strcmp( name, "PrevPage" ) )
+@@ -346,7 +346,7 @@
+ 
+         case actionURI:
+ 	{
+-          popplerLink = new LinkBrowse( linkArea, ((LinkURI *)a)->getURI()->getCString() );
++          popplerLink = new LinkBrowse( linkArea, ((LinkURI *)a)->getURI()->GOO_GET_CSTR() );
+ 	}
+         break;
+ 
+diff -urN tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc
+--- tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc	2019-03-03 01:40:02.353612181 +0300
++++ tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc	2019-03-03 01:40:17.729611869 +0300
+@@ -119,7 +119,7 @@
+                 // so better storing the reference and provide the viewport on demand
+                 CONST_064 GooString *s = g->getNamedDest();
+                 TQChar *charArray = new TQChar[s->getLength()];
+-                for (int i = 0; i < s->getLength(); ++i) charArray[i] = TQChar(s->getCString()[i]);
++                for (int i = 0; i < s->getLength(); ++i) charArray[i] = TQChar(s->GOO_GET_CSTR()[i]);
+                     TQString aux(charArray, s->getLength());
+                     item.setAttribute( "DestinationName", aux );
+                     delete[] charArray;
+@@ -132,7 +132,7 @@
+                 if ( a->getKind() == actionGoToR )
+                 {
+                     CONST_064 LinkGoToR * g2 = static_cast< CONST_064 LinkGoToR * >( a );
+-                    item.setAttribute( "ExternalFileName", g2->getFileName()->getCString() );
++                    item.setAttribute( "ExternalFileName", g2->getFileName()->GOO_GET_CSTR() );
+                 }
+             }
+ 
+diff -urN tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h
+--- tdegraphics-14.0.5.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h	2019-03-03 01:40:02.353612181 +0300
++++ tdegraphics-14.0.5/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h	2019-03-03 01:40:17.731611869 +0300
+@@ -39,6 +39,16 @@
+ #else
+ #define CONST_064
+ #endif
++#if defined(HAVE_POPPLER_071)
++#define GBool  bool
++#define gTrue  true
++#define gFalse false
++#endif
++#if defined(HAVE_POPPLER_072)
++#define GOO_GET_CSTR c_str
++#else
++#define GOO_GET_CSTR getCString
++#endif
+ 
+ namespace Poppler {
+     
