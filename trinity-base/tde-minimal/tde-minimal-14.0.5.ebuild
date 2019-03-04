@@ -23,5 +23,5 @@ S=${WORKDIR}
 src_install() {
 	dodir /usr/share/xsessions
 	insinto /usr/share/xsessions
-	doins ${FILESDIR}/Trinity.desktop ${FILESDIR}/Trinity-pulse.desktop
+	doins ${FILESDIR}/Trinity.desktop
 }
