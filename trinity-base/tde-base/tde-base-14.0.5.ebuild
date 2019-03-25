@@ -21,7 +21,6 @@ RDEPEND=">=trinity-base/tde-minimal-14.0.5
 	trinity-base/tdesdk
 	trinity-base/tdewebdev
 	trinity-apps/dolphin
-	trinity-apps/gwenview
 	trinity-apps/tde-style-baghira
 	trinity-apps/tde-style-domino
 	trinity-apps/tde-style-ia-ora

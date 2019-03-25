@@ -57,5 +57,5 @@ src_configure() {
 	-DBUILD_ALL=ON
 	)
 
-	 cmake-utils_src_configure
+	 cmake-utils_src_configure || die
 }

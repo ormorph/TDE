@@ -35,7 +35,8 @@ TDEDIR="/opt/trinity"
 
 
 src_prepare() {
-	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
+	cd ${S}/admin
+	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	eapply_user
 }
@@ -44,7 +45,8 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	emake -f admin/Makefile.common
-	./configure --prefix="${TDEDIR}" \
+	build_arts=no ./configure --without-arts \
+		--prefix="${TDEDIR}" \
 		--exec-prefix="${TDEDIR}" \
 		--datadir="${TDEDIR}/share" \
 		--includedir="${TDEDIR}/include" \
@@ -55,5 +57,5 @@ src_configure() {
 		--enable-final \
 		--enable-closure \
 		--enable-rpath \
-		--disable-gcc-hidden-visibility
+		--disable-gcc-hidden-visibility || die
 }

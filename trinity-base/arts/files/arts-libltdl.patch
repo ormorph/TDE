@@ -1,0 +1,5074 @@
+diff -urN libltdl.orfig/CMakeLists.txt libltdl/CMakeLists.txt
+--- libltdl.orfig/CMakeLists.txt	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/CMakeLists.txt	2019-02-22 17:53:57.511418615 +0300
+@@ -0,0 +1,19 @@
++#################################################
++#
++#  (C) 2010 Serghei Amelian
++#  serghei (DOT) amelian (AT) gmail.com
++#
++#  Improvements and feedback are welcome
++#
++#  This file is released under GPL >= 2
++#
++#################################################
++
++include_directories(
++  ${CMAKE_BINARY_DIR}
++)
++
++tde_add_library( ltdlc STATIC_PIC
++  SOURCES ltdl.c
++  LINK ${DL_LIBRARIES}
++)
+diff -urN libltdl.orfig/COPYING.LIB libltdl/COPYING.LIB
+--- libltdl.orfig/COPYING.LIB	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/COPYING.LIB	2019-02-22 17:53:57.512418615 +0300
+@@ -0,0 +1,558 @@
++
++                  GNU LESSER GENERAL PUBLIC LICENSE
++                       Version 2.1, February 1999
++
++ Copyright (C) 1991, 1999 Free Software Foundation, Inc.
++     51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
++ Everyone is permitted to copy and distribute verbatim copies
++ of this license document, but changing it is not allowed.
++
++[This is the first released version of the Lesser GPL.  It also counts
++ as the successor of the GNU Library Public License, version 2, hence
++ the version number 2.1.]
++
++                            Preamble
++
++  The licenses for most software are designed to take away your
++freedom to share and change it.  By contrast, the GNU General Public
++Licenses are intended to guarantee your freedom to share and change
++free software--to make sure the software is free for all its users.
++
++  This license, the Lesser General Public License, applies to some
++specially designated software packages--typically libraries--of the
++Free Software Foundation and other authors who decide to use it.  You
++can use it too, but we suggest you first think carefully about whether
++this license or the ordinary General Public License is the better
++strategy to use in any particular case, based on the explanations
++below.
++
++  When we speak of free software, we are referring to freedom of use,
++not price.  Our General Public Licenses are designed to make sure that
++you have the freedom to distribute copies of free software (and charge
++for this service if you wish); that you receive source code or can get
++it if you want it; that you can change the software and use pieces of
++it in new free programs; and that you are informed that you can do
++these things.
++
++  To protect your rights, we need to make restrictions that forbid
++distributors to deny you these rights or to ask you to surrender these
++rights.  These restrictions translate to certain responsibilities for
++you if you distribute copies of the library or if you modify it.
++
++  For example, if you distribute copies of the library, whether gratis
++or for a fee, you must give the recipients all the rights that we gave
++you.  You must make sure that they, too, receive or can get the source
++code.  If you link other code with the library, you must provide
++complete object files to the recipients, so that they can relink them
++with the library after making changes to the library and recompiling
++it.  And you must show them these terms so they know their rights.
++
++  We protect your rights with a two-step method: (1) we copyright the
++library, and (2) we offer you this license, which gives you legal
++permission to copy, distribute and/or modify the library.
++
++  To protect each distributor, we want to make it very clear that
++there is no warranty for the free library.  Also, if the library is
++modified by someone else and passed on, the recipients should know
++that what they have is not the original version, so that the original
++author's reputation will not be affected by problems that might be
++introduced by others.
++^L
++  Finally, software patents pose a constant threat to the existence of
++any free program.  We wish to make sure that a company cannot
++effectively restrict the users of a free program by obtaining a
++restrictive license from a patent holder.  Therefore, we insist that
++any patent license obtained for a version of the library must be
++consistent with the full freedom of use specified in this license.
++
++  Most GNU software, including some libraries, is covered by the
++ordinary GNU General Public License.  This license, the GNU Lesser
++General Public License, applies to certain designated libraries, and
++is quite different from the ordinary General Public License.  We use
++this license for certain libraries in order to permit linking those
++libraries into non-free programs.
++
++  When a program is linked with a library, whether statically or using
++a shared library, the combination of the two is legally speaking a
++combined work, a derivative of the original library.  The ordinary
++General Public License therefore permits such linking only if the
++entire combination fits its criteria of freedom.  The Lesser General
++Public License permits more lax criteria for linking other code with
++the library.
++
++  We call this license the "Lesser" General Public License because it
++does Less to protect the user's freedom than the ordinary General
++Public License.  It also provides other free software developers Less
++of an advantage over competing non-free programs.  These disadvantages
++are the reason we use the ordinary General Public License for many
++libraries.  However, the Lesser license provides advantages in certain
++special circumstances.
++
++  For example, on rare occasions, there may be a special need to
++encourage the widest possible use of a certain library, so that it
++becomes
++a de-facto standard.  To achieve this, non-free programs must be
++allowed to use the library.  A more frequent case is that a free
++library does the same job as widely used non-free libraries.  In this
++case, there is little to gain by limiting the free library to free
++software only, so we use the Lesser General Public License.
++
++  In other cases, permission to use a particular library in non-free
++programs enables a greater number of people to use a large body of
++free software.  For example, permission to use the GNU C Library in
++non-free programs enables many more people to use the whole GNU
++operating system, as well as its variant, the GNU/Linux operating
++system.
++
++  Although the Lesser General Public License is Less protective of the
++users' freedom, it does ensure that the user of a program that is
++linked with the Library has the freedom and the wherewithal to run
++that program using a modified version of the Library.
++
++  The precise terms and conditions for copying, distribution and
++modification follow.  Pay close attention to the difference between a
++"work based on the library" and a "work that uses the library".  The
++former contains code derived from the library, whereas the latter must
++be combined with the library in order to run.
++^L
++                  GNU LESSER GENERAL PUBLIC LICENSE
++   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
++
++  0. This License Agreement applies to any software library or other
++program which contains a notice placed by the copyright holder or
++other authorized party saying it may be distributed under the terms of
++this Lesser General Public License (also called "this License").
++Each licensee is addressed as "you".
++
++  A "library" means a collection of software functions and/or data
++prepared so as to be conveniently linked with application programs
++(which use some of those functions and data) to form executables.
++
++  The "Library", below, refers to any such software library or work
++which has been distributed under these terms.  A "work based on the
++Library" means either the Library or any derivative work under
++copyright law: that is to say, a work containing the Library or a
++portion of it, either verbatim or with modifications and/or translated
++straightforwardly into another language.  (Hereinafter, translation is
++included without limitation in the term "modification".)
++
++  "Source code" for a work means the preferred form of the work for
++making modifications to it.  For a library, complete source code means
++all the source code for all modules it contains, plus any associated
++interface definition files, plus the scripts used to control
++compilation
++and installation of the library.
++
++  Activities other than copying, distribution and modification are not
++covered by this License; they are outside its scope.  The act of
++running a program using the Library is not restricted, and output from
++such a program is covered only if its contents constitute a work based
++on the Library (independent of the use of the Library in a tool for
++writing it).  Whether that is true depends on what the Library does
++and what the program that uses the Library does.
++
++  1. You may copy and distribute verbatim copies of the Library's
++complete source code as you receive it, in any medium, provided that
++you conspicuously and appropriately publish on each copy an
++appropriate copyright notice and disclaimer of warranty; keep intact
++all the notices that refer to this License and to the absence of any
++warranty; and distribute a copy of this License along with the
++Library.
++
++  You may charge a fee for the physical act of transferring a copy,
++and you may at your option offer warranty protection in exchange for a
++fee.
++
++  2. You may modify your copy or copies of the Library or any portion
++of it, thus forming a work based on the Library, and copy and
++distribute such modifications or work under the terms of Section 1
++above, provided that you also meet all of these conditions:
++
++    a) The modified work must itself be a software library.
++
++    b) You must cause the files modified to carry prominent notices
++    stating that you changed the files and the date of any change.
++
++    c) You must cause the whole of the work to be licensed at no
++    charge to all third parties under the terms of this License.
++
++    d) If a facility in the modified Library refers to a function or a
++    table of data to be supplied by an application program that uses
++    the facility, other than as an argument passed when the facility
++    is invoked, then you must make a good faith effort to ensure that,
++    in the event an application does not supply such function or
++    table, the facility still operates, and performs whatever part of
++    its purpose remains meaningful.
++
++    (For example, a function in a library to compute square roots has
++    a purpose that is entirely well-defined independent of the
++    application.  Therefore, Subsection 2d requires that any
++    application-supplied function or table used by this function must
++    be optional: if the application does not supply it, the square
++    root function must still compute square roots.)
++
++These requirements apply to the modified work as a whole.  If
++identifiable sections of that work are not derived from the Library,
++and can be reasonably considered independent and separate works in
++themselves, then this License, and its terms, do not apply to those
++sections when you distribute them as separate works.  But when you
++distribute the same sections as part of a whole which is a work based
++on the Library, the distribution of the whole must be on the terms of
++this License, whose permissions for other licensees extend to the
++entire whole, and thus to each and every part regardless of who wrote
++it.
++
++Thus, it is not the intent of this section to claim rights or contest
++your rights to work written entirely by you; rather, the intent is to
++exercise the right to control the distribution of derivative or
++collective works based on the Library.
++
++In addition, mere aggregation of another work not based on the Library
++with the Library (or with a work based on the Library) on a volume of
++a storage or distribution medium does not bring the other work under
++the scope of this License.
++
++  3. You may opt to apply the terms of the ordinary GNU General Public
++License instead of this License to a given copy of the Library.  To do
++this, you must alter all the notices that refer to this License, so
++that they refer to the ordinary GNU General Public License, version 2,
++instead of to this License.  (If a newer version than version 2 of the
++ordinary GNU General Public License has appeared, then you can specify
++that version instead if you wish.)  Do not make any other change in
++these notices.
++^L
++  Once this change is made in a given copy, it is irreversible for
++that copy, so the ordinary GNU General Public License applies to all
++subsequent copies and derivative works made from that copy.
++
++  This option is useful when you wish to copy part of the code of
++the Library into a program that is not a library.
++
++  4. You may copy and distribute the Library (or a portion or
++derivative of it, under Section 2) in object code or executable form
++under the terms of Sections 1 and 2 above provided that you accompany
++it with the complete corresponding machine-readable source code, which
++must be distributed under the terms of Sections 1 and 2 above on a
++medium customarily used for software interchange.
++
++  If distribution of object code is made by offering access to copy
++from a designated place, then offering equivalent access to copy the
++source code from the same place satisfies the requirement to
++distribute the source code, even though third parties are not
++compelled to copy the source along with the object code.
++
++  5. A program that contains no derivative of any portion of the
++Library, but is designed to work with the Library by being compiled or
++linked with it, is called a "work that uses the Library".  Such a
++work, in isolation, is not a derivative work of the Library, and
++therefore falls outside the scope of this License.
++
++  However, linking a "work that uses the Library" with the Library
++creates an executable that is a derivative of the Library (because it
++contains portions of the Library), rather than a "work that uses the
++library".  The executable is therefore covered by this License.
++Section 6 states terms for distribution of such executables.
++
++  When a "work that uses the Library" uses material from a header file
++that is part of the Library, the object code for the work may be a
++derivative work of the Library even though the source code is not.
++Whether this is true is especially significant if the work can be
++linked without the Library, or if the work is itself a library.  The
++threshold for this to be true is not precisely defined by law.
++
++  If such an object file uses only numerical parameters, data
++structure layouts and accessors, and small macros and small inline
++functions (ten lines or less in length), then the use of the object
++file is unrestricted, regardless of whether it is legally a derivative
++work.  (Executables containing this object code plus portions of the
++Library will still fall under Section 6.)
++
++  Otherwise, if the work is a derivative of the Library, you may
++distribute the object code for the work under the terms of Section 6.
++Any executables containing that work also fall under Section 6,
++whether or not they are linked directly with the Library itself.
++^L
++  6. As an exception to the Sections above, you may also combine or
++link a "work that uses the Library" with the Library to produce a
++work containing portions of the Library, and distribute that work
++under terms of your choice, provided that the terms permit
++modification of the work for the customer's own use and reverse
++engineering for debugging such modifications.
++
++  You must give prominent notice with each copy of the work that the
++Library is used in it and that the Library and its use are covered by
++this License.  You must supply a copy of this License.  If the work
++during execution displays copyright notices, you must include the
++copyright notice for the Library among them, as well as a reference
++directing the user to the copy of this License.  Also, you must do one
++of these things:
++
++    a) Accompany the work with the complete corresponding
++    machine-readable source code for the Library including whatever
++    changes were used in the work (which must be distributed under
++    Sections 1 and 2 above); and, if the work is an executable linked
++    with the Library, with the complete machine-readable "work that
++    uses the Library", as object code and/or source code, so that the
++    user can modify the Library and then relink to produce a modified
++    executable containing the modified Library.  (It is understood
++    that the user who changes the contents of definitions files in the
++    Library will not necessarily be able to recompile the application
++    to use the modified definitions.)
++
++    b) Use a suitable shared library mechanism for linking with the
++    Library.  A suitable mechanism is one that (1) uses at run time a
++    copy of the library already present on the user's computer system,
++    rather than copying library functions into the executable, and (2)
++    will operate properly with a modified version of the library, if
++    the user installs one, as long as the modified version is
++    interface-compatible with the version that the work was made with.
++
++    c) Accompany the work with a written offer, valid for at
++    least three years, to give the same user the materials
++    specified in Subsection 6a, above, for a charge no more
++    than the cost of performing this distribution.
++
++    d) If distribution of the work is made by offering access to copy
++    from a designated place, offer equivalent access to copy the above
++    specified materials from the same place.
++
++    e) Verify that the user has already received a copy of these
++    materials or that you have already sent this user a copy.
++
++  For an executable, the required form of the "work that uses the
++Library" must include any data and utility programs needed for
++reproducing the executable from it.  However, as a special exception,
++the materials to be distributed need not include anything that is
++normally distributed (in either source or binary form) with the major
++components (compiler, kernel, and so on) of the operating system on
++which the executable runs, unless that component itself accompanies
++the executable.
++
++  It may happen that this requirement contradicts the license
++restrictions of other proprietary libraries that do not normally
++accompany the operating system.  Such a contradiction means you cannot
++use both them and the Library together in an executable that you
++distribute.
++^L
++  7. You may place library facilities that are a work based on the
++Library side-by-side in a single library together with other library
++facilities not covered by this License, and distribute such a combined
++library, provided that the separate distribution of the work based on
++the Library and of the other library facilities is otherwise
++permitted, and provided that you do these two things:
++
++    a) Accompany the combined library with a copy of the same work
++    based on the Library, uncombined with any other library
++    facilities.  This must be distributed under the terms of the
++    Sections above.
++
++    b) Give prominent notice with the combined library of the fact
++    that part of it is a work based on the Library, and explaining
++    where to find the accompanying uncombined form of the same work.
++
++  8. You may not copy, modify, sublicense, link with, or distribute
++the Library except as expressly provided under this License.  Any
++attempt otherwise to copy, modify, sublicense, link with, or
++distribute the Library is void, and will automatically terminate your
++rights under this License.  However, parties who have received copies,
++or rights, from you under this License will not have their licenses
++terminated so long as such parties remain in full compliance.
++
++  9. You are not required to accept this License, since you have not
++signed it.  However, nothing else grants you permission to modify or
++distribute the Library or its derivative works.  These actions are
++prohibited by law if you do not accept this License.  Therefore, by
++modifying or distributing the Library (or any work based on the
++Library), you indicate your acceptance of this License to do so, and
++all its terms and conditions for copying, distributing or modifying
++the Library or works based on it.
++
++  10. Each time you redistribute the Library (or any work based on the
++Library), the recipient automatically receives a license from the
++original licensor to copy, distribute, link with or modify the Library
++subject to these terms and conditions.  You may not impose any further
++restrictions on the recipients' exercise of the rights granted herein.
++You are not responsible for enforcing compliance by third parties with
++this License.
++^L
++  11. If, as a consequence of a court judgment or allegation of patent
++infringement or for any other reason (not limited to patent issues),
++conditions are imposed on you (whether by court order, agreement or
++otherwise) that contradict the conditions of this License, they do not
++excuse you from the conditions of this License.  If you cannot
++distribute so as to satisfy simultaneously your obligations under this
++License and any other pertinent obligations, then as a consequence you
++may not distribute the Library at all.  For example, if a patent
++license would not permit royalty-free redistribution of the Library by
++all those who receive copies directly or indirectly through you, then
++the only way you could satisfy both it and this License would be to
++refrain entirely from distribution of the Library.
++
++If any portion of this section is held invalid or unenforceable under
++any particular circumstance, the balance of the section is intended to
++apply, and the section as a whole is intended to apply in other
++circumstances.
++
++It is not the purpose of this section to induce you to infringe any
++patents or other property right claims or to contest validity of any
++such claims; this section has the sole purpose of protecting the
++integrity of the free software distribution system which is
++implemented by public license practices.  Many people have made
++generous contributions to the wide range of software distributed
++through that system in reliance on consistent application of that
++system; it is up to the author/donor to decide if he or she is willing
++to distribute software through any other system and a licensee cannot
++impose that choice.
++
++This section is intended to make thoroughly clear what is believed to
++be a consequence of the rest of this License.
++
++  12. If the distribution and/or use of the Library is restricted in
++certain countries either by patents or by copyrighted interfaces, the
++original copyright holder who places the Library under this License
++may add an explicit geographical distribution limitation excluding those
++countries, so that distribution is permitted only in or among
++countries not thus excluded.  In such case, this License incorporates
++the limitation as if written in the body of this License.
++
++  13. The Free Software Foundation may publish revised and/or new
++versions of the Lesser General Public License from time to time.
++Such new versions will be similar in spirit to the present version,
++but may differ in detail to address new problems or concerns.
++
++Each version is given a distinguishing version number.  If the Library
++specifies a version number of this License which applies to it and
++"any later version", you have the option of following the terms and
++conditions either of that version or of any later version published by
++the Free Software Foundation.  If the Library does not specify a
++license version number, you may choose any version ever published by
++the Free Software Foundation.
++^L
++  14. If you wish to incorporate parts of the Library into other free
++programs whose distribution conditions are incompatible with these,
++write to the author to ask for permission.  For software which is
++copyrighted by the Free Software Foundation, write to the Free
++Software Foundation; we sometimes make exceptions for this.  Our
++decision will be guided by the two goals of preserving the free status
++of all derivatives of our free software and of promoting the sharing
++and reuse of software generally.
++
++                            NO WARRANTY
++
++  15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO
++WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW.
++EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR
++OTHER PARTIES PROVIDE THE LIBRARY "AS IS" WITHOUT WARRANTY OF ANY
++KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE
++IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
++PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE
++LIBRARY IS WITH YOU.  SHOULD THE LIBRARY PROVE DEFECTIVE, YOU ASSUME
++THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
++
++  16. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN
++WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY
++AND/OR REDISTRIBUTE THE LIBRARY AS PERMITTED ABOVE, BE LIABLE TO YOU
++FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR
++CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
++LIBRARY (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
++RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
++FAILURE OF THE LIBRARY TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
++SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
++DAMAGES.
++
++                     END OF TERMS AND CONDITIONS
++^L
++           How to Apply These Terms to Your New Libraries
++
++  If you develop a new library, and you want it to be of the greatest
++possible use to the public, we recommend making it free software that
++everyone can redistribute and change.  You can do so by permitting
++redistribution under these terms (or, alternatively, under the terms
++of the ordinary General Public License).
++
++  To apply these terms, attach the following notices to the library.
++It is safest to attach them to the start of each source file to most
++effectively convey the exclusion of warranty; and each file should
++have at least the "copyright" line and a pointer to where the full
++notice is found.
++
++
++    <one line to give the library's name and a brief idea of what it
++does.>
++    Copyright (C) <year>  <name of author>
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Lesser General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Lesser General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public
++    License along with this library; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
++
++Also add information on how to contact you by electronic and paper
++mail.
++
++You should also get your employer (if you work as a programmer) or
++your
++school, if any, to sign a "copyright disclaimer" for the library, if
++necessary.  Here is a sample; alter the names:
++
++  Yoyodyne, Inc., hereby disclaims all copyright interest in the
++  library `Frob' (a library for tweaking knobs) written by James
++Random Hacker.
++
++  <signature of Ty Coon>, 1 April 1990
++  Ty Coon, President of Vice
++
++That's all there is to it!
++
++          How to Apply These Terms to Your New Libraries
++
++  If you develop a new library, and you want it to be of the greatest
++possible use to the public, we recommend making it free software that
++everyone can redistribute and change.  You can do so by permitting
++redistribution under these terms (or, alternatively, under the terms of the
++ordinary General Public License).
++
++  To apply these terms, attach the following notices to the library.  It is
++safest to attach them to the start of each source file to most effectively
++convey the exclusion of warranty; and each file should have at least the
++"copyright" line and a pointer to where the full notice is found.
++
++    <one line to give the library's name and a brief idea of what it does.>
++    Copyright (C) <year>  <name of author>
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Lesser General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Lesser General Public License for more details.
++
++    You should have received a copy of the GNU Lesser General Public
++    License along with this library; if not, write to the Free Software
++    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
++
++Also add information on how to contact you by electronic and paper mail.
++
++You should also get your employer (if you work as a programmer) or your
++school, if any, to sign a "copyright disclaimer" for the library, if
++necessary.  Here is a sample; alter the names:
++
++  Yoyodyne, Inc., hereby disclaims all copyright interest in the
++  library `Frob' (a library for tweaking knobs) written by James Random Hacker.
++
++  <signature of Ty Coon>, 1 April 1990
++  Ty Coon, President of Vice
++
++That's all there is to it!
++
+diff -urN libltdl.orfig/ltdl.c libltdl/ltdl.c
+--- libltdl.orfig/ltdl.c	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/ltdl.c	2019-02-22 17:53:57.513418615 +0300
+@@ -0,0 +1,3438 @@
++/* ltdl.c -- system independent dlopen wrapper
++   Copyright (C) 1998, 1999, 2000 Free Software Foundation, Inc.
++   Originally by Thomas Tanner <tanner@ffii.org>
++   This file is part of GNU Libtool.
++
++This library is free software; you can redistribute it and/or
++modify it under the terms of the GNU Lesser General Public
++License as published by the Free Software Foundation; either
++version 2 of the License, or (at your option) any later version.
++
++As a special exception to the GNU Lesser General Public License,
++if you distribute this file as part of a program or library that
++is built using GNU libtool, you may include it under the same
++distribution terms that you use for the rest of that program.
++
++This library is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++Lesser General Public License for more details.
++
++You should have received a copy of the GNU Lesser General Public
++License along with this library; if not, write to the Free Software
++Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
++02110-1301  USA
++
++*/
++
++#if HAVE_CONFIG_H
++#  include <config.h>
++#endif
++
++#if HAVE_STDIO_H
++#  include <stdio.h>
++#endif
++
++#if HAVE_STDLIB_H
++#  include <stdlib.h>
++#endif
++
++#if HAVE_STRING_H
++#  include <string.h>
++#else
++#  if HAVE_STRINGS_H
++#    include <strings.h>
++#  endif
++#endif
++
++#if HAVE_CTYPE_H
++#  include <ctype.h>
++#endif
++
++#if HAVE_MALLOC_H
++#  include <malloc.h>
++#endif
++
++#if HAVE_MEMORY_H
++#  include <memory.h>
++#endif
++
++#ifdef _AIX
++#include <errno.h>
++#include <strings.h>
++#include <sys/ldr.h>
++#endif /* _AIX */
++
++#include "ltdl.h"
++
++/* Bah.  We don't want inline.  Needs autoconf check, which we don't want.  */
++#ifdef inline
++#  undef inline
++#endif
++#define inline
++
++
++
++/* --- WINDOWS SUPPORT --- */
++
++
++#ifdef DLL_EXPORT
++#  define LT_GLOBAL_DATA	__declspec(dllexport)
++#else
++#  define LT_GLOBAL_DATA
++#endif
++
++/* fopen() mode flags for reading a text file */
++#undef	LT_READTEXT_MODE
++#ifdef __WINDOWS__
++#  define LT_READTEXT_MODE "rt"
++#else
++#  define LT_READTEXT_MODE "r"
++#endif
++
++#if defined(_WIN32) && !defined(__CYGWIN__)
++#  include "ltdl_win.h"
++#endif
++
++
++
++/* --- MANIFEST CONSTANTS --- */
++
++
++/* max. filename length */
++#ifndef LT_FILENAME_MAX
++#  define LT_FILENAME_MAX	1024
++#endif
++
++/* This is the maximum symbol size that won't require malloc/free */
++#undef	LT_SYMBOL_LENGTH
++#define LT_SYMBOL_LENGTH	128
++
++/* This accounts for the _LTX_ separator */
++#undef	LT_SYMBOL_OVERHEAD
++#define LT_SYMBOL_OVERHEAD	5
++
++
++
++
++/* --- TYPE DEFINITIONS -- */
++
++
++/* This type is used for the array of caller data sets in each handler. */
++typedef struct {
++  lt_dlcaller_id	key;
++  lt_ptr		data;
++} lt_caller_data;
++
++
++
++
++/* --- OPAQUE STRUCTURES DECLARED IN LTDL.H --- */
++
++
++/* Extract the diagnostic strings from the error table macro in the same
++   order as the enumberated indices in ltdl.h. */
++
++static const char *lt_dlerror_strings[] =
++  {
++#define LT_ERROR(name, diagnostic)	(diagnostic),
++    lt_dlerror_table
++#undef LT_ERROR
++
++    0
++  };
++
++/* This structure is used for the list of registered loaders. */
++struct lt_dlloader {
++  struct lt_dlloader   *next;
++  const char	       *loader_name;	/* identifying name for each loader */
++  const char	       *sym_prefix;	/* prefix for symbols */
++  lt_module_open       *module_open;
++  lt_module_close      *module_close;
++  lt_find_sym	       *find_sym;
++  lt_dlloader_exit     *dlloader_exit;
++  lt_user_data		dlloader_data;
++};
++
++struct lt_dlhandle_struct {
++  struct lt_dlhandle_struct   *next;
++  lt_dlloader	       *loader;		/* dlopening interface */
++  lt_dlinfo		info;
++  int			depcount;	/* number of dependencies */
++  lt_dlhandle	       *deplibs;	/* dependencies */
++  lt_module		module;		/* system module handle */
++  lt_ptr		system;		/* system specific data */
++  lt_caller_data       *caller_data;	/* per caller associated data */
++  int			flags;		/* various boolean stats */
++};
++
++/* Various boolean flags can be stored in the flags field of an
++   lt_dlhandle_struct... */
++#define LT_DLGET_FLAG(handle, flag) (((handle)->flags & (flag)) == (flag))
++#define LT_DLSET_FLAG(handle, flag) ((handle)->flags |= (flag))
++
++#define LT_DLRESIDENT_FLAG	    (0x01 << 0)
++#ifdef _AIX
++#define LT_DLNOTFOUND_FLAG	    (0x01 << 1) /* may be linked statically */
++#define LT_DLMEMBER_FLAG	    RTLD_MEMBER
++#endif /* _AIX */
++/* ...add more flags here... */
++
++#define LT_DLIS_RESIDENT(handle)    LT_DLGET_FLAG(handle, LT_DLRESIDENT_FLAG)
++
++
++#define LT_DLSTRERROR(name)	lt_dlerror_strings[LT_CONC(LT_ERROR_,name)]
++
++static	const char	objdir[]		= LTDL_OBJDIR;
++#define LTDL_SHLIB_EXT ".so"
++#ifdef	LTDL_SHLIB_EXT
++static	const char	shlib_ext[]		= LTDL_SHLIB_EXT;
++#endif
++#ifdef	LTDL_SYSSEARCHPATH
++static	const char	sys_search_path[]	= LTDL_SYSSEARCHPATH;
++#endif
++
++
++
++
++/* --- MUTEX LOCKING --- */
++
++
++/* Macros to make it easier to run the lock functions only if they have 
++   been registered.  The reason for the complicated lock macro is to
++   ensure that the stored error message from the last error is not 
++   accidentally erased if the current function doesn't generate an
++   error of its own.  */
++#define MUTEX_LOCK()				LT_STMT_START {	\
++	if (mutex_lock) (*mutex_lock)();	} LT_STMT_END
++#define MUTEX_UNLOCK()				LT_STMT_START { \
++	if (mutex_unlock) (*mutex_unlock)();	} LT_STMT_END
++#define MUTEX_SETERROR(errormsg)		LT_STMT_START {	\
++	if (mutex_seterror) (*mutex_seterror) (errormsg);	\
++	else last_error = (errormsg);		} LT_STMT_END
++#define MUTEX_GETERROR(errormsg)		LT_STMT_START {	\
++	if (mutex_seterror) errormsg = (*mutex_geterror)();	\
++	else (errormsg) = last_error;		} LT_STMT_END
++
++/* The mutex functions stored here are global, and are necessarily the
++   same for all threads that wish to share access to libltdl.  */
++static	lt_dlmutex_lock	    *mutex_lock	    = 0;
++static	lt_dlmutex_unlock   *mutex_unlock   = 0;
++static	lt_dlmutex_seterror *mutex_seterror = 0;
++static	lt_dlmutex_geterror *mutex_geterror = 0;
++static	const char	    *last_error	    = 0;
++
++
++/* Either set or reset the mutex functions.  Either all the arguments must
++   be valid functions, or else all can be NULL to turn off locking entirely.
++   The registered functions should be manipulating a static global lock
++   from the lock() and unlock() callbacks, which needs to be reentrant.  */
++int
++lt_dlmutex_register (lock, unlock, seterror, geterror)
++     lt_dlmutex_lock *lock;
++     lt_dlmutex_unlock *unlock;
++     lt_dlmutex_seterror *seterror;
++     lt_dlmutex_geterror *geterror;
++{
++  lt_dlmutex_unlock *old_unlock = unlock;
++  int		     errors	= 0;
++
++  /* Lock using the old lock() callback, if any.  */
++  MUTEX_LOCK ();
++
++  if ((lock && unlock && seterror && geterror) 
++      || !(lock || unlock || seterror || geterror))
++    {
++      mutex_lock     = lock;
++      mutex_unlock   = unlock;
++      mutex_geterror = geterror;
++    }
++  else
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_MUTEX_ARGS));
++      ++errors;
++    }
++
++  /* Use the old unlock() callback we saved earlier, if any.  Otherwise
++     record any errors using internal storage.  */
++  if (old_unlock)
++    (*old_unlock) ();
++
++  /* Return the number of errors encountered during the execution of
++     this function.  */
++  return errors;
++}
++
++
++
++
++/* --- MEMORY HANDLING --- */
++
++
++LT_GLOBAL_DATA    lt_ptr	(*lt_dlmalloc)	LT_PARAMS((size_t size))
++ 				    = (lt_ptr (*) LT_PARAMS((size_t))) malloc;
++LT_GLOBAL_DATA    void		(*lt_dlfree)	LT_PARAMS((lt_ptr ptr))
++ 				    = (void (*) LT_PARAMS((lt_ptr))) free;
++
++static		  lt_ptr	rpl_realloc	LT_PARAMS((lt_ptr ptr,
++							   size_t size));
++
++#define LT_DLMALLOC(tp, n)	((tp *) lt_dlmalloc ((n) * sizeof(tp)))
++#define LT_DLREALLOC(tp, p, n)	((tp *) rpl_realloc ((p), (n) * sizeof(tp)))
++#define LT_DLFREE(p)						\
++	LT_STMT_START { if (p) (p) = (lt_dlfree (p), (lt_ptr) 0); } LT_STMT_END
++
++#define LT_DLMEM_REASSIGN(p, q)			LT_STMT_START {	\
++	if ((p) != (q)) { lt_dlfree (p); (p) = (q); }		\
++						} LT_STMT_END
++
++
++
++/* --- ERROR MESSAGES --- */
++
++
++static	const char    **user_error_strings	= 0;
++static	int		errorcount		= LT_ERROR_MAX;
++
++int
++lt_dladderror (diagnostic)
++     const char *diagnostic;
++{
++  int		_index	 = 0;
++  int		result	 = -1;
++  const char  **temp     = (const char **) 0;
++
++  MUTEX_LOCK ();
++
++  _index	 = errorcount - LT_ERROR_MAX;
++  temp = LT_DLREALLOC (const char *, user_error_strings, 1 + _index);
++  if (temp == 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++    }
++  else
++    {
++      user_error_strings	= temp;
++      user_error_strings[_index] = diagnostic;
++      result			= errorcount++;
++    }
++
++  MUTEX_UNLOCK ();
++
++  return result;
++}
++
++int
++lt_dlseterror (_index)
++     int _index;
++{
++  int		errors	 = 0;
++
++  MUTEX_LOCK ();
++
++  if (_index >= errorcount || _index < 0)
++    {
++      /* Ack!  Error setting the error message! */
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_ERRORCODE));
++      ++errors;
++    }
++  else if (_index < LT_ERROR_MAX)
++    {
++      /* No error setting the error message! */
++      MUTEX_SETERROR (lt_dlerror_strings[errorcount]);
++    }
++  else
++    {
++      /* No error setting the error message! */
++      MUTEX_SETERROR (user_error_strings[errorcount - LT_ERROR_MAX]);
++    }
++
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++
++
++
++/* --- REPLACEMENT FUNCTIONS --- */
++
++
++#undef strdup
++#define strdup rpl_strdup
++
++static inline char *
++strdup(str)
++     const char *str;
++{
++  char *tmp = 0;
++
++  if (str)
++    {
++      tmp = LT_DLMALLOC (char, 1+ strlen (str));
++      if (tmp)
++	{
++	  strcpy(tmp, str);
++	}
++    }
++
++  return tmp;
++}
++
++
++#if ! HAVE_STRCMP
++
++#undef strcmp
++#define strcmp rpl_strcmp
++
++static inline int
++strcmp (str1, str2)
++     const char *str1;
++     const char *str2;
++{
++  if (str1 == str2)
++    return 0;
++  if (str1 == 0)
++    return -1;
++  if (str2 == 0)
++    return 1;
++
++  for (;*str1 && *str2; ++str1, ++str2)
++    {
++      if (*str1 != *str2)
++	break;
++    }
++
++  return (int)(*str1 - *str2);
++}
++#endif
++
++
++#if ! HAVE_STRCHR
++
++#  if HAVE_INDEX
++#    define strchr index
++#  else
++#    define strchr rpl_strchr
++
++static inline const char*
++strchr(str, ch)
++     const char *str;
++     int ch;
++{
++  const char *p;
++
++  for (p = str; *p != (char)ch && *p != '\0'; ++p)
++    /*NOWORK*/;
++
++  return (*p == (char)ch) ? p : 0;
++}
++
++#  endif
++#endif /* !HAVE_STRCHR */
++
++#if ! HAVE_STRRCHR
++
++#  if HAVE_RINDEX
++#    define strrchr rindex
++#  else
++#    define strrchr rpl_strrchr
++
++static inline const char*
++strrchr(str, ch)
++     const char *str;
++     int ch;
++{
++  const char *p, *q = 0;
++
++  for (p = str; *p != '\0'; ++p)
++    {
++      if (*p == (char) ch)
++	{
++	  q = p;
++	}
++    }
++
++  return q;
++}
++
++# endif
++#endif
++
++/* NOTE:  Neither bcopy nor the memcpy implementation below can
++          reliably handle copying in overlapping areas of memory, so
++          do not rely on this behavior when invoking memcpy later.  */
++#if ! HAVE_MEMCPY
++
++#  if HAVE_BCOPY
++#    define memcpy(dest, src, size)	bcopy (src, dest, size)
++#  else
++#    define memcpy rpl_memcpy
++
++static inline char *
++memcpy (dest, src, size)
++     char *dest;
++     const char *src;
++     size_t size;
++{
++  size_t i = 0;
++
++  for (i = 0; i < size; ++i)
++    {
++      dest[i] = src[i];
++    }
++
++  return dest;
++}
++
++#  endif
++#endif
++
++/* According to Alexandre Oliva <oliva@lsd.ic.unicamp.br>,
++    ``realloc is not entirely portable''
++   In any case we want to use the allocator supplied by the user without
++   burdening them with an lt_dlrealloc function pointer to maintain.
++   Instead implement our own version (with known boundary conditions)
++   using lt_dlmalloc and lt_dlfree. */
++static lt_ptr
++rpl_realloc (ptr, size)
++     lt_ptr ptr;
++     size_t size;
++{
++  if (size < 1)
++    {
++      /* For zero or less bytes, free the original memory */
++      if (ptr != 0)
++	{
++	  lt_dlfree (ptr);
++	}
++
++      return (lt_ptr) 0;
++    }
++  else if (ptr == 0)
++    {
++      /* Allow reallocation of a NULL pointer.  */
++      return lt_dlmalloc (size);
++    }
++  else
++    {
++      /* Allocate a new block, copy and free the old block.  */
++      lt_ptr mem = (lt_ptr) realloc (ptr, size);
++
++      /* Note that the contents of PTR are not damaged if there is
++	 insufficient memory to realloc.  */
++      return mem;
++    }
++}
++
++
++
++
++/* --- DLOPEN() INTERFACE LOADER --- */
++
++/* The Cygwin dlopen implementation prints a spurious error message to
++   stderr if its call to LoadLibrary() fails for any reason.  We can
++   mitigate this by not using the Cygwin implementation, and falling
++   back to our own LoadLibrary() wrapper. */
++#if HAVE_LIBDL && !defined(__CYGWIN__)
++
++/* dynamic linking with dlopen/dlsym */
++
++#if HAVE_DLFCN_H
++#  include <dlfcn.h>
++#endif
++
++#ifdef RTLD_GLOBAL
++#  define LT_GLOBAL		RTLD_GLOBAL
++#else
++#  ifdef DL_GLOBAL
++#    define LT_GLOBAL		DL_GLOBAL
++#  endif
++#endif /* !RTLD_GLOBAL */
++#ifndef LT_GLOBAL
++#  define LT_GLOBAL		0
++#endif /* !LT_GLOBAL */
++
++/* We may have to define LT_LAZY_OR_NOW in the command line if we
++   find out it does not work in some platform. */
++#ifndef LT_LAZY_OR_NOW
++#  ifdef RTLD_LAZY
++#    define LT_LAZY_OR_NOW	RTLD_LAZY
++#  else
++#    ifdef DL_LAZY
++#      define LT_LAZY_OR_NOW	DL_LAZY
++#    endif
++#  endif /* !RTLD_LAZY */
++#endif
++#ifndef LT_LAZY_OR_NOW
++#  ifdef RTLD_NOW
++#    define LT_LAZY_OR_NOW	RTLD_NOW
++#  else
++#    ifdef DL_NOW
++#      define LT_LAZY_OR_NOW	DL_NOW
++#    endif
++#  endif /* !RTLD_NOW */
++#endif
++#ifndef LT_LAZY_OR_NOW
++#  define LT_LAZY_OR_NOW	0
++#endif /* !LT_LAZY_OR_NOW */
++
++#if HAVE_DLERROR
++#  define DLERROR(arg)	dlerror ()
++#else
++#  define DLERROR(arg)	LT_DLSTRERROR (arg)
++#endif
++
++int lt_dlopen_flag = LT_LAZY_OR_NOW;
++
++#ifdef _AIX
++/*------------------------------------------------------------------*/
++/* implementations found at the end                                 */
++/*------------------------------------------------------------------*/
++
++static void
++sys_dl_init( );
++
++static lt_dlhandle
++sys_dl_search_by_name( const char* name );
++
++static void
++sys_dl_not_found_entry( const char* tmp );
++#endif /* _AIX */
++
++static lt_module
++sys_dl_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  lt_module module;
++#ifdef _AIX
++  /* If the basename is of the form "libname.a(member)",
++     set the appropriate flag. */
++  if (strrchr(filename, '('))
++    lt_dlopen_flag |= LT_DLMEMBER_FLAG;
++#endif
++  module = dlopen (filename, lt_dlopen_flag);
++
++  if (!module)
++    {
++      char *error;
++      if ((error = dlerror()) != NULL)  {
++        printf ("The Trinity ltdl loader was unable to dlopen() the shared library '%s' : '%s'\n", filename, error);
++      }
++      MUTEX_SETERROR (DLERROR (CANNOT_OPEN));
++    }
++
++  return module;
++}
++
++static int
++sys_dl_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  int errors = 0;
++
++  if (dlclose (module) != 0)
++    {
++      MUTEX_SETERROR (DLERROR (CANNOT_CLOSE));
++      ++errors;
++    }
++
++  return errors;
++}
++
++static lt_ptr
++sys_dl_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  lt_ptr address = dlsym (module, symbol);
++
++  if (!address)
++    {
++      MUTEX_SETERROR (DLERROR (SYMBOL_NOT_FOUND));
++    }
++
++  return address;
++}
++
++static struct lt_user_dlloader sys_dl =
++  {
++#  ifdef NEED_USCORE
++    "_",
++#  else
++    0,
++#  endif
++    sys_dl_open, sys_dl_close, sys_dl_sym, 0, 0 };
++
++#else
++int lt_dlopen_flag = 0;
++#endif /* HAVE_LIBDL */
++
++
++
++/* --- SHL_LOAD() INTERFACE LOADER --- */
++
++#if HAVE_SHL_LOAD
++
++/* dynamic linking with shl_load (HP-UX) (comments from gmodule) */
++
++#ifdef HAVE_DL_H
++#  include <dl.h>
++#endif
++
++/* some flags are missing on some systems, so we provide
++ * harmless defaults.
++ *
++ * Mandatory:
++ * BIND_IMMEDIATE  - Resolve symbol references when the library is loaded.
++ * BIND_DEFERRED   - Delay code symbol resolution until actual reference.
++ *
++ * Optionally:
++ * BIND_FIRST	   - Place the library at the head of the symbol search
++ * 		     order.
++ * BIND_NONFATAL   - The default BIND_IMMEDIATE behavior is to treat all
++ * 		     unsatisfied symbols as fatal.  This flag allows
++ * 		     binding of unsatisfied code symbols to be deferred
++ * 		     until use.
++ *		     [Perl: For certain libraries, like DCE, deferred
++ *		     binding often causes run time problems. Adding
++ *		     BIND_NONFATAL to BIND_IMMEDIATE still allows
++ *		     unresolved references in situations like this.]
++ * BIND_NOSTART	   - Do not call the initializer for the shared library
++ *		     when the library is loaded, nor on a future call to
++ *		     shl_unload().
++ * BIND_VERBOSE	   - Print verbose messages concerning possible
++ *		     unsatisfied symbols.
++ *
++ * hp9000s700/hp9000s800:
++ * BIND_RESTRICTED - Restrict symbols visible by the library to those
++ *		     present at library load time.
++ * DYNAMIC_PATH	   - Allow the loader to dynamically search for the
++ *		     library specified by the path argument.
++ */
++
++#ifndef	DYNAMIC_PATH
++#  define DYNAMIC_PATH		0
++#endif
++#ifndef	BIND_RESTRICTED
++#  define BIND_RESTRICTED	0
++#endif
++
++#define	LT_BIND_FLAGS	(BIND_IMMEDIATE | BIND_NONFATAL | DYNAMIC_PATH)
++
++static lt_module
++sys_shl_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  /* A NULL handle is used to get symbols from self and everything
++     else already loaded that was exported with -E compiler flag.  */
++  lt_module module = (lt_module) 0;
++
++  if (filename)
++    {
++      module = shl_load (filename, LT_BIND_FLAGS, 0L);
++
++      if (!module)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_OPEN));
++	}
++    }
++  
++  return module;
++}
++
++static int
++sys_shl_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  int errors = 0;
++
++  if (module && (shl_unload ((shl_t) (module)) != 0))
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_CLOSE));
++      ++errors;
++    }
++
++  return errors;
++}
++
++static lt_ptr
++sys_shl_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  int    is_module_self = (module == (lt_module) 0);
++  lt_ptr address        = 0;
++
++  /* shl_findsym considers zero valued MODULE as an indicator to search
++     for a symbol among all loaded (and exported) symbols including those
++     in the main executable.  However, it sets MODULE to a valid module
++     address which breaks the semantics of libltdl's module management.  */
++  if (shl_findsym ((shl_t*) &module, symbol, TYPE_UNDEFINED, &address) == 0)
++    {
++      if (!address)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++	}
++    }
++  
++  if (is_module_self)
++    module = (lt_module) 0;
++
++  return address;
++}
++
++static struct lt_user_dlloader sys_shl = {
++  0, sys_shl_open, sys_shl_close, sys_shl_sym, 0, 0
++};
++
++#endif /* HAVE_SHL_LOAD */
++
++
++
++
++/* --- LOADLIBRARY() INTERFACE LOADER --- */
++
++#if defined(__WINDOWS__) || defined(__CYGWIN__)
++
++/* dynamic linking for Win32 */
++
++#include <windows.h>
++
++/* Forward declaration; required to implement handle search below. */
++static lt_dlhandle handles;
++
++static lt_module
++sys_wll_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  lt_dlhandle	cur;
++  lt_module	module	   = 0;
++  const char   *errormsg   = 0;
++  char	       *searchname = 0;
++  char	       *ext;
++  char		self_name_buf[MAX_PATH];
++
++  if (!filename)
++    {
++      /* Get the name of main module */
++      *self_name_buf = 0;
++      GetModuleFileName (NULL, (unsigned short*)self_name_buf, sizeof (self_name_buf));
++      filename = ext = self_name_buf;
++    }
++  else
++    {
++      ext = (char *)strrchr (filename, '.');
++    }
++
++  if (ext)
++    {
++      /* FILENAME already has an extension. */
++      searchname = strdup (filename);
++    }
++  else
++    {
++      /* Append a `.' to stop Windows from adding an
++	 implicit `.dll' extension. */
++      searchname = LT_DLMALLOC (char, 2+ strlen (filename));
++      if (!searchname)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  return 0;
++	}
++      strcpy (searchname, filename);
++      strcat (searchname, ".");
++    }
++
++#if __CYGWIN__
++  {
++    char wpath[MAX_PATH];
++    cygwin_conv_to_full_win32_path(searchname, wpath);
++    module = LoadLibrary(wpath);
++  }
++#elif defined(_WIN32)
++  {
++     char wpath[MAX_PATH];
++     strncpy(wpath, searchname, MAX_PATH);
++     win32_backslashify( wpath );
++     win32_mapSo2Dll( wpath );
++//fprintf (stderr, "LoadLibraryA(\"%s\")\n", wpath);
++     module = LoadLibraryA( wpath );
++  }
++#else
++  module = LoadLibrary (searchname);
++#endif
++  LT_DLFREE (searchname);
++
++  /* libltdl expects this function to fail if it is unable
++     to physically load the library.  Sadly, LoadLibrary
++     will search the loaded libraries for a match and return
++     one of them if the path search load fails.
++
++     We check whether LoadLibrary is returning a handle to
++     an already loaded module, and simulate failure if we
++     find one. */
++  MUTEX_LOCK ();
++  cur = handles;
++  while (cur)
++    {
++      if (!cur->module)
++	{
++	  cur = 0;
++	  break;
++	}
++
++      if (cur->module == module)
++	{
++	  break;
++	}
++
++      cur = cur->next;
++  }
++  MUTEX_UNLOCK ();
++
++  if (cur || !module)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_OPEN));
++      module = 0;
++    }
++
++  return module;
++}
++
++static int
++sys_wll_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  int	      errors   = 0;
++
++  if (FreeLibrary(module) == 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_CLOSE));
++      ++errors;
++    }
++
++  return errors;
++}
++
++static lt_ptr
++sys_wll_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  lt_ptr      address  = GetProcAddress (module, symbol);
++
++  if (!address)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++    }
++
++  return address;
++}
++
++static struct lt_user_dlloader sys_wll = {
++  0, sys_wll_open, sys_wll_close, sys_wll_sym, 0, 0
++};
++
++#endif /* __WINDOWS__ */
++
++
++
++
++/* --- LOAD_ADD_ON() INTERFACE LOADER --- */
++
++
++#ifdef __BEOS__
++
++/* dynamic linking for BeOS */
++
++#include <kernel/image.h>
++
++static lt_module
++sys_bedl_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  image_id image = 0;
++
++  if (filename)
++    {
++      image = load_add_on (filename);
++    }
++  else
++    {
++      image_info info;
++      int32 cookie = 0;
++      if (get_next_image_info (0, &cookie, &info) == B_OK)
++	image = load_add_on (info.name);
++    }
++
++  if (image <= 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_OPEN));
++      image = 0;
++    }
++
++  return (lt_module) image;
++}
++
++static int
++sys_bedl_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  int errors = 0;
++
++  if (unload_add_on ((image_id) module) != B_OK)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_CLOSE));
++      ++errors;
++    }
++
++  return errors;
++}
++
++static lt_ptr
++sys_bedl_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  lt_ptr address = 0;
++  image_id image = (image_id) module;
++
++  if (get_image_symbol (image, symbol, B_SYMBOL_TYPE_ANY, address) != B_OK)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++      address = 0;
++    }
++
++  return address;
++}
++
++static struct lt_user_dlloader sys_bedl = {
++  0, sys_bedl_open, sys_bedl_close, sys_bedl_sym, 0, 0
++};
++
++#endif /* __BEOS__ */
++
++
++
++
++/* --- DLD_LINK() INTERFACE LOADER --- */
++
++
++#if HAVE_DLD
++
++/* dynamic linking with dld */
++
++#if HAVE_DLD_H
++#include <dld.h>
++#endif
++
++static lt_module
++sys_dld_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  lt_module module = strdup (filename);
++
++  if (!module)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      module = 0;
++    }
++  else if (dld_link (filename) != 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_OPEN));
++      LT_DLFREE (module);
++      module = 0;
++    }
++
++  return module;
++}
++
++static int
++sys_dld_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  int errors = 0;
++
++  if (dld_unlink_by_file ((char*)(module), 1) != 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CANNOT_CLOSE));
++      ++errors;
++    }
++  else
++    {
++      LT_DLFREE (module);
++    }
++
++  return errors;
++}
++
++static lt_ptr
++sys_dld_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  lt_ptr address = dld_get_func (symbol);
++
++  if (!address)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++    }
++
++  return address;
++}
++
++static struct lt_user_dlloader sys_dld = {
++  0, sys_dld_open, sys_dld_close, sys_dld_sym, 0, 0
++};
++
++#endif /* HAVE_DLD */
++
++
++
++
++/* --- DLPREOPEN() INTERFACE LOADER --- */
++
++
++/* emulate dynamic linking using preloaded_symbols */
++
++typedef struct lt_dlsymlists_t
++{
++  struct lt_dlsymlists_t       *next;
++  const lt_dlsymlist	       *syms;
++} lt_dlsymlists_t;
++
++static	const lt_dlsymlist     *default_preloaded_symbols	= 0;
++static	lt_dlsymlists_t	       *preloaded_symbols		= 0;
++
++static int
++presym_init (loader_data)
++     lt_user_data loader_data;
++{
++  int errors = 0;
++
++  MUTEX_LOCK ();
++
++  preloaded_symbols = 0;
++  if (default_preloaded_symbols)
++    {
++      errors = lt_dlpreload (default_preloaded_symbols);
++    }
++
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++static int
++presym_free_symlists ()
++{
++  lt_dlsymlists_t *lists;
++
++  MUTEX_LOCK ();
++
++  lists = preloaded_symbols;
++  while (lists)
++    {
++      lt_dlsymlists_t	*tmp = lists;
++
++      lists = lists->next;
++      LT_DLFREE (tmp);
++    }
++  preloaded_symbols = 0;
++
++  MUTEX_UNLOCK ();
++
++  return 0;
++}
++
++static int
++presym_exit (loader_data)
++     lt_user_data loader_data;
++{
++  presym_free_symlists ();
++  return 0;
++}
++
++static int
++presym_add_symlist (preloaded)
++     const lt_dlsymlist *preloaded;
++{
++  lt_dlsymlists_t *tmp;
++  lt_dlsymlists_t *lists;
++  int		   errors   = 0;
++
++  MUTEX_LOCK ();
++
++  lists = preloaded_symbols;
++  while (lists)
++    {
++      if (lists->syms == preloaded)
++	{
++	  goto done;
++	}
++      lists = lists->next;
++    }
++
++  tmp = LT_DLMALLOC (lt_dlsymlists_t, 1);
++  if (tmp)
++    {
++      tmp->syms = preloaded;
++      tmp->next = preloaded_symbols;
++      preloaded_symbols = tmp;
++    }
++  else
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      ++errors;
++    }
++
++ done:
++  MUTEX_UNLOCK ();
++  return errors;
++}
++
++static lt_module
++presym_open (loader_data, filename)
++     lt_user_data loader_data;
++     const char *filename;
++{
++  lt_dlsymlists_t *lists;
++  lt_module	   module = (lt_module) 0;
++
++  MUTEX_LOCK ();
++  lists = preloaded_symbols;
++
++  if (!lists)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_SYMBOLS));
++      goto done;
++    }
++
++  if (!filename)
++    {
++      filename = "@PROGRAM@";
++    }
++
++  while (lists)
++    {
++      const lt_dlsymlist *syms = lists->syms;
++
++      while (syms->name)
++	{
++	  if (!syms->address && strcmp(syms->name, filename) == 0)
++	    {
++	      module = (lt_module) syms;
++	      goto done;
++	    }
++	  ++syms;
++	}
++
++      lists = lists->next;
++    }
++
++  MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++
++ done:
++  MUTEX_UNLOCK ();
++  return module;
++}
++
++static int
++presym_close (loader_data, module)
++     lt_user_data loader_data;
++     lt_module module;
++{
++  /* Just to silence gcc -Wall */
++  module = 0;
++  return 0;
++}
++
++static lt_ptr
++presym_sym (loader_data, module, symbol)
++     lt_user_data loader_data;
++     lt_module module;
++     const char *symbol;
++{
++  lt_dlsymlist *syms = (lt_dlsymlist*) module;
++
++  ++syms;
++  while (syms->address)
++    {
++      if (strcmp(syms->name, symbol) == 0)
++	{
++	  return syms->address;
++	}
++
++    ++syms;
++  }
++
++  MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++
++  return 0;
++}
++
++static struct lt_user_dlloader presym = {
++  0, presym_open, presym_close, presym_sym, presym_exit, 0
++};
++
++
++
++
++
++/* --- DYNAMIC MODULE LOADING --- */
++
++
++static	char	       *user_search_path= 0;
++static	lt_dlloader    *loaders		= 0;
++static	lt_dlhandle	handles 	= 0;
++static	int		initialized 	= 0;
++
++/* Initialize libltdl. */
++int
++lt_dlinit ()
++{
++  int	      errors   = 0;
++
++  MUTEX_LOCK ();
++
++  /* Initialize only at first call. */
++  if (++initialized == 1)
++    {
++      handles = 0;
++      user_search_path = 0; /* empty search path */
++
++#if HAVE_LIBDL && !defined(__CYGWIN__)
++      errors += lt_dlloader_add (lt_dlloader_next (0), &sys_dl, "dlopen");
++#ifdef _AIX
++      sys_dl_init();
++#endif /* _AIX */
++#endif
++#if HAVE_SHL_LOAD
++      errors += lt_dlloader_add (lt_dlloader_next (0), &sys_shl, "dlopen");
++#endif
++#if defined(__WINDOWS__) || defined(__CYGWIN__)
++      errors += lt_dlloader_add (lt_dlloader_next (0), &sys_wll, "dlopen");
++#endif
++#ifdef __BEOS__
++      errors += lt_dlloader_add (lt_dlloader_next (0), &sys_bedl, "dlopen");
++#endif
++#if HAVE_DLD
++      errors += lt_dlloader_add (lt_dlloader_next (0), &sys_dld, "dld");
++#endif
++      errors += lt_dlloader_add (lt_dlloader_next (0), &presym, "dlpreload");
++
++      if (presym_init (presym.dlloader_data))
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (INIT_LOADER));
++	  ++errors;
++	}
++      else if (errors != 0)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (DLOPEN_NOT_SUPPORTED));
++	  ++errors;
++	}
++    }
++
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++int
++lt_dlpreload (preloaded)
++     const lt_dlsymlist *preloaded;
++{
++  int errors = 0;
++
++  if (preloaded)
++    {
++      errors = presym_add_symlist (preloaded);
++    }
++  else
++    {
++      const char *errormsg = 0;
++
++      presym_free_symlists();
++  
++      MUTEX_LOCK ();
++      if (default_preloaded_symbols)
++	{
++	  errors = lt_dlpreload (default_preloaded_symbols);
++	}
++      MUTEX_UNLOCK ();
++    }
++
++  return errors;
++}
++
++int
++lt_dlpreload_default (preloaded)
++     const lt_dlsymlist *preloaded;
++{
++  MUTEX_LOCK ();
++  default_preloaded_symbols = preloaded;
++  MUTEX_UNLOCK ();
++  return 0;
++}
++
++int
++lt_dlexit ()
++{
++  /* shut down libltdl */
++  lt_dlloader *loader;
++  const char  *errormsg;
++  int	       errors   = 0;
++
++  MUTEX_LOCK ();
++  loader = loaders;
++
++  if (!initialized)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (SHUTDOWN));
++      ++errors;
++      goto done;
++    }
++
++  /* shut down only at last call. */
++  if (--initialized == 0)
++    {
++      int	level;
++
++      while (handles && LT_DLIS_RESIDENT (handles))
++	{
++	  handles = handles->next;
++	}
++
++      /* close all modules */
++      for (level = 1; handles; ++level)
++	{
++	  lt_dlhandle cur = handles;
++
++	  while (cur)
++	    {
++	      lt_dlhandle tmp = cur;
++	      cur = cur->next;
++	      if (!LT_DLIS_RESIDENT (tmp) && tmp->info.ref_count <= level)
++		{
++		  if (lt_dlclose (tmp))
++		    {
++		      ++errors;
++		    }
++		}
++	    }
++	}
++
++      /* close all loaders */
++      while (loader)
++	{
++	  lt_dlloader *next = loader->next;
++	  lt_user_data data = loader->dlloader_data;
++	  if (loader->dlloader_exit && loader->dlloader_exit (data))
++	    {
++	      ++errors;
++	    }
++
++	  LT_DLMEM_REASSIGN (loader, next);
++	}
++      loaders = 0;
++    }
++
++ done:
++  MUTEX_UNLOCK ();
++  return errors;
++}
++
++static int
++tryall_dlopen (handle, filename, useloader)
++     lt_dlhandle *handle;
++     const char *filename;
++     const char *useloader;
++{
++  lt_dlhandle	 cur;
++  lt_dlloader   *loader;
++  const char	*saved_error;
++  int		 errors		= 0;
++
++  MUTEX_GETERROR (saved_error);
++  MUTEX_LOCK ();
++
++  cur	 = handles;
++  loader = loaders;
++
++  /* check whether the module was already opened */
++  while (cur)
++    {
++      /* try to dlopen the program itself? */
++      if (!cur->info.filename && !filename)
++	{
++	  break;
++	}
++
++      if (cur->info.filename && filename
++	  && strcmp (cur->info.filename, filename) == 0)
++	{
++	  break;
++	}
++
++      cur = cur->next;
++    }
++
++  if (cur)
++    {
++      ++cur->info.ref_count;
++      *handle = cur;
++      goto done;
++    }
++
++  cur = *handle;
++  if (filename)
++    {
++      LT_DLFREE( cur->info.filename );
++      cur->info.filename = strdup (filename);
++      if (!cur->info.filename)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  ++errors;
++	  goto done;
++	}
++    }
++  else
++    {
++      LT_DLFREE( cur->info.filename );
++      cur->info.filename = 0;
++    }
++
++  while (loader)
++    {
++      if (useloader && strcmp(loader->loader_name, useloader))
++	{
++	  loader = loader->next;
++	  continue;
++	}
++      lt_user_data data = loader->dlloader_data;
++
++      cur->module = loader->module_open (data, filename);
++
++      if (cur->module != 0)
++	{
++	  break;
++	}
++      loader = loader->next;
++    }
++
++  if (!loader)
++    {
++      LT_DLFREE (cur->info.filename);
++      ++errors;
++      goto done;
++    }
++
++  cur->loader	= loader;
++  last_error	= saved_error;
++  
++ done:
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++static int
++find_module (handle, dir, libdir, dlname, old_name, installed)
++     lt_dlhandle *handle;
++     const char *dir;
++     const char *libdir;
++     const char *dlname;
++     const char *old_name;
++     int installed;
++{
++  int	error;
++  char	*filename;
++
++  /* try to open the old library first; if it was dlpreopened,
++     we want the preopened version of it, even if a dlopenable
++     module is available */
++  if (old_name && tryall_dlopen(handle, old_name, "dlpreload") == 0)
++    {
++      return 0;
++    }
++
++  /* try to open the dynamic library */
++  if (dlname)
++    {
++      size_t len;
++
++      /* try to open the installed module */
++      if (installed && libdir)
++	{
++	  len	    = strlen (libdir) + 1 + strlen (dlname);
++	  filename  = LT_DLMALLOC (char, 1+ len);
++
++	  if (!filename)
++	    {
++	      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	      return 1;
++	    }
++
++	  sprintf (filename, "%s/%s", libdir, dlname);
++	  error = (tryall_dlopen (handle, filename, NULL) != 0);
++	  LT_DLFREE (filename);
++
++	  if (!error)
++	    {
++	      return 0;
++	    }
++	}
++
++      /* try to open the not-installed module */
++      if (!installed)
++	{
++	  len = (dir ? strlen (dir) : 0) + strlen (objdir) + strlen (dlname);
++	  filename = LT_DLMALLOC (char, 1+ len);
++
++	  if (!filename)
++	    {
++	      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	      return 1;
++	    }
++
++	  if (dir)
++	    {
++	      strcpy (filename, dir);
++	    }
++	  else
++	    {
++	      *filename = 0;
++	    }
++	  strcat(filename, objdir);
++	  strcat(filename, dlname);
++
++	  error = tryall_dlopen (handle, filename, NULL) != 0;
++	  LT_DLFREE (filename);
++	  if (!error)
++	    {
++	      return 0;
++	    }
++	}
++
++      /* maybe it was moved to another directory */
++      {
++	len	 = (dir ? strlen (dir) : 0) + strlen (dlname);
++	filename = LT_DLMALLOC (char, 1+ len);
++
++	if (dir)
++	  {
++	    strcpy (filename, dir);
++	  }
++	else
++	  {
++	    *filename = 0;
++	  }
++	strcat(filename, dlname);
++
++	error = (tryall_dlopen (handle, filename, NULL) != 0);
++	LT_DLFREE (filename);
++	if (!error)
++	  {
++	    return 0;
++	  }
++      }
++    }
++
++  return 1;
++}
++
++static char*
++canonicalize_path (path)
++     const char *path;
++{
++  char *canonical = 0;
++
++  if (path && *path)
++    {
++      char *ptr = strdup (path);
++      canonical = ptr;
++
++#ifdef LT_DIRSEP_CHAR
++      /* Avoid this overhead where '/' is the only separator. */
++      while (ptr = strchr (ptr, LT_DIRSEP_CHAR))
++	{
++	  *ptr++ = '/';
++	}
++#endif
++    }
++
++  return canonical;
++}
++
++static lt_ptr
++find_file (basename, search_path, pdir, handle)
++     const char *basename;
++     const char *search_path;
++     char **pdir;
++     lt_dlhandle *handle;
++{
++  /* When handle != NULL search a library, otherwise a file
++     return NULL on failure, otherwise the file/handle.  */
++
++  lt_ptr    result	= 0;
++  char	   *filename	= 0;
++  int	    filenamesize= 0;
++  int	    lenbase	= strlen (basename);
++  char	   *canonical	= 0;
++  char	   *next	= 0;
++
++  MUTEX_LOCK ();
++
++  if (!search_path || !*search_path)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++      goto cleanup;
++    }
++
++  canonical = canonicalize_path (search_path);
++  if (!canonical)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      goto cleanup;
++    }
++
++  next = canonical;
++  while (next)
++    {
++      int lendir;
++      char *cur = next;
++
++      next = strchr (cur, LT_PATHSEP_CHAR);
++      if (!next)
++	{
++	  next = cur + strlen (cur);
++	}
++
++      lendir = next - cur;
++      if (*next == LT_PATHSEP_CHAR)
++	{
++	  ++next;
++	}
++      else
++	{
++	  next = 0;
++	}
++
++      if (lendir == 0)
++	{
++	  continue;
++	}
++
++      if (lendir + 1 + lenbase >= filenamesize)
++	{
++	  LT_DLFREE (filename);
++	  filenamesize = lendir + 1 + lenbase + 1;
++	  filename = LT_DLMALLOC (char, filenamesize);
++
++	  if (!filename)
++	    {
++	      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	      goto cleanup;
++	    }
++	}
++
++      strncpy(filename, cur, lendir);
++      if (filename[lendir-1] != '/')
++	{
++	  filename[lendir++] = '/';
++	}
++      strcpy(filename+lendir, basename);
++      if (handle)
++	{
++	  if (tryall_dlopen (handle, filename, NULL) == 0)
++	    {
++	      result = (lt_ptr) handle;
++	      goto cleanup;
++	    }
++	}
++      else
++	{
++	  FILE *file = fopen (filename, LT_READTEXT_MODE);
++	  if (file)
++	    {
++	      LT_DLFREE (*pdir);
++
++	      filename[lendir] = '\0';
++	      *pdir = strdup(filename);
++	      if (!*pdir)
++		{
++		  /* We could have even avoided the strdup,
++		     but there would be some memory overhead. */
++		  *pdir = filename;
++		  filename = 0;
++		}
++
++	      result = (lt_ptr) file;
++	      goto cleanup;
++	    }
++	}
++    }
++
++  MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++
++ cleanup:
++  LT_DLFREE (filename);
++  LT_DLFREE (canonical);
++
++  MUTEX_UNLOCK ();
++
++  return result;
++}
++
++static int
++load_deplibs(handle, deplibs)
++     lt_dlhandle handle;
++     char *deplibs;
++{
++#if LTDL_DLOPEN_DEPLIBS
++  char	*p, *save_search_path;
++  int   depcount = 0;
++  int	i;
++  char	**names = 0;
++#endif
++  int	errors = 0;
++
++  handle->depcount = 0;
++
++#if LTDL_DLOPEN_DEPLIBS
++  if (!deplibs)
++    {
++      return errors;
++    }
++  ++errors;
++
++  MUTEX_LOCK ();
++  save_search_path = strdup (user_search_path);
++  if (user_search_path && !save_search_path)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      goto cleanup;
++    }
++
++  /* extract search paths and count deplibs */
++  p = deplibs;
++  while (*p)
++    {
++      if (!isspace ((int) *p))
++	{
++	  char *end = p+1;
++	  while (*end && !isspace((int) *end))
++	    {
++	      ++end;
++	    }
++
++	  if (strncmp(p, "-L", 2) == 0 || strncmp(p, "-R", 2) == 0)
++	    {
++	      char save = *end;
++	      *end = 0; /* set a temporary string terminator */
++	      if (lt_dladdsearchdir(p+2))
++		{
++		  goto cleanup;
++		}
++	      *end = save;
++	    }
++	  else
++	    {
++	      ++depcount;
++	    }
++
++	  p = end;
++	}
++      else
++	{
++	  ++p;
++	}
++    }
++
++  /* restore the old search path */
++  LT_DLFREE (user_search_path);
++  user_search_path = save_search_path;
++
++  MUTEX_UNLOCK ();
++
++  if (!depcount)
++    {
++      errors = 0;
++      goto cleanup;
++    }
++
++  names = LT_DLMALLOC (char *, depcount * sizeof (char*));
++  if (!names)
++    {
++      goto cleanup;
++    }
++
++  /* now only extract the actual deplibs */
++  depcount = 0;
++  p = deplibs;
++  while (*p)
++    {
++      if (isspace ((int) *p))
++	{
++	  ++p;
++	}
++      else
++	{
++	  char *end = p+1;
++	  while (*end && !isspace ((int) *end))
++	    {
++	      ++end;
++	    }
++
++	  if (strncmp(p, "-L", 2) != 0 && strncmp(p, "-R", 2) != 0)
++	    {
++	      char *name;
++	      char save = *end;
++	      *end = 0; /* set a temporary string terminator */
++	      if (strncmp(p, "-l", 2) == 0)
++		{
++		  name = LT_DLMALLOC (char, 3+ /* "lib" */ strlen (p+2) + 1);
++		  if (name)
++		    {
++		      sprintf (name, "lib%s", p+2);
++		    }
++		}
++	      else
++		{
++		  name = strdup(p);
++		}
++
++	      if (name)
++		{
++		  names[depcount++] = name;
++		}
++	      else
++		{
++		  goto cleanup_names;
++		}
++	      *end = save;
++	    }
++	  p = end;
++	}
++    }
++
++  /* load the deplibs (in reverse order)
++     At this stage, don't worry if the deplibs do not load correctly,
++     they may already be statically linked into the loading application
++     for instance.  There will be a more enlightening error message
++     later on if the loaded module cannot resolve all of its symbols.  */
++  if (depcount)
++    {
++      int	j = 0;
++
++      handle->deplibs = (lt_dlhandle*) LT_DLMALLOC (lt_dlhandle *, depcount);
++      if (!handle->deplibs)
++	    {
++	  goto cleanup;
++	    }
++
++      for (i = 0; i < depcount; ++i)
++	{
++	  handle->deplibs[j] = lt_dlopenext(names[depcount-1-i]);
++	  if (handle->deplibs[j])
++	    {
++	      ++j;
++	    }
++	}
++
++      handle->depcount	= j;	/* Number of successfully loaded deplibs */
++      errors		= 0;
++    }
++
++ cleanup_names:
++  for (i = 0; i < depcount; ++i)
++    {
++      LT_DLFREE (names[i]);
++    }
++
++ cleanup:
++  LT_DLFREE (names);
++#endif
++
++  return errors;
++}
++
++static int
++unload_deplibs(handle)
++     lt_dlhandle handle;
++{
++  int i;
++  int errors = 0;
++
++  if (handle->depcount)
++    {
++      for (i = 0; i < handle->depcount; ++i)
++	{
++	  if (!LT_DLIS_RESIDENT (handle->deplibs[i]))
++	    {
++	      errors += lt_dlclose (handle->deplibs[i]);
++	    }
++	}
++    }
++
++  return errors;
++}
++
++static inline int
++trim (dest, str)
++     char **dest;
++     const char *str;
++{
++  /* remove the leading and trailing "'" from str
++     and store the result in dest */
++  const char *end   = strrchr (str, '\'');
++  int	len	    = strlen  (str);
++  char *tmp;
++
++  LT_DLFREE (*dest);
++
++  if (len > 3 && str[0] == '\'')
++    {
++      tmp = LT_DLMALLOC (char, end - str);
++      if (!tmp)
++	{
++	  last_error = LT_DLSTRERROR (NO_MEMORY);
++	  return 1;
++	}
++
++      strncpy(tmp, &str[1], (end - str) - 1);
++      tmp[end-str-1] = '\0';
++      *dest = tmp;
++    }
++  else
++    {
++      *dest = 0;
++    }
++
++  return 0;
++}
++
++static inline int
++free_vars( dlname, oldname, libdir, deplibs)
++     char *dlname;
++     char *oldname;
++     char *libdir;
++     char *deplibs;
++{
++  LT_DLFREE (dlname);
++  LT_DLFREE (oldname);
++  LT_DLFREE (libdir);
++  LT_DLFREE (deplibs);
++
++  return 0;
++}
++
++lt_dlhandle
++lt_dlopen (filename)
++     const char *filename;
++{
++  lt_dlhandle handle = 0, newhandle;
++  const char *ext;
++  const char *saved_error;
++  char	*canonical = 0, *basename = 0, *dir = 0, *name = 0;
++
++  MUTEX_GETERROR (saved_error);
++
++  /* dlopen self? */
++  if (!filename)
++    {
++      handle = (lt_dlhandle) LT_DLMALLOC (struct lt_dlhandle_struct, 1);
++      if (!handle)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  return 0;
++	}
++      memset( handle, 0, sizeof( struct lt_dlhandle_struct ) );
++
++      handle->info.ref_count	= 0;
++      handle->depcount		= 0;
++      handle->deplibs		= 0;
++      handle->caller_data	= 0;
++      newhandle			= handle;
++
++      /* lt_dlclose()ing yourself is very bad!  Disallow it.  */
++      LT_DLSET_FLAG (handle, LT_DLRESIDENT_FLAG);
++
++      if (tryall_dlopen (&newhandle, 0, NULL) != 0)
++	{
++	  LT_DLFREE (handle);
++	  return 0;
++	}
++      goto register_handle;
++    }
++
++  canonical = canonicalize_path (filename);
++  if (!canonical)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      LT_DLFREE (handle);
++      return 0;
++    }
++
++  /* If the canonical module name is a path (relative or absolute)
++     then split it into a directory part and a name part.  */
++  basename = strrchr (canonical, '/');
++  if (basename)
++    {
++      ++basename;
++      dir = LT_DLMALLOC (char, basename - canonical + 1);
++      if (!dir)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  handle = 0;
++	  goto cleanup;
++	}
++
++      strncpy (dir, canonical, basename - canonical);
++      dir[basename - canonical] = '\0';
++    }
++  else
++    {
++      basename = canonical;
++    }
++
++  /* Check whether we are opening a libtool module (.la extension).  */
++  ext = strrchr(basename, '.');
++  if (ext && strcmp(ext, ".la") == 0)
++    {
++      /* this seems to be a libtool module */
++      FILE     *file = 0;
++      int	i;
++      char     *dlname = 0, *old_name = 0;
++      char     *libdir = 0, *deplibs = 0;
++      char     *line;
++      size_t	line_len;
++      int	error = 0;
++
++      /* if we can't find the installed flag, it is probably an
++	 installed libtool archive, produced with an old version
++	 of libtool */
++      int	installed = 1;
++
++      /* extract the module name from the file name */
++      name = LT_DLMALLOC (char, ext - basename + 1);
++      if (!name)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  handle = 0;
++	  goto cleanup;
++      }
++
++    /* canonicalize the module name */
++    for (i = 0; i < ext - basename; ++i)
++      {
++	if (isalnum ((int)(basename[i])))
++	  {
++	    name[i] = basename[i];
++	  }
++	else
++	  {
++	    name[i] = '_';
++	  }
++      }
++
++    name[ext - basename] = '\0';
++
++    /* Now try to open the .la file.  If there is no directory name
++       component, try to find it first in user_search_path and then other
++       prescribed paths.  Otherwise (or in any case if the module was not
++       yet found) try opening just the module name as passed.  */
++    if (!dir)
++      {
++	file = (FILE*) find_file(basename, user_search_path, &dir, 0);
++	if (!file)
++	  {
++	    file = (FILE*) find_file(basename, getenv("LTDL_LIBRARY_PATH"),
++				     &dir, 0);
++	  }
++
++#ifdef LTDL_SHLIBPATH_VAR
++	if (!file)
++	  {
++	    file = (FILE*) find_file(basename, getenv(LTDL_SHLIBPATH_VAR),
++				     &dir, 0);
++	  }
++#endif
++#ifdef LTDL_SYSSEARCHPATH
++	if (!file)
++	  {
++	    file = (FILE*) find_file(basename, sys_search_path, &dir, 0);
++	  }
++#endif
++      }
++    if (!file)
++      {
++	file = fopen (filename, LT_READTEXT_MODE);
++      }
++    if (!file)
++      {
++	MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++      }
++
++    if (!file)
++      {
++	handle = 0;
++	goto cleanup;
++      }
++
++    line_len = LT_FILENAME_MAX;
++    line = LT_DLMALLOC (char, line_len);
++    if (!line)
++      {
++	fclose (file);
++	MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	handle = 0;
++	goto cleanup;
++      }
++
++    /* read the .la file */
++    while (!feof(file))
++      {
++        line[line_len-2] = '\0';
++	if (!fgets (line, line_len, file))
++	  {
++	    break;
++	  }
++
++        /* Handle the case where we occasionally need to read a line
++           that is longer than the initial buffer size.  */
++        while (line[line_len-2] && (!feof (file)))
++          {
++            line = LT_DLREALLOC (char, line, line_len *2);
++            line[line_len*2-2] = '\0';
++            if (!line || !fgets (&line[line_len -1], (int) line_len +1, file))
++              {
++                error = 1;
++                break;
++              }
++            line_len *= 2;
++          }
++
++        if (error)
++            break;
++	if (line[0] == '\n' || line[0] == '#')
++	  {
++	    continue;
++	  }
++
++
++#undef  STR_DLNAME
++#define STR_DLNAME	"dlname="
++	if (strncmp (line, STR_DLNAME, sizeof (STR_DLNAME) - 1) == 0)
++	  {
++	    error = trim (&dlname, &line[sizeof (STR_DLNAME) - 1]);
++	  }
++
++#undef  STR_OLD_LIBRARY
++#define STR_OLD_LIBRARY	"old_library="
++	else if (strncmp (line, STR_OLD_LIBRARY,
++			  sizeof (STR_OLD_LIBRARY) - 1) == 0)
++	  {
++	    error = trim (&old_name, &line[sizeof (STR_OLD_LIBRARY) - 1]);
++	  }
++#undef  STR_LIBDIR
++#define STR_LIBDIR	"libdir="
++	else if (strncmp (line, STR_LIBDIR, sizeof (STR_LIBDIR) - 1) == 0)
++	  {
++	    error = trim (&libdir, &line[sizeof(STR_LIBDIR) - 1]);
++#if defined(_WIN32) && !defined(__CYGWIN__)
++	    win32_mapDir(&libdir);
++#endif
++	  }
++
++#undef  STR_DL_DEPLIBS
++#define STR_DL_DEPLIBS	"dependency_libs="
++	else if (strncmp (line, STR_DL_DEPLIBS,
++			  sizeof (STR_DL_DEPLIBS) - 1) == 0)
++	  {
++	    error = trim (&deplibs, &line[sizeof (STR_DL_DEPLIBS) - 1]);
++	  }
++	else if (strcmp (line, "installed=yes\n") == 0)
++	  {
++	    installed = 1;
++	  }
++	else if (strcmp (line, "installed=no\n") == 0)
++	  {
++	    installed = 0;
++	  }
++
++#undef  STR_LIBRARY_NAMES
++#define STR_LIBRARY_NAMES "library_names="
++	else if (! dlname && strncmp (line, STR_LIBRARY_NAMES,
++				      sizeof (STR_LIBRARY_NAMES) - 1) == 0)
++	  {
++	    char *last_libname;
++	    error = trim (&dlname, &line[sizeof (STR_LIBRARY_NAMES) - 1]);
++	    if (! error && dlname &&
++		(last_libname = strrchr (dlname, ' ')) != NULL)
++	      {
++		last_libname = strdup (last_libname + 1);
++		LT_DLMEM_REASSIGN (dlname, last_libname);
++	      }
++	  }
++
++	if (error)
++	  {
++	    break;
++	  }
++      }
++
++    fclose (file);
++    LT_DLFREE (line);
++
++    /* allocate the handle */
++    handle = (lt_dlhandle) LT_DLMALLOC (struct lt_dlhandle_struct, 1);
++    if (!handle || error)
++      {
++        LT_DLFREE (handle);
++	if (!error)
++	  {
++	    MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  }
++
++	free_vars (dlname, old_name, libdir, deplibs);
++	/* handle is already set to 0 */
++	goto cleanup;
++      }
++    memset( handle, 0, sizeof( struct lt_dlhandle_struct ) );
++
++    handle->info.ref_count = 0;
++    if (load_deplibs (handle, deplibs) == 0)
++      {
++	newhandle = handle;
++	/* find_module may replace newhandle */
++	if (find_module (&newhandle, dir, libdir, dlname, old_name, installed))
++	  {
++	    unload_deplibs (handle);
++	    error = 1;
++	  }
++      }
++    else
++      {
++	error = 1;
++      }
++
++    free_vars (dlname, old_name, libdir, deplibs);
++    if (error)
++      {
++	LT_DLFREE (handle);
++	goto cleanup;
++      }
++
++    if (handle != newhandle)
++      {
++	unload_deplibs (handle);
++      } else {
++	LT_DLFREE( handle->info.filename );
++	handle->info.filename = strdup( filename );
++      }
++    }
++  else
++    {
++      /* not a libtool module */
++      handle = (lt_dlhandle) LT_DLMALLOC (struct lt_dlhandle_struct, 1);
++      if (!handle)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  /* handle is already set to 0 */
++	  goto cleanup;
++	}
++      memset( handle, 0, sizeof( struct lt_dlhandle_struct ) );
++      handle->info.ref_count = 0;
++      /* non-libtool modules don't have dependencies */
++      handle->depcount    = 0;
++      handle->deplibs	  = 0;
++      newhandle	    	  = handle;
++
++      /* If the module has no directory name component, try to find it
++	 first in user_search_path and then other prescribed paths.
++	 Otherwise (or in any case if the module was not yet found) try
++	 opening just the module name as passed.  */
++      if ((dir || (!find_file (basename, user_search_path, 0, &newhandle)
++		      && !find_file (basename, getenv ("LTDL_LIBRARY_PATH"),
++				     0, &newhandle)
++#ifdef LTDL_SHLIBPATH_VAR
++		      && !find_file (basename, getenv (LTDL_SHLIBPATH_VAR),
++				     0, &newhandle)
++#endif
++#ifdef LTDL_SYSSEARCHPATH
++		      && !find_file (basename, sys_search_path, 0, &newhandle)
++#endif
++		   )) && tryall_dlopen (&newhandle, filename, NULL))
++	{
++	  LT_DLFREE (handle);
++	  goto cleanup;
++	}
++    }
++
++ register_handle:
++  LT_DLMEM_REASSIGN (handle, newhandle);
++
++  if (handle->info.ref_count == 0)
++    {
++      handle->info.ref_count	= 1;
++      handle->info.name		= name;
++      handle->next		= handles;
++
++      MUTEX_LOCK ();
++      handles			= handle;
++      MUTEX_UNLOCK ();
++
++      name = 0;	/* don't free this during `cleanup' */
++    }
++
++  MUTEX_SETERROR (saved_error);
++
++ cleanup:
++  LT_DLFREE (dir);
++  LT_DLFREE (name);
++  LT_DLFREE (canonical);
++
++  return handle;
++}
++
++lt_dlhandle
++lt_dlopenext (filename)
++     const char *filename;
++{
++  lt_dlhandle handle;
++  char	*tmp;
++  int	len;
++  const char *saved_error;
++
++  MUTEX_GETERROR (saved_error);
++
++  if (!filename)
++    {
++      return lt_dlopen (filename);
++    }
++
++  len = strlen (filename);
++  if (!len)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++      return 0;
++    }
++
++  tmp = LT_DLMALLOC (char, len+4);
++  if (!tmp)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      return 0;
++    }
++  strcpy (tmp, filename);
++
++#ifdef _AIX
++  tmp[len] = '\0';
++
++  /* find by info.name in the list */
++  handle = sys_dl_search_by_name( tmp );
++  if (handle)
++    {
++      if( LT_DLGET_FLAG (handle, LT_DLNOTFOUND_FLAG) )
++        {
++          /* don't search libm and libstdc++ over and over again,
++           * they are hardlinked and symbols are exported by the
++           * executable */
++          MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++          LT_DLFREE (tmp);
++          return 0;
++        }
++      MUTEX_SETERROR (saved_error);
++      LT_DLFREE (tmp);
++      return handle;
++    }
++#endif /* _AIX */
++
++  /* try "filename.la" */
++  strcat (tmp, ".la");
++  handle = lt_dlopen (tmp);
++  if (handle)
++    {
++      MUTEX_SETERROR (saved_error);
++      LT_DLFREE (tmp);
++      return handle;
++    }
++
++
++#ifdef _AIX
++  tmp[len] = '\0'; /* delete the ".la" again.  */
++  
++  /* versioned shared objects can be in .a's */
++  strcat(tmp, ".a");
++  handle = lt_dlopen (tmp);
++  if (handle)
++    {
++      MUTEX_SETERROR (saved_error);
++      LT_DLFREE (tmp);
++      return handle;
++    }
++#endif /* _AIX */
++
++#ifdef LTDL_SHLIB_EXT
++  /* try "filename.EXT" */
++  if (strlen(shlib_ext) > 3)
++    {
++      LT_DLFREE (tmp);
++      tmp = LT_DLMALLOC (char, len + strlen (shlib_ext) + 1);
++      if (!tmp)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  return 0;
++	}
++      strcpy (tmp, filename);
++    }
++  else
++    {
++      tmp[len] = '\0';
++    }
++
++  strcat(tmp, shlib_ext);
++  handle = lt_dlopen (tmp);
++  if (handle)
++    {
++      MUTEX_SETERROR (saved_error);
++      LT_DLFREE (tmp);
++      return handle;
++    }
++#endif
++
++  /* try the normal file name */
++  handle = lt_dlopen (filename);
++  if (handle)
++    {
++      return handle;
++    }
++
++#ifdef _AIX
++  /* put into the can't be found list */
++  tmp[len] = '\0';
++  sys_dl_not_found_entry( tmp );
++#endif /* _AIX */
++
++  MUTEX_SETERROR (LT_DLSTRERROR (FILE_NOT_FOUND));
++  LT_DLFREE (tmp);
++  return 0;
++}
++
++int
++lt_dlclose (handle)
++     lt_dlhandle handle;
++{
++  lt_dlhandle cur, last;
++  int errors = 0;
++
++  MUTEX_LOCK ();
++
++  /* check whether the handle is valid */
++  last = cur = handles;
++  while (cur && handle != cur)
++    {
++      last = cur;
++      cur = cur->next;
++    }
++
++  if (!cur)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_HANDLE));
++      ++errors;
++      goto done;
++    }
++
++  handle->info.ref_count--;
++
++  /* Note that even with resident modules, we must track the ref_count
++     correctly incase the user decides to reset the residency flag
++     later (even though the API makes no provision for that at the
++     moment).  */
++  if (handle->info.ref_count <= 0 && !LT_DLIS_RESIDENT (handle))
++    {
++      lt_user_data data = handle->loader->dlloader_data;
++
++      if (handle != handles)
++	{
++	  last->next = handle->next;
++	}
++      else
++	{
++	  handles = handle->next;
++	}
++
++      errors += handle->loader->module_close (data, handle->module);
++      errors += unload_deplibs(handle);
++
++      LT_DLFREE (handle->info.filename);
++      LT_DLFREE (handle->info.name);
++      LT_DLFREE (handle);
++
++      goto done;
++    }
++
++  if (LT_DLIS_RESIDENT (handle))
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (CLOSE_RESIDENT_MODULE));
++      ++errors;
++    }
++
++ done:
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++lt_ptr
++lt_dlsym (handle, symbol)
++     lt_dlhandle handle;
++     const char *symbol;
++{
++  int	lensym;
++  char	lsym[LT_SYMBOL_LENGTH];
++  char	*sym;
++  lt_ptr address;
++  lt_user_data data;
++
++  if (!handle)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_HANDLE));
++      return 0;
++    }
++
++  if (!symbol)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (SYMBOL_NOT_FOUND));
++      return 0;
++    }
++
++  lensym = strlen(symbol);
++  if (handle->loader->sym_prefix)
++    {
++      lensym += strlen(handle->loader->sym_prefix);
++    }
++
++  if (handle->info.name)
++    {
++      lensym += strlen(handle->info.name);
++    }
++
++  if (lensym + LT_SYMBOL_OVERHEAD < LT_SYMBOL_LENGTH)
++    {
++      sym = lsym;
++    }
++  else
++    {
++      sym = LT_DLMALLOC (char, lensym + LT_SYMBOL_OVERHEAD + 1);
++    }
++
++  if (!sym)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (BUFFER_OVERFLOW));
++      return 0;
++    }
++
++  data = handle->loader->dlloader_data;
++  if (handle->info.name)
++    {
++      const char *saved_error;
++
++      MUTEX_GETERROR (saved_error);
++
++      /* this is a libtool module */
++      if (handle->loader->sym_prefix)
++	{
++	  strcpy(sym, handle->loader->sym_prefix);
++	  strcat(sym, handle->info.name);
++	}
++      else
++	{
++	  strcpy(sym, handle->info.name);
++	}
++
++      strcat(sym, "_LTX_");
++      strcat(sym, symbol);
++
++      /* try "modulename_LTX_symbol" */
++      address = handle->loader->find_sym (data, handle->module, sym);
++      if (address)
++	{
++	  if (sym != lsym)
++	    {
++	      LT_DLFREE (sym);
++	    }
++	  return address;
++	}
++      MUTEX_SETERROR (saved_error);
++    }
++
++  /* otherwise try "symbol" */
++  if (handle->loader->sym_prefix)
++    {
++      strcpy(sym, handle->loader->sym_prefix);
++      strcat(sym, symbol);
++    }
++  else
++    {
++      strcpy(sym, symbol);
++    }
++
++  address = handle->loader->find_sym (data, handle->module, sym);
++  if (sym != lsym)
++    {
++      LT_DLFREE (sym);
++    }
++
++  return address;
++}
++
++const char *
++lt_dlerror ()
++{
++  const char *error;
++
++  MUTEX_GETERROR (error);
++  MUTEX_SETERROR (0);
++
++  return error;
++}
++
++int
++lt_dladdsearchdir (search_dir)
++     const char *search_dir;
++{
++  int errors = 0;
++
++  if (!search_dir || !strlen(search_dir))
++    {
++      return errors;
++    }
++
++  MUTEX_LOCK ();
++  if (!user_search_path)
++    {
++      user_search_path = strdup (search_dir);
++      if (!user_search_path)
++	{
++	  last_error = LT_DLSTRERROR (NO_MEMORY);
++	  ++errors;
++	}
++    }
++  else
++    {
++      size_t len = strlen (user_search_path) + 1 + strlen (search_dir);
++      char  *new_search_path = LT_DLMALLOC (char, 1+ len);
++
++      if (!new_search_path)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  ++errors;
++	}
++      else
++	{
++	  sprintf (new_search_path, "%s%c%s", user_search_path,
++		   LT_PATHSEP_CHAR, search_dir);
++
++	  LT_DLMEM_REASSIGN (user_search_path, new_search_path);
++	}
++    }
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++int
++lt_dlsetsearchpath (search_path)
++     const char *search_path;
++{
++  int errors = 0;
++
++  MUTEX_LOCK ();
++  LT_DLFREE (user_search_path);
++  MUTEX_UNLOCK ();
++
++  if (!search_path || !strlen (search_path))
++    {
++      return errors;
++    }
++
++  MUTEX_LOCK ();
++  user_search_path = strdup (search_path);
++  if (!user_search_path)
++    {
++      ++errors;
++    }
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++const char *
++lt_dlgetsearchpath ()
++{
++  const char *saved_path;
++
++  MUTEX_LOCK ();
++  saved_path = user_search_path;
++  MUTEX_UNLOCK ();
++
++  return saved_path;
++}
++
++int
++lt_dlmakeresident (handle)
++     lt_dlhandle handle;
++{
++  int errors = 0;
++
++  if (!handle)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_HANDLE));
++      ++errors;
++    }
++  else
++    {
++      LT_DLSET_FLAG (handle, LT_DLRESIDENT_FLAG);
++    }
++
++  return errors;
++}
++
++int
++lt_dlisresident	(handle)
++     lt_dlhandle handle;
++{
++  if (!handle)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_HANDLE));
++      return -1;
++    }
++
++  return LT_DLIS_RESIDENT (handle);
++}
++
++
++
++
++/* --- MODULE INFORMATION --- */
++
++const lt_dlinfo *
++lt_dlgetinfo (handle)
++     lt_dlhandle handle;
++{
++  if (!handle)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_HANDLE));
++      return 0;
++    }
++
++  return &(handle->info);
++}
++
++lt_dlhandle
++lt_dlhandle_next (place)
++     lt_dlhandle place;
++{
++  return place ? place->next : (lt_dlhandle) 0;
++}
++
++int
++lt_dlforeach (func, data)
++     int (*func) LT_PARAMS((lt_dlhandle handle, lt_ptr data));
++     lt_ptr data;
++{
++  int errors = 0;
++  lt_dlhandle cur;
++
++  MUTEX_LOCK ();
++
++  cur = handles;
++  while (cur)
++    {
++      lt_dlhandle tmp = cur;
++
++      cur = cur->next;
++      if ((*func) (tmp, data))
++	{
++	  ++errors;
++	  break;
++	}
++    }
++
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++lt_dlcaller_id
++lt_dlcaller_register ()
++{
++  static int last_caller_id = -1;
++  int result;
++
++  MUTEX_LOCK ();
++  result = ++last_caller_id;
++  MUTEX_UNLOCK ();
++
++  return result;
++}
++
++#define N_ELEMENTS(a)	(sizeof(a) / sizeof(*(a)))
++
++lt_ptr
++lt_dlcaller_set_data (key, handle, data)
++     lt_dlcaller_id key;
++     lt_dlhandle handle;
++     lt_ptr data;
++{
++  int n_elements = 0;
++  lt_ptr stale = (lt_ptr) 0;
++  int i;
++
++  /* This needs to be locked so that the caller data can be updated
++     simultaneously by different threads.  */
++  MUTEX_LOCK ();
++
++  if (handle->caller_data)
++    n_elements = N_ELEMENTS (handle->caller_data);
++
++  for (i = 0; i < n_elements; ++i)
++    {
++      if (handle->caller_data[i].key == key)
++	{
++	  stale = handle->caller_data[i].data;
++	  break;
++	}
++    }
++
++  /* Ensure that there is enough room in this handle's caller_data
++     array to accept a new element.  */
++  if (i == n_elements)
++    {
++      lt_caller_data *temp
++	= LT_DLREALLOC (lt_caller_data, handle->caller_data, 1+ n_elements);
++
++      if (temp == 0)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++	  stale =  (lt_ptr) 0;
++	  goto done;
++	}
++      else
++	{
++	  handle->caller_data = temp;
++	}
++
++      /* We only need this if we needed to allocate a new caller_data.  */
++      handle->caller_data[i].key  = key;
++    }
++
++  handle->caller_data[i].data = data;
++
++ done:
++  MUTEX_UNLOCK ();
++
++  return stale;
++}
++
++lt_ptr
++lt_dlcaller_get_data  (key, handle)
++     lt_dlcaller_id key;
++     lt_dlhandle handle;
++{
++  lt_ptr result = (lt_ptr) 0;
++  int n_elements = 0;
++
++  /* This needs to be locked so that the caller data isn't updated by
++     another thread part way through this function.  */
++  MUTEX_LOCK ();
++
++  if (handle->caller_data)
++    n_elements = N_ELEMENTS (handle->caller_data);
++
++  /* Locate the index of the element with a matching KEY.  */
++  {
++    int i;
++    for (i = 0; i < n_elements; ++i)
++      {
++	if (handle->caller_data[i].key == key)
++	  {
++	    result = handle->caller_data[i].data;
++	    break;
++	  }
++      }
++  }
++
++  MUTEX_UNLOCK ();
++
++  return result;
++}
++
++
++
++/* --- USER MODULE LOADER API --- */
++
++
++int
++lt_dlloader_add (place, dlloader, loader_name)
++     lt_dlloader *place;
++     const struct lt_user_dlloader *dlloader;
++     const char *loader_name;
++{
++  int errors = 0;
++  lt_dlloader *node = 0, *ptr = 0;
++
++  if ((dlloader == 0)	/* diagnose null parameters */
++      || (dlloader->module_open == 0)
++      || (dlloader->module_close == 0)
++      || (dlloader->find_sym == 0))
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_LOADER));
++      return 1;
++    }
++
++  /* Create a new dlloader node with copies of the user callbacks.  */
++  node = LT_DLMALLOC (lt_dlloader, 1);
++  if (node == 0)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++      return 1;
++    }
++
++  node->next		= 0;
++  node->loader_name	= loader_name;
++  node->sym_prefix	= dlloader->sym_prefix;
++  node->dlloader_exit	= dlloader->dlloader_exit;
++  node->module_open	= dlloader->module_open;
++  node->module_close	= dlloader->module_close;
++  node->find_sym	= dlloader->find_sym;
++  node->dlloader_data	= dlloader->dlloader_data;
++
++  MUTEX_LOCK ();
++  if (!loaders)
++    {
++      /* If there are no loaders, NODE becomes the list! */
++      loaders = node;
++    }
++  else if (!place)
++    {
++      /* If PLACE is not set, add NODE to the end of the
++	 LOADERS list. */
++      for (ptr = loaders; ptr->next; ptr = ptr->next)
++	{
++	  /*NOWORK*/;
++	}
++
++      ptr->next = node;
++    }
++  else if (loaders == place)
++    {
++      /* If PLACE is the first loader, NODE goes first. */
++      node->next = place;
++      loaders = node;
++    }
++  else
++    {
++      /* Find the node immediately preceding PLACE. */
++      for (ptr = loaders; ptr->next != place; ptr = ptr->next)
++	{
++	  /*NOWORK*/;
++	}
++
++      if (ptr->next != place)
++	{
++	  last_error = LT_DLSTRERROR (INVALID_LOADER);
++	  ++errors;
++	}
++      else
++	{
++	  /* Insert NODE between PTR and PLACE. */
++	  node->next = place;
++	  ptr->next  = node;
++	}
++    }
++
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++int
++lt_dlloader_remove (loader_name)
++     const char *loader_name;
++{
++  lt_dlloader *place = lt_dlloader_find (loader_name);
++  lt_dlhandle handle;
++  int errors = 0;
++
++  if (!place)
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_LOADER));
++      return 1;
++    }
++
++  MUTEX_LOCK ();
++
++  /* Fail if there are any open modules which use this loader. */
++  for  (handle = handles; handle; handle = handle->next)
++    {
++      if (handle->loader == place)
++	{
++	  MUTEX_SETERROR (LT_DLSTRERROR (REMOVE_LOADER));
++	  ++errors;
++	  goto done;
++	}
++    }
++
++  if (place == loaders)
++    {
++      /* PLACE is the first loader in the list. */
++      loaders = loaders->next;
++    }
++  else
++    {
++      /* Find the loader before the one being removed. */
++      lt_dlloader *prev;
++      for (prev = loaders; prev->next; prev = prev->next)
++	{
++	  if (!strcmp (prev->next->loader_name, loader_name))
++	    {
++	      break;
++	    }
++	}
++
++      place = prev->next;
++      prev->next = prev->next->next;
++    }
++
++  if (place->dlloader_exit)
++    {
++      errors = place->dlloader_exit (place->dlloader_data);
++    }
++
++  LT_DLFREE (place);
++
++ done:
++  MUTEX_UNLOCK ();
++
++  return errors;
++}
++
++lt_dlloader *
++lt_dlloader_next (place)
++     lt_dlloader *place;
++{
++  lt_dlloader *next;
++
++  MUTEX_LOCK ();
++  next = place ? place->next : loaders;
++  MUTEX_UNLOCK ();
++
++  return next;
++}
++
++const char *
++lt_dlloader_name (place)
++     lt_dlloader *place;
++{
++  const char *name = 0;
++
++  if (place)
++    {
++      MUTEX_LOCK ();
++      name = place ? place->loader_name : 0;
++      MUTEX_UNLOCK ();
++    }
++  else
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_LOADER));
++    }
++
++  return name;
++}
++
++lt_user_data *
++lt_dlloader_data (place)
++     lt_dlloader *place;
++{
++  lt_user_data *data = 0;
++
++  if (place)
++    {
++      MUTEX_LOCK ();
++      data = place ? &(place->dlloader_data) : 0;
++      MUTEX_UNLOCK ();
++    }
++  else
++    {
++      MUTEX_SETERROR (LT_DLSTRERROR (INVALID_LOADER));
++    }
++
++  return data;
++}
++
++lt_dlloader *
++lt_dlloader_find (loader_name)
++     const char *loader_name;
++{
++  lt_dlloader *place = 0;
++
++  MUTEX_LOCK ();
++  for (place = loaders; place; place = place->next)
++    {
++      if (strcmp (place->loader_name, loader_name) == 0)
++	{
++	  break;
++	}
++    }
++  MUTEX_UNLOCK ();
++
++  return place;
++}
++
++#ifdef _AIX
++
++/* #define DBG_PRNT(a) fprintf a ; */
++#define DBG_PRNT(a)
++
++static void
++sys_dl_debug_print_loaded( const char* filename )
++{
++    int                    ret;
++    static unsigned char   buffer[1024*1024];
++    struct ld_info*        info;
++
++    ret = loadquery( L_GETINFO, buffer, 1024*1024 );
++    if( ret >= 0 )
++      {
++        DBG_PRNT((stderr, "%d: Successfully loaded %s\n",
++	        __LINE__, filename ))
++        info = (struct ld_info*)buffer;
++        do
++          {
++	    const char* c;
++	    const char* d;
++	    c = info->ldinfo_filename;
++	    d = &c[strlen(c)];
++	    d++;
++	    DBG_PRNT((stderr, "%d: path name %s, member name %s\n",
++		    __LINE__,
++		    c,d))
++	    info = (struct ld_info*)(((char*)info)+info->ldinfo_next);
++          }
++        while( info->ldinfo_next != 0 );
++      }
++    else if( errno == ENOMEM )
++      {
++        DBG_PRNT((stderr, "%d: Successfully loaded %s, loadquery needs larger buffer\n",
++	        __LINE__, filename ))
++      }
++    else
++      {
++        DBG_PRNT((stderr, "Loadquery failure\n"))
++      }
++}
++
++static void
++sys_dl_debug_print_handle( lt_dlhandle handle )
++{
++    DBG_PRNT((stderr," > next          = %ld\n", (long)handle->next ))
++    DBG_PRNT((stderr," > loader        = %ld\n", (long)handle->loader ))
++    DBG_PRNT((stderr," > info.filename = %s\n", handle->info.filename ))
++    DBG_PRNT((stderr," > info.name     = %s\n", handle->info.name ))
++    DBG_PRNT((stderr," > info.ref_count= %d\n", handle->info.ref_count ))
++    DBG_PRNT((stderr," > depcount      = %d\n", handle->depcount ))
++    DBG_PRNT((stderr," > resident flags %s\n",
++            (LT_DLGET_FLAG (handle, LT_DLRESIDENT_FLAG)?"yes":"no")))
++    DBG_PRNT((stderr," > not found flags %s\n",
++            (LT_DLGET_FLAG (handle, LT_DLNOTFOUND_FLAG)?"yes":"no")))
++}
++
++static void
++sys_dl_init( )
++{
++  char*           buffer = NULL;
++  size_t          buf_size = 512;
++  int             ret;
++  const char*     libname;
++  const char*     modname;
++  struct ld_info* info;
++  lt_dlhandle	  cur;
++  lt_dlhandle     handle;
++  int             already_listed;
++  const char*     last_slash;
++  const char*     last_dot;
++
++  do
++    {
++      buf_size *= 2;
++      if( buffer != NULL ) LT_DLFREE( buffer );
++      buffer = LT_DLMALLOC( char, buf_size );
++      ret = loadquery( L_GETINFO, buffer, buf_size );
++    }
++  while( ret==-1 && errno==ENOMEM );
++
++  if( ret >= 0 )
++    {
++      info = (struct ld_info*)buffer;
++      do
++        {
++	  libname        = info->ldinfo_filename;
++	  modname        = &libname[strlen(libname)];
++	  modname        += 1;
++	  already_listed = 0;
++
++          cur = handles;
++	  while (cur)
++	    {
++	      if( cur->info.filename &&
++		  !strcmp( cur->info.filename, libname ) )
++	        {
++		  already_listed = 1;
++		  break;
++	        }
++              cur = cur->next;
++	    }
++
++	  if( already_listed == 0 )
++	    {
++              handle = (lt_dlhandle) LT_DLMALLOC (struct lt_dlhandle_struct, 1);
++              if (!handle)
++                {
++                  MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++		  LT_DLFREE( buffer );
++                  return;
++                }
++	      memset( handle, 0, sizeof( struct lt_dlhandle_struct ) );
++
++	      last_slash = strrchr( libname, '/' );
++	      if( last_slash == NULL )
++	        {
++	          last_slash = libname;
++	        }
++	      else
++	        {
++		  last_slash++;
++	        }
++	      last_dot   = strrchr( last_slash, '.' );
++	      if( last_dot == NULL )
++	        {
++	          last_dot = &last_slash[strlen(last_slash)];
++	        }
++
++              handle->info.name = LT_DLMALLOC( char, last_dot-last_slash+1 );
++	      strncpy( handle->info.name, last_slash, last_dot-last_slash );
++	      handle->info.name[last_dot-last_slash] = '\0';
++
++	      handle->loader         = lt_dlloader_find ("dlopen");
++	      handle->info.filename  = strdup( libname );
++              handle->info.ref_count = 1;
++              handle->depcount       = 0;
++              handle->deplibs        = 0;
++              handle->module         = dlopen( libname, lt_dlopen_flag );
++              handle->system         = 0;
++              handle->caller_data    = 0;
++	      LT_DLSET_FLAG (handle, LT_DLRESIDENT_FLAG);
++
++              MUTEX_LOCK ();
++              handle->next = handles;
++              handles = handle;
++              MUTEX_UNLOCK ();
++	    }
++
++	  info = (struct ld_info*)(((char*)info)+info->ldinfo_next);
++        }
++      while( info->ldinfo_next != 0 );
++    }
++
++    if( buffer != NULL ) LT_DLFREE( buffer );
++}
++
++static lt_dlhandle
++sys_dl_search_by_name( const char* name )
++{
++  lt_dlhandle cur;
++  const char* la;
++  int         inlen;
++
++  cur = handles;
++
++  while (cur)
++    {
++      if( cur->info.name && name )
++        {
++	  if( !strcmp( cur->info.name, name ) )
++            {
++	      if( cur->info.filename )
++	        {
++	          la = strrchr( cur->info.filename, '.' );
++	          if( !la || strcmp(la,".la") )
++	            {
++	              return cur;
++	            }
++	        }
++            }
++        }
++      if( cur->info.filename && name )
++	{
++	  if( !strcmp( cur->info.filename, name ) )
++	    {
++	      return cur;
++	    }
++	}
++      cur = cur->next;
++    }
++  return NULL;
++}
++
++static void
++sys_dl_not_found_entry( const char* tmp )
++{
++    lt_dlhandle handle;
++
++    handle = (lt_dlhandle) LT_DLMALLOC (struct lt_dlhandle_struct, 1);
++    if (!handle)
++      {
++        MUTEX_SETERROR (LT_DLSTRERROR (NO_MEMORY));
++        return;
++      }
++    memset( handle, 0, sizeof( struct lt_dlhandle_struct ) );
++
++    handle->loader = NULL;
++
++    handle->info.filename = strdup( tmp );
++    handle->info.name = strdup( tmp );
++    handle->info.ref_count    = 0;
++    handle->depcount          = 0;
++    handle->deplibs           = 0;
++    handle->module            = 0;
++    handle->system            = 0;
++    handle->caller_data       = 0;
++
++    LT_DLSET_FLAG (handle, LT_DLNOTFOUND_FLAG);
++
++    MUTEX_LOCK ();
++    handle->next = handles;
++    handles = handle;
++    MUTEX_UNLOCK ();
++}
++
++#endif /* _AIX */
+diff -urN libltdl.orfig/ltdl.h libltdl/ltdl.h
+--- libltdl.orfig/ltdl.h	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/ltdl.h	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,348 @@
++/* ltdl.h -- generic dlopen functions
++   Copyright (C) 1998-2000 Free Software Foundation, Inc.
++   Originally by Thomas Tanner <tanner@ffii.org>
++   This file is part of GNU Libtool.
++
++This library is free software; you can redistribute it and/or
++modify it under the terms of the GNU Lesser General Public
++License as published by the Free Software Foundation; either
++version 2 of the License, or (at your option) any later version.
++
++As a special exception to the GNU Lesser General Public License,
++if you distribute this file as part of a program or library that
++is built using GNU libtool, you may include it under the same
++distribution terms that you use for the rest of that program.
++
++This library is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++Lesser General Public License for more details.
++
++You should have received a copy of the GNU Lesser General Public
++License along with this library; if not, write to the Free
++Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
++02110-1301  USA
++*/
++
++/* Only include this header file once. */
++#ifndef LTDL_H
++#define LTDL_H 1
++
++#include <sys/types.h>		/* for size_t declaration */
++
++
++/* --- MACROS FOR PORTABILITY --- */
++
++
++/* LTDL_BEGIN_C_DECLS should be used at the beginning of your declarations,
++   so that C++ compilers don't mangle their names.  Use LTDL_END_C_DECLS at
++   the end of C declarations. */
++#ifdef __cplusplus
++# define LT_BEGIN_C_DECLS	extern "C" {
++# define LT_END_C_DECLS		}
++#else
++# define LT_BEGIN_C_DECLS	/* empty */
++# define LT_END_C_DECLS		/* empty */
++#endif
++
++LT_BEGIN_C_DECLS
++
++
++/* LT_PARAMS is a macro used to wrap function prototypes, so that compilers
++   that don't understand ANSI C prototypes still work, and ANSI C
++   compilers can issue warnings about type mismatches.  */
++#if defined (__STDC__) || defined (_AIX) || (defined (__mips) && defined (_SYSTYPE_SVR4)) || defined(WIN32) || defined(__cplusplus)
++# define LT_PARAMS(protos)	protos
++# define lt_ptr		void*
++#else
++# define LT_PARAMS(protos)	()
++# define lt_ptr		char*
++#endif
++
++/* LT_STMT_START/END are used to create macros which expand to a
++   a single compound statement in a portable way.  */
++#if defined (__GNUC__) && !defined (__STRICT_ANSI__) && !defined (__cplusplus)
++#  define LT_STMT_START        (void)(
++#  define LT_STMT_END          )
++#else
++#  if (defined (sun) || defined (__sun__))
++#    define LT_STMT_START      if (1)
++#    define LT_STMT_END        else (void)0
++#  else
++#    define LT_STMT_START      do
++#    define LT_STMT_END        while (0)
++#  endif
++#endif
++
++/* LT_CONC creates a new concatenated symbol for the compiler
++   in a portable way.  */
++#if defined(__STDC__) || defined(__cplusplus) || defined(_MSC_VER)
++#  define LT_CONC(s,t)	s##t
++#else
++#  define LT_CONC(s,t)	s/**/t
++#endif
++
++
++
++
++/* --- WINDOWS SUPPORT --- */
++
++
++/* Canonicalise Windows and Cygwin recognition macros.  */
++#ifdef __CYGWIN32__
++#  ifndef __CYGWIN__
++#    define __CYGWIN__ __CYGWIN32__
++#  endif
++#endif
++#if defined(_WIN32) || defined(WIN32)
++#  ifndef __WINDOWS__
++#    ifdef _WIN32
++#      define __WINDOWS__ _WIN32
++#    else
++#      ifdef WIN32
++#        define __WINDOWS__ WIN32
++#      endif
++#    endif
++#  endif
++#endif
++
++#ifdef __WINDOWS__
++#  ifndef __CYGWIN__
++/* LT_DIRSEP_CHAR is accepted *in addition* to '/' as a directory
++   separator when it is set. */
++#    define LT_DIRSEP_CHAR	'\\'
++#    define LT_PATHSEP_CHAR	';'
++#  endif
++#endif
++#ifndef LT_PATHSEP_CHAR
++#  define LT_PATHSEP_CHAR	':'
++#endif
++
++/* DLL building support on win32 hosts;  mostly to workaround their
++   ridiculous implementation of data symbol exporting. */
++#ifndef LT_SCOPE
++#  ifdef __WINDOWS__
++#    ifdef DLL_EXPORT		/* defined by libtool (if required) */
++#      define LT_SCOPE	__declspec(dllexport)
++#    endif
++#    ifdef LIBLTDL_DLL_IMPORT	/* define if linking with this dll */
++#      define LT_SCOPE	extern __declspec(dllimport)
++#    endif
++#  endif
++#  ifndef LT_SCOPE		/* static linking or !__WINDOWS__ */
++#    define LT_SCOPE	extern
++#  endif
++#endif
++
++
++
++
++/* --- DYNAMIC MODULE LOADING API --- */
++
++typedef	struct lt_dlhandle_struct *lt_dlhandle;	/* A loaded module.  */
++
++LT_SCOPE int lt_dlopen_flag;
++
++/* Initialisation and finalisation functions for libltdl. */
++LT_SCOPE	int	    lt_dlinit		LT_PARAMS((void));
++LT_SCOPE	int	    lt_dlexit		LT_PARAMS((void));
++
++/* Module search path manipultation.  */
++LT_SCOPE	int	    lt_dladdsearchdir	LT_PARAMS((const char *search_dir));
++LT_SCOPE	int 	    lt_dlsetsearchpath	LT_PARAMS((const char *search_path));
++LT_SCOPE	const char *lt_dlgetsearchpath	LT_PARAMS((void));
++
++/* Portable libltdl versions of the system dlopen() API. */
++LT_SCOPE	lt_dlhandle lt_dlopen		LT_PARAMS((const char *filename));
++LT_SCOPE	lt_dlhandle lt_dlopenext	LT_PARAMS((const char *filename));
++LT_SCOPE	lt_ptr	    lt_dlsym		LT_PARAMS((lt_dlhandle handle,
++						     const char *name));
++LT_SCOPE	const char *lt_dlerror		LT_PARAMS((void));
++LT_SCOPE	int	    lt_dlclose		LT_PARAMS((lt_dlhandle handle));
++
++/* Module residency management. */
++LT_SCOPE	int	    lt_dlmakeresident	LT_PARAMS((lt_dlhandle handle));
++LT_SCOPE	int	    lt_dlisresident	LT_PARAMS((lt_dlhandle handle));
++
++
++
++
++/* --- MUTEX LOCKING --- */
++
++
++typedef void	lt_dlmutex_lock		LT_PARAMS((void));
++typedef void	lt_dlmutex_unlock	LT_PARAMS((void));
++typedef void	lt_dlmutex_seterror	LT_PARAMS((const char *error));
++typedef const char *lt_dlmutex_geterror	LT_PARAMS((void));
++
++LT_SCOPE	int	lt_dlmutex_register	LT_PARAMS((lt_dlmutex_lock *lock,
++					    lt_dlmutex_unlock *unlock,
++					    lt_dlmutex_seterror *seterror,
++					    lt_dlmutex_geterror *geterror));
++
++
++
++
++/* --- MEMORY HANDLING --- */
++
++
++/* Pointers to memory management functions to be used by libltdl. */
++LT_SCOPE  lt_ptr   (*lt_dlmalloc)	LT_PARAMS((size_t size));
++LT_SCOPE  void	   (*lt_dlfree)		LT_PARAMS((lt_ptr ptr));
++
++
++
++
++/* --- PRELOADED MODULE SUPPORT --- */
++
++
++/* A preopened symbol. Arrays of this type comprise the exported
++   symbols for a dlpreopened module. */
++typedef struct {
++  const char *name;
++  lt_ptr      address;
++} lt_dlsymlist;
++
++LT_SCOPE	int	lt_dlpreload	LT_PARAMS((const lt_dlsymlist *preloaded));
++LT_SCOPE	int	lt_dlpreload_default
++				LT_PARAMS((const lt_dlsymlist *preloaded));
++
++#define LTDL_SET_PRELOADED_SYMBOLS() 		LT_STMT_START{	\
++	LT_SCOPE const lt_dlsymlist lt_preloaded_symbols[];		\
++	lt_dlpreload_default(lt_preloaded_symbols);			\
++						}LT_STMT_END
++
++
++
++
++/* --- MODULE INFORMATION --- */
++
++
++/* Read only information pertaining to a loaded module. */
++typedef	struct {
++  char	*filename;		/* file name */
++  char	*name;			/* module name */
++  int	ref_count;		/* number of times lt_dlopened minus
++				   number of times lt_dlclosed. */
++} lt_dlinfo;
++
++LT_SCOPE	const lt_dlinfo	*lt_dlgetinfo	    LT_PARAMS((lt_dlhandle handle));
++LT_SCOPE	lt_dlhandle	lt_dlhandle_next    LT_PARAMS((lt_dlhandle place));
++LT_SCOPE	int		lt_dlforeach	    LT_PARAMS((
++				int (*func) (lt_dlhandle handle, lt_ptr data),
++				lt_ptr data));
++
++/* Associating user data with loaded modules. */
++typedef unsigned lt_dlcaller_id;
++
++LT_SCOPE	lt_dlcaller_id	lt_dlcaller_register  LT_PARAMS((void));
++LT_SCOPE	lt_ptr		lt_dlcaller_set_data  LT_PARAMS((lt_dlcaller_id key,
++						lt_dlhandle handle,
++						lt_ptr data));
++LT_SCOPE	lt_ptr		lt_dlcaller_get_data  LT_PARAMS((lt_dlcaller_id key,
++						lt_dlhandle handle));
++
++
++
++/* --- USER MODULE LOADER API --- */
++
++
++typedef	struct lt_dlloader	lt_dlloader;
++typedef lt_ptr			lt_user_data;
++typedef lt_ptr			lt_module;
++
++/* Function pointer types for creating user defined module loaders. */
++typedef lt_module   lt_module_open	LT_PARAMS((lt_user_data loader_data,
++					    const char *filename));
++typedef int	    lt_module_close	LT_PARAMS((lt_user_data loader_data,
++					    lt_module handle));
++typedef lt_ptr	    lt_find_sym		LT_PARAMS((lt_user_data loader_data,
++					    lt_module handle,
++					    const char *symbol));
++typedef int	    lt_dlloader_exit	LT_PARAMS((lt_user_data loader_data));
++
++struct lt_user_dlloader {
++  const char	       *sym_prefix;
++  lt_module_open       *module_open;
++  lt_module_close      *module_close;
++  lt_find_sym	       *find_sym;
++  lt_dlloader_exit     *dlloader_exit;
++  lt_user_data		dlloader_data;
++};
++
++LT_SCOPE	lt_dlloader    *lt_dlloader_next    LT_PARAMS((lt_dlloader *place));
++LT_SCOPE	lt_dlloader    *lt_dlloader_find    LT_PARAMS((
++						const char *loader_name));
++LT_SCOPE	const char     *lt_dlloader_name    LT_PARAMS((lt_dlloader *place));
++LT_SCOPE	lt_user_data   *lt_dlloader_data    LT_PARAMS((lt_dlloader *place));
++LT_SCOPE	int		lt_dlloader_add     LT_PARAMS((lt_dlloader *place,
++						const struct lt_user_dlloader *dlloader,
++						const char *loader_name));
++LT_SCOPE	int		lt_dlloader_remove  LT_PARAMS((
++						const char *loader_name));
++
++
++
++/* --- ERROR MESSAGE HANDLING --- */
++
++
++/* Defining error strings alongside their symbolic names in a macro in
++   this way allows us to expand the macro in different contexts with
++   confidence that the enumeration of symbolic names will map correctly
++   onto the table of error strings.  */
++#define lt_dlerror_table						\
++    LT_ERROR(UNKNOWN,		    "unknown error")			\
++    LT_ERROR(DLOPEN_NOT_SUPPORTED,  "dlopen support not available")	\
++    LT_ERROR(INVALID_LOADER,	    "invalid loader")			\
++    LT_ERROR(INIT_LOADER,	    "loader initialization failed")	\
++    LT_ERROR(REMOVE_LOADER,	    "loader removal failed")		\
++    LT_ERROR(FILE_NOT_FOUND,	    "file not found")			\
++    LT_ERROR(DEPLIB_NOT_FOUND,      "dependency library not found")	\
++    LT_ERROR(NO_SYMBOLS,	    "no symbols defined")		\
++    LT_ERROR(CANNOT_OPEN,	    "can't open the module")		\
++    LT_ERROR(CANNOT_CLOSE,	    "can't close the module")		\
++    LT_ERROR(SYMBOL_NOT_FOUND,      "symbol not found")			\
++    LT_ERROR(NO_MEMORY,		    "not enough memory")		\
++    LT_ERROR(INVALID_HANDLE,	    "invalid module handle")		\
++    LT_ERROR(BUFFER_OVERFLOW,	    "internal buffer overflow")		\
++    LT_ERROR(INVALID_ERRORCODE,     "invalid errorcode")		\
++    LT_ERROR(SHUTDOWN,		    "library already shutdown")		\
++    LT_ERROR(CLOSE_RESIDENT_MODULE, "can't close resident module")	\
++    LT_ERROR(INVALID_MUTEX_ARGS,    "invalid mutex handler registration")
++
++/* Enumerate the symbolic error names. */
++enum {
++#define LT_ERROR(name, diagnostic)	LT_CONC(LT_ERROR_, name),
++	lt_dlerror_table
++#undef LT_ERROR
++
++	LT_ERROR_MAX
++};
++
++/* These functions are only useful from inside custom module loaders. */
++LT_SCOPE	int	lt_dladderror	LT_PARAMS((const char *diagnostic));
++LT_SCOPE	int	lt_dlseterror	LT_PARAMS((int errorcode));
++
++
++
++
++/* For KDE and for now, we want this source compatibility until I get rid
++   of the exportation of ltdl.h alltogether.  (matz@kde.org) */
++#define LT_NON_POSIX_NAMESPACE
++/* --- SOURCE COMPATIBILITY WITH OLD LIBLTDL --- */
++
++
++#ifdef LT_NON_POSIX_NAMESPACE
++#  define lt_ptr_t		lt_ptr
++#  define lt_module_t		lt_module
++#  define lt_module_open_t	lt_module_open
++#  define lt_module_close_t	lt_module_close
++#  define lt_find_sym_t		lt_find_sym
++#  define lt_dlloader_exit_t	lt_dlloader_exit
++#  define lt_dlloader_t		lt_dlloader
++#  define lt_dlloader_data_t	lt_user_data
++#endif
++
++LT_END_C_DECLS
++
++#endif /* !LTDL_H */
+diff -urN libltdl.orfig/ltdl.m4 libltdl/ltdl.m4
+--- libltdl.orfig/ltdl.m4	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/ltdl.m4	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,519 @@
++## ltdl.m4 - Configure ltdl for the target system. -*-Shell-script-*-
++## Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc.
++##
++## This program is free software; you can redistribute it and/or modify
++## it under the terms of the GNU General Public License as published by
++## the Free Software Foundation; either version 2 of the License, or
++## (at your option) any later version.
++##
++## This program is distributed in the hope that it will be useful, but
++## WITHOUT ANY WARRANTY; without even the implied warranty of
++## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++## General Public License for more details.
++##
++## You should have received a copy of the GNU General Public License
++## along with this program; if not, write to the Free Software
++## Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++##
++## As a special exception to the GNU General Public License, if you
++## distribute this file as part of a program that contains a
++## configuration script generated by Autoconf, you may include it under
++## the same distribution terms that you use for the rest of that program.
++
++# serial 1 AC_LIB_LTDL
++
++AC_DEFUN([AC_LIB_LTDL],
++[AC_PREREQ(2.13)dnl
++AC_REQUIRE([AC_PROG_CC])dnl
++AC_REQUIRE([AC_C_CONST])dnl
++AC_REQUIRE([AC_C_INLINE])dnl
++AC_REQUIRE([AC_LIB_LTDL_COMMON])dnl
++])
++
++AC_DEFUN([KDE_LIB_LTDL],
++[AC_PREREQ(2.13)dnl
++AC_REQUIRE([AC_PROG_CC])dnl
++AC_REQUIRE([AC_LIB_LTDL_COMMON])dnl
++])
++
++AC_DEFUN([AC_LIB_LTDL_COMMON],
++[dnl
++dnl AC_LIB_LTDL must perform all the checks necessary for compilation
++dnl of the ltdl objects -- including compiler checks (above) and header
++dnl checks (below).
++AC_REQUIRE([AC_HEADER_STDC])dnl
++
++AC_CHECK_HEADERS(malloc.h memory.h stdlib.h stdio.h ctype.h dlfcn.h dl.h dld.h)
++AC_CHECK_HEADERS(string.h strings.h, break)
++AC_CHECK_FUNCS(strchr index, break)
++AC_CHECK_FUNCS(strrchr rindex, break)
++AC_CHECK_FUNCS(memcpy bcopy, break)
++AC_CHECK_FUNCS(strcmp)
++
++AC_REQUIRE([AC_LTDL_ENABLE_INSTALL])dnl
++AC_REQUIRE([AC_LTDL_SHLIBEXT])dnl
++AC_REQUIRE([AC_LTDL_SHLIBPATH])dnl
++AC_REQUIRE([AC_LTDL_SYSSEARCHPATH])dnl
++AC_REQUIRE([AC_LTDL_OBJDIR])dnl
++AC_REQUIRE([AC_LTDL_DLPREOPEN])dnl
++AC_REQUIRE([AC_LTDL_DLLIB])dnl
++AC_REQUIRE([AC_LTDL_SYMBOL_USCORE])dnl
++AC_REQUIRE([AC_LTDL_DLSYM_USCORE])dnl
++AC_REQUIRE([AC_LTDL_SYS_DLOPEN_DEPLIBS])dnl
++])
++
++AC_DEFUN([AC_LTDL_ENABLE_INSTALL],
++[AC_ARG_ENABLE(ltdl-install,
++AC_HELP_STRING([--enable-ltdl-install],[install libltdl]))
++
++AM_CONDITIONAL(INSTALL_LTDL, test x"${enable_ltdl_install-no}" != xno)
++AM_CONDITIONAL(CONVENIENCE_LTDL, test x"${enable_ltdl_convenience-no}" != xno)
++])])
++
++
++AC_DEFUN([AC_LTDL_SNARF_CONFIG],
++[# Read the libtool configuration
++rm -f conftest
++./libtool --config > conftest
++. ./conftest
++rm -f conftest
++])
++
++# AC_LTDL_SYS_DLOPEN_DEPLIBS
++# --------------------------
++AC_DEFUN([AC_LTDL_SYS_DLOPEN_DEPLIBS],
++[AC_REQUIRE([AC_CANONICAL_HOST])
++AC_CACHE_CHECK([whether deplibs are loaded by dlopen],
++	libltdl_cv_sys_dlopen_deplibs, [dnl
++	# PORTME does your system automatically load deplibs for dlopen()?
++	libltdl_cv_sys_dlopen_deplibs=unknown
++	case "$host_os" in
++	cygwin*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	darwin*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	linux*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	netbsd*|openbsd*|freebsd*|dragonfly*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	solaris*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	hpux*|irix*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	osf*)
++	  libltdl_cv_sys_dlopen_deplibs=yes
++	  ;;
++	esac
++])
++if test "$libltdl_cv_sys_dlopen_deplibs" != yes; then
++ AC_DEFINE(LTDL_DLOPEN_DEPLIBS, 1,
++    [Define if the OS needs help to load dependent libraries for dlopen(). ])
++fi
++])# AC_LTDL_SYS_DLOPEN_DEPLIBS
++
++AC_DEFUN([AC_LTDL_SHLIBEXT],
++[AC_REQUIRE([AC_LTDL_SNARF_CONFIG])dnl
++AC_CACHE_CHECK([which extension is used for shared libraries],
++  libltdl_cv_shlibext, [dnl
++(
++  last=
++	case "$host_os" in
++    cygwin* | mingw*) 
++      last=".dll" 
++      ;;
++    *)
++      for spec in $library_names_spec; do
++        last="$spec"
++      done
++      ;;
++  esac
++changequote(, )
++  echo "$last" | sed 's/\[.*\]//;s/^[^.]*//;s/\$.*$//;s/\.$//' > conftest
++changequote([, ])
++)
++libltdl_cv_shlibext=`cat conftest`
++rm -f conftest
++])
++if test -n "$libltdl_cv_shlibext"; then
++  AC_DEFINE_UNQUOTED(LTDL_SHLIB_EXT, "$libltdl_cv_shlibext",
++    [Define to the extension used for shared libraries, say, ".so". ])
++fi
++])
++
++AC_DEFUN([AC_LTDL_SHLIBPATH],
++[AC_REQUIRE([AC_LTDL_SNARF_CONFIG])dnl
++AC_CACHE_CHECK([which variable specifies run-time library path],
++  libltdl_cv_shlibpath_var, [libltdl_cv_shlibpath_var="$shlibpath_var"])
++if test -n "$libltdl_cv_shlibpath_var"; then
++  AC_DEFINE_UNQUOTED(LTDL_SHLIBPATH_VAR, "$libltdl_cv_shlibpath_var",
++    [Define to the name of the environment variable that determines the dynamic library search path. ])
++fi
++])
++
++AC_DEFUN([AC_LTDL_SYSSEARCHPATH],
++[AC_REQUIRE([AC_LTDL_SNARF_CONFIG])dnl
++AC_CACHE_CHECK([for the default library search path],
++  libltdl_cv_sys_search_path, [libltdl_cv_sys_search_path="$sys_lib_dlsearch_path_spec"])
++if test -n "$libltdl_cv_sys_search_path"; then
++  case "$host" in
++  *-*-mingw*) pathsep=";" ;;
++  *) pathsep=":" ;;
++  esac
++  sys_search_path=
++  for dir in $libltdl_cv_sys_search_path; do
++    if test -z "$sys_search_path"; then
++      sys_search_path="$dir"
++    else
++      sys_search_path="$sys_search_path$pathsep$dir"
++    fi
++  done
++  AC_DEFINE_UNQUOTED(LTDL_SYSSEARCHPATH, "$sys_search_path",
++    [Define to the system default library search path. ])
++fi
++])
++
++AC_DEFUN([AC_LTDL_OBJDIR],
++[AC_CACHE_CHECK([for objdir],
++  libltdl_cv_objdir, [libltdl_cv_objdir="$objdir"
++if test -n "$objdir"; then
++  :
++else
++  rm -f .libs 2>/dev/null
++  mkdir .libs 2>/dev/null
++  if test -d .libs; then
++    libltdl_cv_objdir=.libs
++  else
++    # MS-DOS does not allow filenames that begin with a dot.
++    libltdl_cv_objdir=_libs
++  fi
++rmdir .libs 2>/dev/null
++fi])
++AC_DEFINE_UNQUOTED(LTDL_OBJDIR, "$libltdl_cv_objdir/",
++  [Define to the sub-directory in which libtool stores uninstalled libraries. ])
++])
++
++AC_DEFUN([AC_LTDL_DLPREOPEN],
++[AC_REQUIRE([AC_LTDL_GLOBAL_SYMBOL_PIPE])dnl
++AC_CACHE_CHECK([whether libtool supports -dlopen/-dlpreopen],
++       libltdl_cv_preloaded_symbols, [dnl
++  if test -n "$global_symbol_pipe"; then
++    libltdl_cv_preloaded_symbols=yes
++  else
++    libltdl_cv_preloaded_symbols=no
++  fi
++])
++if test x"$libltdl_cv_preloaded_symbols" = x"yes"; then
++  AC_DEFINE(HAVE_PRELOADED_SYMBOLS, 1,
++    [Define if libtool can extract symbol lists from object files. ])
++fi
++])
++
++AC_DEFUN([AC_LTDL_DLLIB],
++[LIBADD_DL=
++AC_CHECK_LIB(dl, dlopen, [AC_DEFINE(HAVE_LIBDL, 1,
++   [Define if you have the libdl library or equivalent. ]) LIBADD_DL="-ldl"],
++[AC_CHECK_FUNC(dlopen, [AC_DEFINE(HAVE_LIBDL, 1,
++   [Define if you have the libdl library or equivalent.])],
++[AC_CHECK_LIB(svld, dlopen, [AC_DEFINE(HAVE_LIBDL, 1,
++   [Define if you have the libdl library or equivalent.]) LIBADD_DL="-lsvld"]
++)])])
++AC_CHECK_FUNC(shl_load, [AC_DEFINE(HAVE_SHL_LOAD, 1,
++   [Define if you have the shl_load function.])],
++[AC_CHECK_LIB(dld, shl_load,
++  [AC_DEFINE(HAVE_SHL_LOAD, 1,
++     [Define if you have the shl_load function.])
++   LIBADD_DL="$LIBADD_DL -ldld"])
++])
++AC_CHECK_LIB(dld, dld_link, [AC_DEFINE(HAVE_DLD, 1,
++  [Define if you have the GNU dld library.])dnl
++test "x$ac_cv_lib_dld_shl_load" = yes || LIBADD_DL="$LIBADD_DL -ldld"])
++AC_SUBST(LIBADD_DL)
++
++if test "x$ac_cv_func_dlopen" = xyes || test "x$ac_cv_lib_dl_dlopen" = xyes; then
++ LIBS_SAVE="$LIBS"
++ LIBS="$LIBS $LIBADD_DL"
++ AC_CHECK_FUNCS(dlerror)
++ LIBS="$LIBS_SAVE"
++fi
++])
++
++AC_DEFUN([AC_LTDL_GLOBAL_SYMBOL_PIPE],
++[dnl Check for command to grab the raw symbol name followed
++dnl by C symbol name from nm.
++AC_REQUIRE([AC_CANONICAL_HOST])dnl
++AC_REQUIRE([AC_PROG_NM])dnl
++# Check for command to grab the raw symbol name followed by C symbol from nm.
++AC_MSG_CHECKING([command to parse $NM output])
++AC_CACHE_VAL(ac_cv_sys_global_symbol_pipe,
++[# These are sane defaults that work on at least a few old systems.
++# {They come from Ultrix.  What could be older than Ultrix?!! ;)}
++
++changequote(,)dnl
++# Character class describing NM global symbol codes.
++ac_symcode='[BCDEGRST]'
++
++# Regexp to match symbols that can be accessed directly from C.
++ac_sympat='\([_A-Za-z][_A-Za-z0-9]*\)'
++
++# Transform the above into a raw symbol and a C symbol.
++ac_symxfrm='\1 \2\3 \3'
++
++# Transform an extracted symbol line into a proper C declaration
++ac_global_symbol_to_cdecl="sed -n -e 's/^. .* \(.*\)$/extern char \1;/p'"
++
++# Define system-specific variables.
++case "$host_os" in
++aix*)
++  ac_symcode='[BCDT]'
++  ;;
++cygwin* | mingw*)
++  ac_symcode='[ABCDGISTW]'
++  ;;
++hpux*)
++  ac_global_symbol_to_cdecl="sed -n -e 's/^T .* \(.*\)$/extern char \1();/p' -e 's/^. .* \(.*\)$/extern char \1;/p'"
++  ;;
++irix*)
++  ac_symcode='[BCDEGRST]'
++  ;;
++solaris*)
++  ac_symcode='[BDT]'
++  ;;
++esac
++
++# If we're using GNU nm, then use its standard symbol codes.
++if $NM -V 2>&1 | egrep '(GNU|with BFD)' > /dev/null; then
++  ac_symcode='[ABCDGISTW]'
++fi
++changequote([,])dnl
++
++# Try without a prefix undercore, then with it.
++for ac_symprfx in "" "_"; do
++
++  ac_cv_sys_global_symbol_pipe="sed -n -e 's/^.*[ 	]\($ac_symcode\)[ 	][ 	]*\($ac_symprfx\)$ac_sympat$/$ac_symxfrm/p'"
++
++  # Check to see that the pipe works correctly.
++  ac_pipe_works=no
++  rm -f conftest.$ac_ext
++  cat > conftest.$ac_ext <<EOF
++#ifdef __cplusplus
++extern "C" {
++#endif
++char nm_test_var;
++void nm_test_func(){}
++#ifdef __cplusplus
++}
++#endif
++int main(){nm_test_var='a';nm_test_func;return 0;}
++EOF
++
++  if AC_TRY_EVAL(ac_compile); then
++    # Now try to grab the symbols.
++    ac_nlist=conftest.nm
++
++    if AC_TRY_EVAL(NM conftest.$ac_objext \| $ac_cv_sys_global_symbol_pipe \> $ac_nlist) && test -s "$ac_nlist"; then
++
++      # Try sorting and uniquifying the output.
++      if sort "$ac_nlist" | uniq > "$ac_nlist"T; then
++	mv -f "$ac_nlist"T "$ac_nlist"
++      else
++	rm -f "$ac_nlist"T
++      fi
++
++      # Make sure that we snagged all the symbols we need.
++      if egrep ' nm_test_var$' "$ac_nlist" >/dev/null; then
++	if egrep ' nm_test_func$' "$ac_nlist" >/dev/null; then
++	  cat <<EOF > conftest.$ac_ext
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++EOF
++	  # Now generate the symbol file.
++	  eval "$ac_global_symbol_to_cdecl"' < "$ac_nlist" >> conftest.$ac_ext'
++
++	  cat <<EOF >> conftest.$ac_ext
++#if defined (__STDC__) && __STDC__
++# define lt_ptr_t void *
++#else
++# define lt_ptr_t char *
++# define const
++#endif
++
++/* The mapping between symbol names and symbols. */
++const struct {
++  const char *name;
++  lt_ptr_t address;
++}
++changequote(,)dnl
++lt_preloaded_symbols[] =
++changequote([,])dnl
++{
++EOF
++	sed 's/^. \(.*\) \(.*\)$/  {"\2", (lt_ptr_t) \&\2},/' <	"$ac_nlist" >> conftest.$ac_ext
++	cat <<\EOF >> conftest.$ac_ext
++  {0, (lt_ptr_t) 0}
++};
++
++#ifdef __cplusplus
++}
++#endif
++EOF
++	  # Now try linking the two files.
++	  mv conftest.$ac_objext conftstm.$ac_objext
++	  ac_save_LIBS="$LIBS"
++	  ac_save_CFLAGS="$CFLAGS"
++	  LIBS="conftstm.$ac_objext"
++	  CFLAGS="$CFLAGS$no_builtin_flag"
++	  if AC_TRY_EVAL(ac_link) && test -s conftest; then
++	    ac_pipe_works=yes
++	  else
++	    echo "configure: failed program was:" >&AC_FD_CC
++	    cat conftest.$ac_ext >&AC_FD_CC
++	  fi
++	  LIBS="$ac_save_LIBS"
++	  CFLAGS="$ac_save_CFLAGS"
++	else
++	  echo "cannot find nm_test_func in $ac_nlist" >&AC_FD_CC
++	fi
++      else
++	echo "cannot find nm_test_var in $ac_nlist" >&AC_FD_CC
++      fi
++    else
++      echo "cannot run $ac_cv_sys_global_symbol_pipe" >&AC_FD_CC
++    fi
++  else
++    echo "$progname: failed program was:" >&AC_FD_CC
++    cat conftest.$ac_ext >&AC_FD_CC
++  fi
++  rm -rf conftest* conftst*
++
++  # Do not use the global_symbol_pipe unless it works.
++  if test "$ac_pipe_works" = yes; then
++    if test x"$ac_symprfx" = x"_"; then
++      ac_cv_sys_symbol_underscore=yes
++    else
++      ac_cv_sys_symbol_underscore=no
++    fi
++    break
++  else
++    ac_cv_sys_global_symbol_pipe=
++  fi
++done
++])
++
++ac_result=yes
++if test -z "$ac_cv_sys_global_symbol_pipe"; then
++   ac_result=no
++fi
++AC_MSG_RESULT($ac_result)
++])
++
++AC_DEFUN([AC_LTDL_SYMBOL_USCORE],
++[dnl does the compiler prefix global symbols with an underscore?
++AC_REQUIRE([AC_LTDL_GLOBAL_SYMBOL_PIPE])dnl
++AC_MSG_CHECKING([for _ prefix in compiled symbols])
++AC_CACHE_VAL(ac_cv_sys_symbol_underscore,
++[ac_cv_sys_symbol_underscore=no
++cat > conftest.$ac_ext <<EOF
++void nm_test_func(){}
++int main(){nm_test_func;return 0;}
++EOF
++if AC_TRY_EVAL(ac_compile); then
++  # Now try to grab the symbols.
++  ac_nlist=conftest.nm
++  if AC_TRY_EVAL(NM conftest.$ac_objext \| $ac_cv_sys_global_symbol_pipe \> $ac_nlist) && test -s "$ac_nlist"; then
++    # See whether the symbols have a leading underscore.
++    if egrep '^. _nm_test_func' "$ac_nlist" >/dev/null; then
++      ac_cv_sys_symbol_underscore=yes
++    else
++      if egrep '^. nm_test_func ' "$ac_nlist" >/dev/null; then
++	:
++      else
++	echo "configure: cannot find nm_test_func in $ac_nlist" >&AC_FD_CC
++      fi
++    fi
++  else
++    echo "configure: cannot run $ac_cv_sys_global_symbol_pipe" >&AC_FD_CC
++  fi
++else
++  echo "configure: failed program was:" >&AC_FD_CC
++  cat conftest.$ac_ext >&AC_FD_CC
++fi
++rm -rf conftest*
++])
++AC_MSG_RESULT($ac_cv_sys_symbol_underscore)
++])
++
++AC_DEFUN([AC_LTDL_DLSYM_USCORE],
++[AC_REQUIRE([AC_LTDL_SYMBOL_USCORE])dnl
++if test x"$ac_cv_sys_symbol_underscore" = xyes; then
++  if test x"$ac_cv_func_dlopen" = xyes ||
++     test x"$ac_cv_lib_dl_dlopen" = xyes ; then
++	AC_CACHE_CHECK([whether we have to add an underscore for dlsym],
++		libltdl_cv_need_uscore, [dnl
++		AC_TRY_RUN([
++#if HAVE_DLFCN_H
++#include <dlfcn.h>
++#endif
++
++#include <stdio.h>
++
++#ifdef RTLD_GLOBAL
++# define LTDL_GLOBAL	RTLD_GLOBAL
++#else
++# ifdef DL_GLOBAL
++#  define LTDL_GLOBAL	DL_GLOBAL
++# else
++#  define LTDL_GLOBAL	0
++# endif
++#endif
++
++/* We may have to define LTDL_LAZY_OR_NOW in the command line if we
++   find out it does not work in some platform. */
++#ifndef LTDL_LAZY_OR_NOW
++# ifdef RTLD_LAZY
++#  define LTDL_LAZY_OR_NOW	RTLD_LAZY
++# else
++#  ifdef DL_LAZY
++#   define LTDL_LAZY_OR_NOW	DL_LAZY
++#  else
++#   ifdef RTLD_NOW
++#    define LTDL_LAZY_OR_NOW	RTLD_NOW
++#   else
++#    ifdef DL_NOW
++#     define LTDL_LAZY_OR_NOW	DL_NOW
++#    else
++#     define LTDL_LAZY_OR_NOW	0
++#    endif
++#   endif
++#  endif
++# endif
++#endif
++
++void fnord() { int i=42;}
++int main() {
++    void *self, *ptr1, *ptr2; self=dlopen(0,LTDL_GLOBAL|LTDL_LAZY_OR_NOW);
++    if(self) { ptr1=dlsym(self,"fnord"); ptr2=dlsym(self,"_fnord");
++	       if(ptr1 && !ptr2) { dlclose(self); exit(0); } } exit(1); }
++],	libltdl_cv_need_uscore=no, libltdl_cv_need_uscore=yes,
++	libltdl_cv_need_uscore=cross
++)])
++  fi
++fi
++
++case "$host_os" in
++  cygwin* | mingw*) 
++    libltdl_cv_need_uscore=no
++    ;;
++esac
++if test x"$libltdl_cv_need_uscore" = xyes; then
++  AC_DEFINE(NEED_USCORE, 1,
++    [Define if dlsym() requires a leading underscode in symbol names. ])
++fi
++])
+diff -urN libltdl.orfig/ltdl_win.c libltdl/ltdl_win.c
+--- libltdl.orfig/ltdl_win.c	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/ltdl_win.c	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,101 @@
++/* This file is part of the KDE libraries
++   Copyright (C) 2004 Jaroslaw Staniek <js@iidea.pl>
++
++   This library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Library General Public
++   License version 2 as published by the Free Software Foundation.
++
++   This library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Library General Public License for more details.
++
++   You should have received a copy of the GNU Library General Public License
++   along with this library; see the file COPYING.LIB.  If not, write to
++   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++   Boston, MA 02110-1301, USA.
++*/
++
++#include <string.h>
++#include <stdio.h>
++#include <assert.h>
++#include <malloc.h>
++#include <stdlib.h>
++
++// .so --> .dll name mappings:
++// name suffixes *so.[0-9] are removed
++// "lib" prefix (if exists) is removed from the filename
++void win32_mapSo2Dll( char *path )
++{
++    int len;
++    char *p, *from;
++    assert(path);
++    len=strlen(path);
++    if (len<=3)
++        return;
++    // (optionally) remove .[0-9] suffix
++    p = path+len-2;
++    if (p[0]=='.' && p[1]>='0' && p[1]<='9') {
++        *p = 0;
++        len -= 2;
++    }
++    // remove "lib"
++    p = strrchr( path, '\\' );
++    if (p && len>=3 && strncmp(p,"\\lib", 4)==0) {
++        p++;
++        from = p + 3;
++        for (; *from; p++, from++) {
++           *p = *from;
++        }
++        *p = 0;
++        len -= 3;
++    }
++    //.so -> .dll
++    if (len>3 && strncmp(path+len-3,".so",3)==0) {
++#ifndef TQT_NO_DEBUG //debug library version
++        strcpy(path+len-3, "_d");
++        len += 2;
++#endif
++        strcpy(path+len-3, ".dll");
++    }
++    fprintf(stderr,"win32_mapSo2Dll: '%s' )\n", path );
++}
++
++#define MAX_PATH 0x1ff
++static char win32_mapDir_TDEDIR[MAX_PATH] = "";
++
++// paths name mappings
++// when mapping is performed, frees old name at *dir and allocates new path for *dir 
++void win32_mapDir( char **dir )
++{
++    static const char* WIN32_LIBDIR_FROM = "/opt/trinity/lib/trinity";
++    static const char* WIN32_LIBDIR_TO = "c:/kde/lib/trinity";
++    char *e;
++//TODO........
++    if (!*win32_mapDir_TDEDIR) {
++      e = getenv("TDEDIR");
++      if (e)
++        strncpy( win32_mapDir_TDEDIR, e, MAX_PATH );
++    }
++    assert(dir && *dir && win32_mapDir_TDEDIR && *win32_mapDir_TDEDIR);
++    // /opt/trinity/lib/trinity -> <letter>:/kde/lib/trinity
++
++    if (strcmp(*dir, WIN32_LIBDIR_FROM)==0) {
++        free(*dir);
++        *dir=strdup(WIN32_LIBDIR_TO);
++		if (win32_mapDir_TDEDIR && *win32_mapDir_TDEDIR) {
++			(*dir)[0]=win32_mapDir_TDEDIR[0]; //copy drive letter
++		}
++    }
++}
++
++// converts slashes to backslashes for path
++void win32_backslashify( char *path )
++{
++  char *p = path;
++  while (*p) {
++    if (*p=='/')
++      *p = '\\';
++    p++;
++  }
++}
+diff -urN libltdl.orfig/ltdl_win.h libltdl/ltdl_win.h
+--- libltdl.orfig/ltdl_win.h	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/ltdl_win.h	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,27 @@
++/* This file is part of the KDE libraries
++   Copyright (C) 2004 Jaroslaw Staniek <js@iidea.pl>
++
++   This library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Library General Public
++   License version 2 as published by the Free Software Foundation.
++
++   This library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Library General Public License for more details.
++
++   You should have received a copy of the GNU Library General Public License
++   along with this library; see the file COPYING.LIB.  If not, write to
++   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++   Boston, MA 02110-1301, USA.
++*/
++
++#ifndef LTDL_WIN32_H
++#define LTDL_WIN32_H 1
++
++/** Helper functions for dlopening on win32 */
++void win32_mapSo2Dll( char *path );
++void win32_mapDir( char **dir );
++void win32_backslashify( char *path );
++
++#endif //LTDL_WIN32_H
+diff -urN libltdl.orfig/Makefile.am libltdl/Makefile.am
+--- libltdl.orfig/Makefile.am	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/Makefile.am	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,17 @@
++## Process this file with automake to produce Makefile.in
++
++AUTOMAKE_OPTIONS = no-dependencies foreign
++
++noinst_HEADERS = ltdl.h ltdl_win.h
++noinst_LTLIBRARIES = libltdlc.la
++
++libltdlc_la_SOURCES = ltdl.c
++libltdlc_la_LIBADD = $(LIBADD_DL)
++
++## Because we do not have automatic dependency tracking:
++ltdl.lo: $(srcdir)/ltdl.h $(top_builddir)/config.h
++
++apidox:
++
++.PHONY: apidox
++
+diff -urN libltdl.orfig/README libltdl/README
+--- libltdl.orfig/README	1970-01-01 03:00:00.000000000 +0300
++++ libltdl/README	2019-02-22 17:53:57.514418615 +0300
+@@ -0,0 +1,11 @@
++This is GNU libltdl, a system independent dlopen wrapper for GNU libtool.
++
++It has some slight changes for use in KDE.
++
++It supports the following dlopen interfaces:
++* dlopen (Solaris, Linux and various BSD flavors)
++* shl_load (HP-UX)
++* LoadLibrary (Win16 and Win32)
++* load_add_on (BeOS)
++* GNU DLD (emulates dynamic linking for static libraries)
++* libtool's dlpreopen
