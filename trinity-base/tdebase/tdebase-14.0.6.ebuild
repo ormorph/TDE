@@ -70,6 +70,7 @@ DEPEND="
 	net-dns/libidn
 	sys-apps/acl
 	virtual/libusb:0
+	net-libs/rpcsvc-proto
 "
 RDEPEND="$DEPEND"
 
