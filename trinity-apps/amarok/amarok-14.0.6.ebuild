@@ -23,6 +23,7 @@ DEPEND="
 	xine? ( media-libs/xine-lib )
 	visual? ( media-libs/libvisual )
 	media-libs/libmp4v2
+	media-libs/taglib
 "
 RDEPEND="$DEPEND"
 
