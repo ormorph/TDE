@@ -110,7 +110,6 @@ src_configure() {
 		-DWITH_GCC_VISIBILITY=OFF
 
 		-DBIN_INSTALL_DIR="${TDEDIR}/bin"
-		-DCONFIG_INSTALL_DIR="/etc/trinity"
 		-DINCLUDE_INSTALL_DIR="${TDEDIR}/include"
 		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
 		-DSHARE_INSTALL_PREFIX="${TDEDIR}/share"
@@ -192,6 +191,10 @@ src_install() {
 	if use pam ; then
 		dodir /etc/pam.d
 		insinto /etc/pam.d
-		doins ${FILESDIR}/{kcheckpass-trinity,tdescreensaver-trinity}
+		doins ${FILESDIR}/{kcheckpass-trinity,tdescreensaver-trinity,tdm-trinity}
 	fi
+	exeinto /etc/trinity/tdm
+	doexe ${FILESDIR}/Xsession
+	dodir ${TDEDIR}/share/config/tdm
+	cp -rf ${D}/etc/trinity/tdm/. ${D}/${TDEDIR}/share/config/tdm/
 }
