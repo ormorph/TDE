@@ -86,12 +86,13 @@ pkg_setup() {
 	fi
 }
 
-#src_prepare() {
+src_prepare() {
 #	epatch ${FILESDIR}/one.patch
 	# no compton
 #	sed -i "twin/CMakeLists.txt" -e "/compton-tde/ s/^/#/"
-#	cmake-utils_src_prepare
-#}
+	sed -i "${S}/tdm/kfrontend/gentdmconf.c" -e "s|/etc/X11/Xsession|/etc/trinity/X11/Xsession|"
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
@@ -191,6 +192,15 @@ src_install() {
 	if use pam ; then
 		dodir /etc/pam.d
 		insinto /etc/pam.d
-		doins ${FILESDIR}/{kcheckpass-trinity,tdescreensaver-trinity}
+		doins ${FILESDIR}/{kcheckpass-trinity,tdescreensaver-trinity,tdm-trinity}
+	fi
+	insinto /etc/trinity/X11
+	doins ${FILESDIR}/Xsession
+	dodir ${TDEDIR}/share/config/tdm
+}
+
+pkg_postinst() {
+	if ! [ -f ${TDEDIR}/share/config/tdm/Xsession ] ; then
+	gentdmconf
 	fi
 }
