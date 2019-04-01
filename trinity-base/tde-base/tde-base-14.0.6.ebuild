@@ -11,15 +11,14 @@ HOMEPAGE="http://www.trinitydesktop.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE=""
+IUSE="+webdev"
 KEYWORDS="x86 amd64"
 
 RDEPEND=">=trinity-base/tde-minimal-14.0.6
 	>=trinity-base/tdemultimedia-14.0.6
 	>=trinity-base/tdeutils-14.0.6
 	>=trinity-base/tdegraphics-14.0.6
-	>=trinity-base/tdesdk-14.0.6
-	>=trinity-base/tdewebdev-14.0.6
+	webdev? ( >=trinity-base/tdewebdev-14.0.6 )
 	>=trinity-apps/dolphin-14.0.6
 	>=trinity-apps/gwenview-14.0.6
 	trinity-apps/tde-style-baghira

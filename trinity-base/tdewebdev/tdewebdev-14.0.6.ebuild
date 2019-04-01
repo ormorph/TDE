@@ -22,8 +22,8 @@ DEPEND="
         sys-devel/autoconf
         sys-devel/automake
         virtual/pkgconfig
-	trinity-base/tdelibs
-        trinity-base/tdesdk
+	>=trinity-base/tdelibs-14.0.6
+        >=trinity-base/tdesdk-14.0.6
         dev-libs/libxslt
         dev-libs/libgcrypt
         dev-libs/libxml2
