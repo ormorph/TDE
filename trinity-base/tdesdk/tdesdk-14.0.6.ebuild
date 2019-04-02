@@ -3,6 +3,7 @@
 # $Id$
 EAPI="6"
 
+: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="TDE Development Kit"
