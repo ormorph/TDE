@@ -30,6 +30,7 @@ MY_DEPEND="trinity-base/tde-common-cmake
 	media-libs/freetype:2
 	media-libs/libart_lgpl
 	sys-apps/dbus
+	sys-libs/db
 	dev-libs/dbus-tqt
 	dev-libs/dbus-1-tqt
 	x11-libs/libXcursor

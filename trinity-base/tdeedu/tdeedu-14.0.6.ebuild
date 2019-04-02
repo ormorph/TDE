@@ -13,7 +13,7 @@ SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE=""
+IUSE="-arts"
 
 DEPEND="
 	trinity-base/tde-common-admin
@@ -47,10 +47,15 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	emake -f admin/Makefile.common
-	build_arts=no ./configure --without-arts \
-		--prefix=${TDEDIR} \
-		--with-qt-dir=${TDEDIR} \
-		--libdir=${TDEDIR}/$(get_libdir) \
-		--disable-kig-python-scripting
+	myconf=(--prefix=${TDEDIR}
+		--with-qt-dir=${TDEDIR}
+		--libdir=${TDEDIR}/$(get_libdir)
+		--disable-kig-python-scripting)
+
+	if use arts ; then
+		./comfigure ${myconf[@]}
+	else
+		build_arts=no ./configure --without-arts ${myconf[@]}
+	fi
 
 }

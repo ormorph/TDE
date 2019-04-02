@@ -13,7 +13,7 @@ SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE=""
+IUSE="-arts"
 
 DEPEND="
 	trinity-base/tde-common-admin
@@ -46,19 +46,23 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	emake -f admin/Makefile.common
-	build_arts=no ./configure --without-arts \
-		--prefix="${TDEDIR}" \
-		--exec-prefix="${TDEDIR}" \
-		--bindir="${TDEDIR}/bin" \
-		--datadir="${TDEDIR}/share" \
-		--includedir="${TDEDIR}/include" \
-		--libdir="${TDEDIR}/$(get_libdir)" \
-		--disable-dependency-tracking \
-		--disable-debug \
-		--enable-new-ldflags \
-		--disable-final \
-		--enable-closure \
-		--enable-rpath \
-		--disable-gcc-hidden-visibility
+	myconf=(--prefix="${TDEDIR}"
+		--exec-prefix="${TDEDIR}"
+		--bindir="${TDEDIR}/bin"
+		--datadir="${TDEDIR}/share"
+		--includedir="${TDEDIR}/include"
+		--libdir="${TDEDIR}/$(get_libdir)"
+		--disable-dependency-tracking
+		--disable-debug
+		--enable-new-ldflags
+		--disable-final
+		--enable-closure
+		--enable-rpath
+		--disable-gcc-hidden-visibility)
+	if use arts ; then
+		./configure ${myconf[@]}
+	else
+		build_arts=no ./configure --without-arts ${myconf[@]}
+	fi
 
 }

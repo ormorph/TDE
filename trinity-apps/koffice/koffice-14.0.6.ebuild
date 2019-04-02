@@ -14,7 +14,7 @@ SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="+lcms +bzip2 +paper +ruby +freetype +png +utempter +graphicsmagick +postgres +wpd +wv2 +opengl +xi +sqlite"
+IUSE="+lcms +bzip2 +paper +ruby +freetype +png +utempter +graphicsmagick +postgres +wpd +wv2 +opengl +xi +sqlite -arts"
 SLOT="0"
 
 DEPEND="
@@ -75,7 +75,9 @@ src_prepare() {
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	sed -i "${S}/kexi/migration/keximigratetest.cpp" \
        -e "/TDEApplication/ s|\");|\", true, true, true);|"
-	sed -i "s/-lsoundserver_idl -lmcop//" ${S}/kpresenter/Makefile.am
+	if ! use arts ; then
+	   sed -i "s/-lsoundserver_idl -lmcop//" ${S}/kpresenter/Makefile.am
+	fi
         eapply_user
 }
 
@@ -94,12 +96,15 @@ src_configure() {
 		--enable-closure
 		--enable-rpath
 		--disable-gcc-hidden-visibility
-		--without-arts
 		--with-extra-libs=${TDEDIR}/$(get_libdir)
 		--with-extra-includes=${TDEDIR}/include/arts
 		--disable-kexi-macros
 		--disable-scripting)
 		use postgres && myconf+=(--enable-pgsql)|| myconf+=(--disable-pgsql)
-	build_arts=no ./configure ${myconf[@]}
+	if use arts ; then
+		./configure ${myconf[@]}
+	else
+		build_arts=no ./configure --without-arts ${myconf[@]}
+	fi
 	sed 's#-std=c++11#-std=c++98#' -i ${S}/filters/kspread/qpro/libqpro/src/Makefile 
 }
