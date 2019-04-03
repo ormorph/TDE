@@ -6,7 +6,7 @@ EAPI="6"
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
 
-DESCRIPTION="TDE Development Kit"
+DESCRIPTION="Administrative tools for TDE"
 HOMEPAGE="http://trinitydesktop.org/"
 
 SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
