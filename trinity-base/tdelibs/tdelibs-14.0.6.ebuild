@@ -1,16 +1,16 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils 
-
+inherit cmake-utils  desktop flag-o-matic gnome2-utils 
 
 DESCRIPTION="Trinity libraries needed by all TDE programs."
 HOMEPAGE="http://www.trinitydesktop.org/"
 VER="r14.0.x"
 
-SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz
+	https://git.trinitydesktop.org/cgit/libltdl/snapshot/libltdl-r${PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
@@ -81,7 +81,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch ${FILESDIR}/${PN}-libltdl.patch
+	cp -rf ${WORKDIR}/libltdl-r${PV}/. ${S}/libltdl || die
 	cmake-utils_src_prepare
 }
 
