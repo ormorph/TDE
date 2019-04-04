@@ -11,7 +11,7 @@ HOMEPAGE="http://www.trinitydesktop.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+webdev"
+IUSE="+webdev powermanagement"
 KEYWORDS="x86 amd64"
 
 RDEPEND=">=trinity-base/tde-minimal-14.0.6
@@ -28,6 +28,7 @@ RDEPEND=">=trinity-base/tde-minimal-14.0.6
 	trinity-apps/tde-style-qtcurve
 	trinity-apps/twin-style-crystal
 	>=trinity-apps/kbfx-14.0.6
+	powermanagement? ( trinity-apps/tdepowersave )
 "
 
 S=${WORKDIR}
