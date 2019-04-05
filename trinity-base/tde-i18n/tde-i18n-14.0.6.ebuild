@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="6"
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
+
 TDE_L10N="af ar az be bg bn br bs ca cs csb cy da de el en_GB eo es et 
 eu fa fi fr fy ga gl he hi hr hu is it ja kk km ko lt lv mk mn ms 
 nb nds nl nn pa pl pt pt_BR ro ru rw se sk sl sr sr@Latn ss sv ta te 
 tg th tr uk uz uz@cyrillic vi wa zh_CN zh_TW"
 
-inherit eutils desktop flag-o-matic gnome2-utils cmake-utils
+inherit eutils desktop flag-o-matic gnome2-utils
 
 
 DESCRIPTION=""
@@ -46,60 +46,53 @@ pkg_setup() {
 	fi
 }
 
-src_prepare() {
-	cp -rf ${TDEDIR}/share/cmake ${S}
-	eapply_user
-}
-
-tde_build() {
-	CMAKE_USE_DIR="${S}/${dir}"
-        BUILD_DIR="${WORKDIR}/${dir}-build"
-}
-
 src_configure() {
+	cp -rf ${TDEDIR}/share/cmake .
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	PREFIX="${TDEDIR}"
-	for lang in ${L10N}; do
-		dir="tde-i18n-$lang"
+	for dir in ${L10N}; do
 		einfo "Configuring tde-i18n-$dir"
-		if [ -d "${S}/${dir}" ]; then
-			tde_build
-			mycmakeargs=(-DCMAKE_BUILD_TYPE="RelWithDebInfo"
-			-DCMAKE_VERBOSE_MAKEFILE=ON
-			-DCMAKE_INSTALL_PREFIX="${TDEDIR}"
-			-DBIN_INSTALL_DIR="${TDEDIR}/bin"
-			-DINCLUDE_INSTALL_DIR="${TDEDIR}/include"
-			-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
-			-DPKGCONFIG_INSTALL_DIR="${TDEDIR}/$(get_libdir)/pkgconfig"
-			-DSHARE_INSTALL_PREFIX="${TDEDIR}/share"
-			-DBUILD_ALL=ON
-			-DBUILD_DOC=ON
-			-DBUILD_DATA=ON
-			-DBUILD_MESSAGES=ON)
-			cmake-utils_src_configure
+		if [ -d "${S}/tde-i18n-${dir}" ]; then
+			cd "${S}/tde-i18n-${dir}"
+			rm CMakeCache.txt
+			mkdir build
+			cd build
+			cmake "${S}/tde-i18n-${dir}" \
+			-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+			-DCMAKE_VERBOSE_MAKEFILE=ON \
+			\
+			-DCMAKE_INSTALL_PREFIX="${TDEDIR}" \
+			-DBIN_INSTALL_DIR="${TDEDIR}/bin" \
+			-DINCLUDE_INSTALL_DIR="${TDEDIR}/include" \
+			-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)" \
+			-DPKGCONFIG_INSTALL_DIR="${TDEDIR}/$(get_libdir)/pkgconfig" \
+			-DSHARE_INSTALL_PREFIX="${TDEDIR}/share" \
+			\
+			-DBUILD_ALL=ON \
+			-DBUILD_DOC=ON \
+			-DBUILD_DATA=ON \
+			-DBUILD_MESSAGES=ON
 		fi
 	done
 }
 
 src_compile() {
-	for lang in ${L10N}; do
-		dir="${PN}-$lang"
+	for dir in ${L10N}; do
                 einfo "Configuring tde-i18n-$dir"
-                if [ -d "${S}/${dir}" ]; then
-			tde_build
-			cmake-utils_src_compile
+                if [ -d "${S}/tde-i18n-${dir}" ]; then
+                        cd "${S}/tde-i18n-${dir}"/build
+                        emake || die
                 fi
 	done
 
 }
 
 src_install() {
-	for lang in ${L10N}; do
-		dir="${PN}-$lang"
+	for dir in ${L10N}; do
                 einfo "Configuring tde-i18n-$dir"
-                if [ -d "${S}/${dir}" ]; then
-			cd "${S}/${dir}"/build
-			cmake-utils_src_install
+                if [ -d "${S}/tde-i18n-${dir}" ]; then
+			cd "${S}/tde-i18n-${dir}"/build
+			emake install DESTDIR=${D} || die
 		fi
 	done
 }
