@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="This metapackage includes a collection of network and networking related"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -74,7 +74,7 @@ src_configure() {
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 	-DCMAKE_SKIP_RPATH=OFF
 	-DCMAKE_INSTALL_RPATH="${TDEDIR}/$(get_libdir)"
-	-DCMAKE_NO_BUILTIN_CHRPATH=ON
+#	-DCMAKE_NO_BUILTIN_CHRPATH=ON
 	-DCMAKE_VERBOSE_MAKEFILE=ON
 	-DWITH_GCC_VISIBILITY=OFF
 	-DBIN_INSTALL_DIR="${TDEDIR}/bin"

@@ -1,10 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Administrative tools for TDE"
 HOMEPAGE="http://trinitydesktop.org/"

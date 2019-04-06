@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
 inherit cmake-utils desktop flag-o-matic gnome2-utils rpm
 
@@ -48,7 +48,7 @@ pkg_setup() {
 
 src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {

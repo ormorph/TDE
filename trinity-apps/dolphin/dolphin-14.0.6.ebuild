@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Dolphin focuses on being only a file manager"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -28,12 +28,6 @@ S="${WORKDIR}/${PN}-r${PV}"
 TDEDIR="/opt/trinity"
 
 
-#src_prepare() {
-#	cp /usr/share/libtool/build-aux/ltmain.sh "${S}/admin/ltmain.sh"
-#	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
-#	eapply_user
-#}
-
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
@@ -44,7 +38,7 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=OFF
 		-DCMAKE_INSTALL_RPATH="${TDEDIR}/$(get_libdir)"
-		-DCMAKE_NO_BUILTIN_CHRPATH=ON
+#		-DCMAKE_NO_BUILTIN_CHRPATH=ON
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_PROGRAM_PATH="${TDEDIR}/bin"
 		-DWITH_GCC_VISIBILITY=OFF

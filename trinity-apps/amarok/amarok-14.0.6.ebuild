@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator multilib cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Advanced audio player based on KDE frameworks"
 HOMEPAGE="http://trinitydesktop.org/"
