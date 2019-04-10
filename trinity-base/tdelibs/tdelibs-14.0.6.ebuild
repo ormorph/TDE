@@ -82,6 +82,9 @@ pkg_setup() {
 
 src_prepare() {
 	cp -rf ${WORKDIR}/libltdl-r${PV}/. ${S}/libltdl || die
+	rm ${S}/mimetypes/application/x-mplayer2.desktop
+	sed -i '/x-mplayer2.desktop/d' ${S}/mimetypes/application/CMakeLists.txt
+	sed -i '/x-mplayer2.desktop/d' ${S}/mimetypes/application/Makefile.am
 	cmake-utils_src_prepare
 }
 
