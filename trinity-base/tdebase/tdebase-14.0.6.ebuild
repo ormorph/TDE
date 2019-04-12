@@ -14,7 +14,7 @@ SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="x86 amd64"
-IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon"
+IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon xcomposite"
 
 DEPEND="
 	trinity-base/tde-common-cmake
@@ -71,7 +71,8 @@ DEPEND="
 	sys-apps/acl
 	virtual/libusb:0
 	net-libs/rpcsvc-proto
-	x11-libs/libXcomposite
+	xcomposite? ( x11-libs/libXcomposite
+		trinity-base/tdelibs[xcomposite] )
 "
 RDEPEND="$DEPEND"
 
@@ -124,7 +125,7 @@ src_configure() {
 		-DWITH_SAMBA=$(usex samba)
 #		-DWITH_OPENEXR=OFF  #flag
 		-DWITH_OPENEXR=$(usex openexr)
-		-DWITH_XCOMPOSITE=ON
+		-DWITH_XCOMPOSITE=$(usex  xcomposite ON OFF)
 		-DWITH_XCURSOR=ON
 		-DWITH_XFIXES=ON
 #  %{?!with_xrandr:-DWITH_XRANDR=OFF}
