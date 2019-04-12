@@ -71,6 +71,7 @@ DEPEND="
 	sys-apps/acl
 	virtual/libusb:0
 	net-libs/rpcsvc-proto
+	x11-libs/libXcomposite
 "
 RDEPEND="$DEPEND"
 
