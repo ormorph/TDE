@@ -19,7 +19,7 @@ SLOT="0"
 
 DEPEND="
 	dev-qt/tqtinterface"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

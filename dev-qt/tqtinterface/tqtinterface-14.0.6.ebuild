@@ -28,7 +28,7 @@ DEPEND="
 	x11-libs/libXi
 "
 
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-r${PV}"
 
 TQTBASE="/opt/trinity"

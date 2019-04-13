@@ -32,7 +32,7 @@ DEPEND="
 	dev-libs/libpcre
 	dev-libs/openssl
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 

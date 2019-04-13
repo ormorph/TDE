@@ -23,7 +23,7 @@ DEPEND="
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 for X in ${TDE_L10N} ; do
         IUSE+=" -l10n_${X}"

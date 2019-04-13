@@ -25,7 +25,7 @@ SLOT="0"
 DEPEND="
 	trinity-base/tde-common-cmake
 	trinity-base/tdebase"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 
 

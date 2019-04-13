@@ -42,7 +42,7 @@ DEPEND="
 	alsa? ( media-libs/alsa-lib )
 	vorbis? ( media-libs/libogg media-libs/libvorbis )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.90 )"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

@@ -21,7 +21,7 @@ SLOT="0"
 DEPEND="
 	trinity-base/tdenv
 	dev-qt/tqtinterface"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/dependencies/${PN}"
 

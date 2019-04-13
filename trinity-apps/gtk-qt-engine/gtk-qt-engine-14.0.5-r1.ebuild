@@ -26,7 +26,7 @@ DEPEND="
 	sys-devel/gettext
 	sys-devel/libtool
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/applications/${PN}"
 

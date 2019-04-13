@@ -61,7 +61,7 @@ DEPEND="
 	xi? ( x11-libs/libXi )
 	sqlite? ( dev-db/sqlite )
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

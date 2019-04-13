@@ -28,7 +28,7 @@ DEPEND="
 	app-misc/fdupes
 	dev-util/desktop-file-utils
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

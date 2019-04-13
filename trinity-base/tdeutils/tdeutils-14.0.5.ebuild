@@ -40,7 +40,7 @@ DEPEND="
 	app-arch/zip
 	app-arch/bzip2
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}"
 

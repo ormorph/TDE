@@ -26,7 +26,7 @@ DEPEND="dev-qt/tqt3
 	x11-libs/libXi
 "
 
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 S="${WORKDIR}/dependencies/${PN}"
 
 TQTBASE="/opt/trinity"

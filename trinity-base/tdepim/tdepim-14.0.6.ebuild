@@ -44,7 +44,7 @@ DEPEND="
 	xscreensaver? ( x11-misc/xscreensaver )
 	gnokii? ( app-mobilephone/gnokii )
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

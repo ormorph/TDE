@@ -30,7 +30,7 @@ DEPEND="
 	dev-libs/libofx
 	app-text/openjade
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/applications/${PN}"
 

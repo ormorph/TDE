@@ -23,7 +23,7 @@ SLOT="0"
 
 DEPEND="
 	trinity-base/tdebase"
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 
 

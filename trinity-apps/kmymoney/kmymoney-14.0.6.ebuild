@@ -32,7 +32,7 @@ DEPEND="
 	app-text/openjade
 	dev-libs/libofx
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-r${PV}" 
 

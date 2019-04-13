@@ -26,7 +26,7 @@ DEPEND="
 	virtual/pkgconfig
 	app-misc/fdupes
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/applications/${PN}"
 

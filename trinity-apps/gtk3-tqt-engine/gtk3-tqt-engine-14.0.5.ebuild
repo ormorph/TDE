@@ -27,7 +27,7 @@ DEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 "
-RDEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/applications/${PN}"
 
