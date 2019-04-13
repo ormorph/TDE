@@ -22,7 +22,6 @@ SLOT="0"
 DEPEND="
 	trinity-base/tde-common-cmake
 	dev-qt/tqtinterface
-	trinity-base/tdelibs
 	dev-libs/glib:2
 	media-libs/audiofile
 	mp3? ( media-libs/libmad )

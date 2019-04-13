@@ -50,6 +50,7 @@ MY_DEPEND="trinity-base/tde-common-cmake
 	lzma? ( app-arch/xz-utils )
 	xrandr? ( >=x11-libs/libXrandr-1.2 )
 	xcomposite? ( x11-libs/libXcomposite )
+	arts? ( trinity-base/arts )
 	elficon? ( trinity-apps/libr )"
 # NOTE: upstream lacks avahi support, so the usex flag is currenly masked
 # TODO: add elfres support via libr (not in portage now)
