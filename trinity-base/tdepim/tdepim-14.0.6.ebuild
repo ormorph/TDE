@@ -18,17 +18,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="xscreensaver gnokii -arts"
 SLOT="0"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	dev-util/desktop-file-utils
+"
+DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
 	dev-libs/glib:2
 	arts? ( trinity-base/arts )
-	trinity-base/tdelibs
 	trinity-base/libcaldav
 	trinity-base/libcarddav
-	dev-util/cmake
-	dev-util/desktop-file-utils
 	app-crypt/gpgme
 	app-admin/gamin
 	net-misc/curl

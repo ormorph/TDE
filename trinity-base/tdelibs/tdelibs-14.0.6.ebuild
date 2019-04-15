@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE+=" alsa avahi -arts cups consolekit fam jpeg2k lua lzma networkmanager openexr
 	spell sudo tiff utempter upower udisks old_udisks +xcomposite +xrandr elficon"
 
-MY_DEPEND="trinity-base/tde-common-cmake
+MY_DEPEND="
 	dev-qt/tqtinterface
 	>=dev-libs/libxslt-1.1.16
 	>=dev-libs/libxml2-2.6.6
@@ -55,6 +55,9 @@ MY_DEPEND="trinity-base/tde-common-cmake
 # NOTE: upstream lacks avahi support, so the usex flag is currenly masked
 # TODO: add elfres support via libr (not in portage now)
 
+BDEPEND="
+	trinity-base/tde-common-cmake
+"
 DEPEND+=" ${MY_DEPEND}
 	trinity-base/tqca
 	trinity-base/tqca-tls

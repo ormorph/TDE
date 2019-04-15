@@ -17,15 +17,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 SLOT="0"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	sys-devel/gettext
+	sys-devel/libtool
+	dev-util/desktop-file-utils
+"
+DEPEND="
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
 	trinity-base/tdebase
-	dev-util/cmake
-	dev-util/desktop-file-utils
-	sys-devel/gettext
-	sys-devel/libtool
 "
 RDEPEND="${DEPEND}"
 

@@ -16,8 +16,10 @@ SLOT="0"
 KEYWORDS="x86 amd64"
 IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon +xcomposite"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+"
+DEPEND="
 	dev-qt/tqtinterface
 	sys-libs/libraw1394
 	openexr? ( media-libs/openexr )

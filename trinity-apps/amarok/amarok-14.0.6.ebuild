@@ -15,9 +15,11 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+xine visual "
 
+BDEPEND="
+	trinity-base/tde-common-cmake
+"
 DEPEND="
 	sys-apps/dbus
-	trinity-base/tde-common-cmake
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
 	xine? ( media-libs/xine-lib )

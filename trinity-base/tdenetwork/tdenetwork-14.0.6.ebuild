@@ -15,15 +15,16 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="gadu speex openslp meanwhile -arts"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
-	trinity-base/tdebase
-	trinity-base/tdelibs
-	dev-util/cmake
 	sys-devel/gettext
 	sys-apps/coreutils
 	dev-util/desktop-file-utils
 	app-misc/fdupes
+"
+DEPEND="
+	trinity-base/tdebase
+	trinity-base/tdelibs
 	dev-libs/openssl
 	net-libs/gnutls
 	dev-db/sqlite

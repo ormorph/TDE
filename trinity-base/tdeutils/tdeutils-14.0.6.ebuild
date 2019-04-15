@@ -17,16 +17,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="xscreensaver klaptopdaemon"
 SLOT="0"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	sys-devel/gettext
+	virtual/pkgconfig
+	app-misc/fdupes
+"
+DEPEND="
 	dev-qt/tqtinterface
 	trinity-base/tdelibs
 	trinity-base/tdebase
 	dev-libs/glib:2
-	sys-devel/gettext
-	dev-util/cmake
-	virtual/pkgconfig
-	app-misc/fdupes
 	net-analyzer/net-snmp
 	dev-lang/python
 	dev-libs/gmp

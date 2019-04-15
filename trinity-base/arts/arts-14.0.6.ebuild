@@ -19,8 +19,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa -artswrappersuid jack mp3 nas vorbis"
 SLOT="0"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+"
+DEPEND="
 	dev-qt/tqtinterface
 	dev-libs/glib:2
 	media-libs/audiofile

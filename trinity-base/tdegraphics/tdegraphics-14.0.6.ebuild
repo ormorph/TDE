@@ -15,14 +15,16 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+pdf paper t1lib"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	dev-util/desktop-file-utils
+"
+DEPEND="
 	trinity-base/tdebase
 	trinity-base/tdelibs
 	trinity-base/tdemultimedia
 	paper? ( app-text/libpaper )
 	dev-libs/libgamin
-	dev-util/desktop-file-utils
 	net-dns/libidn
 	virtual/libusb:0
 	media-libs/libmng

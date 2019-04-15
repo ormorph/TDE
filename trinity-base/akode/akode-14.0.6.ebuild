@@ -15,8 +15,10 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+alsa +pulseaudio jack +mpc oss +mpeg "
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+"
+DEPEND="
 	trinity-base/arts
 	mpc? ( dev-libs/mpc )
 	dev-libs/libltdl
@@ -29,7 +31,6 @@ DEPEND="
 	media-libs/flac
 	media-libs/libvorbis
 	media-libs/libsndfile
-	trinity-base/tde-common-cmake
 "
 RDEPEND="$DEPEND"
 

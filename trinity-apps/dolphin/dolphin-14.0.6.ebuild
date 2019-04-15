@@ -15,11 +15,13 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	dev-util/desktop-file-utils
+"
+DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
-	dev-util/desktop-file-utils
 "
 RDEPEND="$DEPEND"
 

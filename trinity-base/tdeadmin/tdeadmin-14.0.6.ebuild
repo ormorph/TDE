@@ -15,14 +15,15 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="lilo cron"
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
-	trinity-base/tdelibs
-	dev-util/cmake
 	sys-devel/libtool
 	app-misc/fdupes
-	virtual/acl
 	dev-util/desktop-file-utils
+"
+DEPEND="
+	trinity-base/tdelibs
+	virtual/acl
 	cron? ( virtual/cron )
 "
 RDEPEND="$DEPEND"

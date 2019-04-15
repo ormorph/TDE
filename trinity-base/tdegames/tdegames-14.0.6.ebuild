@@ -15,6 +15,9 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="-arts"
 
+BDEPEND="
+	trinity-base/tde-common-cmake
+"
 DEPEND="
 	trinity-base/tdebase
 	trinity-base/tdelibs

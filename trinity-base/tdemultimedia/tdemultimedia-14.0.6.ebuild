@@ -24,8 +24,10 @@ REQUIRED_USE="
 	juk? ( gstreamer )
 "
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+"
+DEPEND="
 	trinity-base/tdebase
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	flac? ( media-libs/flac )
@@ -37,7 +39,7 @@ DEPEND="
 	krec? ( media-sound/lame )
 	xine? ( media-libs/xine-lib )
 	taglib? ( media-libs/taglib )
-	arts? ( trinity-base/akode 
+	arts? ( trinity-base/akode
 		media-libs/musicbrainz )
 "
 RDEPEND="$DEPEND"

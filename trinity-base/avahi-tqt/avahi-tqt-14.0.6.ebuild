@@ -15,16 +15,16 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
-	sys-apps/dbus
-	dev-util/cmake
-	trinity-base/tde-common-cmake
-	dev-qt/tqtinterface
 	virtual/pkgconfig
-	sys-devel/libtool
-	dev-libs/glib:2
 	sys-devel/gettext
+	sys-devel/libtool
+"
+DEPEND="
+	sys-apps/dbus
+	dev-qt/tqtinterface
+	dev-libs/glib:2
 	x11-base/xorg-server
 	x11-libs/libXi
 	dev-libs/dbus-1-tqt

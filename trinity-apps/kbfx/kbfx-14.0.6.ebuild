@@ -15,14 +15,15 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
+	virtual/pkgconfig
+	sys-devel/libtool
+	dev-util/desktop-file-utils
+"
+DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
-	dev-util/cmake
-	dev-util/desktop-file-utils
-	sys-devel/libtool
-	virtual/pkgconfig
 	net-dns/libidn
 	app-admin/gamin
 	dev-libs/libpcre

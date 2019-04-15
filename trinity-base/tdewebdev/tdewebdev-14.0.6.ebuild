@@ -15,13 +15,15 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
 	sys-devel/libtool
 	sys-devel/gettext
-        sys-devel/autoconf
-        sys-devel/automake
-        virtual/pkgconfig
+	sys-devel/autoconf
+	sys-devel/automake
+	virtual/pkgconfig
+"
+DEPEND="
 	>=trinity-base/tdelibs-14.0.6
         >=trinity-base/tdesdk-14.0.6
         dev-libs/libxslt

@@ -15,18 +15,19 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND="
+BDEPEND="
 	trinity-base/tde-common-cmake
-	trinity-base/tdebase
-	trinity-base/tdepim
-	dev-util/cmake
 	sys-devel/libtool
 	app-misc/fdupes
+	dev-util/desktop-file-utils
+"
+DEPEND="
+	trinity-base/tdebase
+	trinity-base/tdepim
 	virtual/acl
 	net-dns/libidn
 	app-admin/gamin
 	dev-libs/libpcre
-	dev-util/desktop-file-utils
 	dev-libs/libxslt
 	dev-libs/libxml2
 	dev-vcs/subversion
