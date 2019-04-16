@@ -14,7 +14,7 @@ LICENSE="GPL2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama"
+IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama +imtqt"
 
 RDEPEND="
 	virtual/jpeg:0
@@ -76,8 +76,13 @@ pkg_setup() {
 src_prepare() {
 
 sed -i ${S}/mkspecs/*/qmake.conf \
-  -e "s|^QMAKE_CFLAGS		=.*|QMAKE_CFLAGS		= ${CFLAGS}|" \
-
+  -e "s|^QMAKE_CFLAGS		=.*|QMAKE_CFLAGS		= ${CFLAGS}|"
+# Use TQT_IM_MODULE variable
+if use imtqt ; then
+	sed -i 's/QT_IM_MODULE/TQT_IM_MODULE/g' ${S}/README.immodule
+	sed -i 's/QT_IM_MODULE/TQT_IM_MODULE/g' ${S}/plugins/src/inputmethods/imsw-multi/qmultiinputcontext.cpp
+	sed -i 's/QT_IM_MODULE/TQT_IM_MODULE/g' ${S}/plugins/src/inputmethods/imsw-none/qnoneinputcontextplugin.cpp
+fi
 	eapply_user
 }
 
