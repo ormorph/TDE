@@ -71,7 +71,7 @@ src_configure() {
 			-DBUILD_ALL=ON \
 			-DBUILD_DOC=ON \
 			-DBUILD_DATA=ON \
-			-DBUILD_MESSAGES=ON
+			-DBUILD_MESSAGES=ON || die
 		fi
 	done
 }

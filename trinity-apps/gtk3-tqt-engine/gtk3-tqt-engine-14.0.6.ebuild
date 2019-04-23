@@ -51,15 +51,18 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDEDIR TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
 	emake -f admin/Makefile.common
-        ./configure --prefix=${PREFIX} \
-		--includedir=${PREFIX}/include \
-		--enable-new-ldflags \
-		--libdir="${PREFIX}/$(get_libdir)" \
-		--bindir="${PREFIX}/bin" \
-		--exec-prefix="${PREFIX}" \
-		--disable-dependency-tracking \
-		--disable-debug \
-		--enable-final \
-		--enable-closure \
+	myconf=(--without-arts
+		--prefix=${PREFIX}
+		--includedir=${PREFIX}/include
+		--enable-new-ldflags
+		--libdir="${PREFIX}/$(get_libdir)"
+		--bindir="${PREFIX}/bin"
+		--exec-prefix="${PREFIX}"
+		--disable-dependency-tracking
+		--disable-debug
+		--enable-final
+		--enable-closure
 		--enable-rpath
+	)
+	build_arts=no ./configure ${myconf[@]} || die
 }

@@ -50,10 +50,10 @@ src_configure() {
 		einfo "Configuring koffice-i18n-${dir}"
 		if [ -d "${S}/koffice-i18n-${dir}" ]; then
 			cd "${S}/koffice-i18n-${dir}"
-			emake -f admin/Makefile.common
+			emake -f admin/Makefile.common || die
 			build_arts=no ./configure --without-arts \
 				--prefix=${PREFIX} \
-				--sysconfdir=/etc/tinity
+				--sysconfdir=/etc/tinity || die
 		fi
         done
 }
@@ -64,7 +64,7 @@ src_compile() {
 		einfo "Configuring koffice-i18n-${dir}"
 		if [ -d "${S}/koffice-i18n-${dir}" ]; then
 			cd "${S}/koffice-i18n-${dir}"
-			emake
+			emake || die
 		fi
 	done
 }
@@ -75,7 +75,7 @@ src_install() {
 		einfo "Configuring koffice-i18n-${dir}"
 		if [ -d "${S}/koffice-i18n-${dir}" ]; then
 			cd "${S}/koffice-i18n-${dir}"
-			emake install DESTDIR=${D}
+			emake install DESTDIR=${D} || die
 		fi
 	done
 

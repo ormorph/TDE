@@ -14,7 +14,7 @@ SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="arts"
 SLOT="0"
 
 DEPEND="
@@ -27,6 +27,7 @@ DEPEND="
 	sys-devel/gettext
 	app-misc/fdupes
 	dev-util/desktop-file-utils
+	arts? ( trinity-base/arts )
 "
 RDEPEND="${DEPEND}"
 
@@ -73,6 +74,7 @@ src_configure() {
 		--with-qt-include-dir="${TDEDIR}/include"
 		--with-qt-moc="${TDEDIR}/bin/tqmoc"
 )
-	./configure ${myconf[@]}
-	
+	use arts || myconf+=(--without-arts-support)
+	./configure ${myconf[@]} || die
+
 }

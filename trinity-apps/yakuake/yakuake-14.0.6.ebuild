@@ -63,8 +63,8 @@ src_configure() {
 		--disable-gcc-hidden-visibility
 )
 	if use arts ; then
-		./configure ${myconf[@]}
+		./configure ${myconf[@]} || die
 	else
-		build_arts=no ./configure --without-arts ${myconf[@]}
+		build_arts=no ./configure --without-arts ${myconf[@]} || die
 	fi
 }

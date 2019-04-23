@@ -102,9 +102,9 @@ src_configure() {
 		--disable-scripting)
 		use postgres && myconf+=(--enable-pgsql)|| myconf+=(--disable-pgsql)
 	if use arts ; then
-		./configure ${myconf[@]}
+		./configure ${myconf[@]} || die
 	else
-		build_arts=no ./configure --without-arts ${myconf[@]}
+		build_arts=no ./configure --without-arts ${myconf[@]} || die
 	fi
 	sed 's#-std=c++11#-std=c++98#' -i ${S}/filters/kspread/qpro/libqpro/src/Makefile 
 }

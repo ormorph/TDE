@@ -69,6 +69,6 @@ src_configure() {
 		--enable-lame \
 		--enable-ogg \
 		--enable-alsa \
-		--enable-oss
+		--enable-oss || die
 
 }

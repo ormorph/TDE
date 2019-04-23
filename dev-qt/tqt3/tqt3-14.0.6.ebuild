@@ -77,6 +77,11 @@ src_prepare() {
 
 sed -i ${S}/mkspecs/*/qmake.conf \
   -e "s|^QMAKE_CFLAGS		=.*|QMAKE_CFLAGS		= ${CFLAGS}|"
+sed -i ${S}/mkspecs/*/qmake.conf \
+  -e "s|QMAKE_INCDIR		=|QMAKE_INCDIR		= /usr/include/tqt|"
+sed -i ${S}/mkspecs/*/qmake.conf  -e "s|\$(QTDIR)|${TQTBASE}|g"
+sed -i ${S}/mkspecs/*/qmake.conf -e 's:QMAKE_RPATH.*:QMAKE_RPATH =:'
+
 # Use TQT_IM_MODULE variable
 if use imtqt ; then
 	sed -i 's/QT_IM_MODULE/TQT_IM_MODULE/g' ${S}/README.immodule

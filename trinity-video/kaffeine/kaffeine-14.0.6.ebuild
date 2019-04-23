@@ -84,7 +84,7 @@ src_configure() {
 		$(use_with xinerama ) \
 		$(use_with gstreamer ) \
 		$(use_with lame ) \
-		--without-dvb
+		--without-dvb || die
 }
 
 src_compile() {

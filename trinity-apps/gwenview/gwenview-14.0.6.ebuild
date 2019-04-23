@@ -60,7 +60,7 @@ src_configure() {
 		--enable-final \
 		--enable-closure \
 		--enable-rpath \
-		--disable-gcc-hidden-visibility
+		--disable-gcc-hidden-visibility || die
 
 }
 

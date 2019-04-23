@@ -74,5 +74,5 @@ src_configure() {
 		--enable-ofxplugin
 		--enable-ofxbanking
 		--enable-qtdesigner)
-	build_arts=no ./configure ${myconf[@]}
+	build_arts=no ./configure ${myconf[@]} || die
 }

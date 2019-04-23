@@ -35,6 +35,6 @@ src_prepare() {
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib64/pkgconfig
-	./configure --prefix=${TDEDIR}  --libdir=${TDEDIR}/$(get_libdir)
+	./configure --prefix=${TDEDIR}  --libdir=${TDEDIR}/$(get_libdir) || die
 }
 
