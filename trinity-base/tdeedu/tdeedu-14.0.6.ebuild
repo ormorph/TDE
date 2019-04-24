@@ -53,7 +53,7 @@ src_configure() {
 		--disable-kig-python-scripting)
 
 	if use arts ; then
-		./comfigure ${myconf[@]} || die
+		./configure ${myconf[@]} || die
 	else
 		build_arts=no ./configure --without-arts ${myconf[@]} || die
 	fi
