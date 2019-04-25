@@ -43,6 +43,13 @@ S="${WORKDIR}/${PN}"
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
+src_prepare() {
+	cd ${S}/parts/appwizard/common/admin
+	libtoolize -c
+	cp -Rp /usr/share/aclocal/libtool.m4 libtool.m4.in
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=/opt/trinity/lib/pkgconfig
