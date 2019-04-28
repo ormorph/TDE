@@ -43,6 +43,7 @@ DEPEND="
 		trinity-base/tdelibs[elficon] )
 	media-libs/libart_lgpl
 	x11-base/xorg-server
+	x11-apps/setxkbmap
 	x11-libs/libXdamage
 	sys-apps/usbutils
 	sys-apps/usbutils
