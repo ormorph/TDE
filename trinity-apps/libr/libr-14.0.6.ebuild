@@ -23,7 +23,6 @@ BDEPEND="
 DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
-	virtual/libelf
 "
 RDEPEND="$DEPEND"
 
@@ -36,7 +35,7 @@ src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake ${S}
 	mycmakeargs=(
 		-DWITH_BACKEND_LIBBFD=OFF
-		-DWITH_BACKEND_LIBELF=ON
+		-DWITH_BACKEND_READONLY=ON
 )
 	cmake-utils_src_prepare
 }

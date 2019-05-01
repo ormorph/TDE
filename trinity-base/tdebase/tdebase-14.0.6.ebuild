@@ -104,6 +104,9 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:${TDEDIR}/$(get_libdir)
+	if use elficon ; then
+		CXXFLAGS="${CXXFLAGS} -lr"
+	fi
 	mycmakeargs=(
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 #		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
