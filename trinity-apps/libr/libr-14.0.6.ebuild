@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator eutils desktop flag-o-matic gnome2-utils
+inherit cmake-utils eutils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Dolphin focuses on being only a file manager"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -15,10 +15,15 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
+BDEPEND="
+	dev-util/desktop-file-utils
+	trinity-base/tde-common-cmake
+"
+
 DEPEND="
 	trinity-base/tdelibs
 	trinity-base/tdebase
-	dev-util/desktop-file-utils
+	virtual/libelf
 "
 RDEPEND="$DEPEND"
 
@@ -27,7 +32,15 @@ S="${WORKDIR}/${PN}-r${PV}"
 TDEDIR="/opt/trinity"
 
 
+src_prepare() {
+	cp -rf ${TDEDIR}/share/cmake ${S}
+	mycmakeargs=(
+		-DWITH_BACKEND_LIBBFD=OFF
+		-DWITH_BACKEND_LIBELF=ON
+)
+	cmake-utils_src_prepare
+}
+
 src_configure() {
-	./autogen.sh
-	econf
+	cmake-utils_src_configure
 }
