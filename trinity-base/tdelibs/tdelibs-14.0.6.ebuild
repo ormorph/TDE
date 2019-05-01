@@ -154,7 +154,7 @@ src_install() {
 	cat <<EOF >"${D}/etc/env.d/45trinitypaths-${SLOT}" # number goes down with version upgrade
 PATH=${TDEDIR}/bin
 ROOTPATH=${TDEDIR}/sbin:${TDEDIR}/bin
-LDPATH=${libdirs#:}
+LDPATH=${libdirs#:}${TDEDIR}/$(get_libdir)/trinity:
 MANPATH=${TDEDIR}/share/man
 CONFIG_PROTECT="${TDEDIR}/share/config ${TDEDIR}/env ${TDEDIR}/shutdown /usr/share/config"
 #TDE_IS_PRELINKED=1
