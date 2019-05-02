@@ -1,0 +1,16 @@
+--- ksirc/dsirc.orig	2019-05-02 15:20:55.774416156 +0300
++++ ksirc/dsirc	2019-05-02 15:22:59.412413644 +0300
+@@ -68,12 +68,7 @@
+ 
+ $publicAway = 1;
+ 
+-if (!eval "require 'getopts.pl';") {
+-  print "\n\n\
+-Your perl interpreter is *really* screwed up: the getopts.pl library is not
+-even there! Have you even bothered to run 'install'?\n";
+-  exit;
+-}
++use Getopt::Std; *Getopts = *getopts;
+ 
+ if ($] >= 5 && (eval "use Socket;", $@ eq '')) {
+     $sock6 = eval ("require Socket6;") and eval("use Socket6;");

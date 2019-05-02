@@ -64,6 +64,11 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	eapply -p0 ${FILESDIR}/${PN}-getopts.patch
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
