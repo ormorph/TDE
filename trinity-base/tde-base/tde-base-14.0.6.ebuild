@@ -28,6 +28,7 @@ RDEPEND=">=trinity-base/tde-minimal-14.0.6
 	trinity-apps/tde-style-qtcurve
 	trinity-apps/twin-style-crystal
 	>=trinity-apps/kbfx-14.0.6
+	>=trinity-apps/kcmautostart-14.0.6
 	redcore? ( x11-themes/redcore-artwork-core )
 	powermanagement? ( trinity-apps/tdepowersave )
 "
