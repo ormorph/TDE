@@ -41,9 +41,9 @@ src_prepare() {
 	cd ${S}/admin
 	libtoolize -c
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
-#	sed -i "${S}/admin/acinclude.m4.in" \
-#-i "${S}/src/kvilib/tal/kvi_tal_application.cpp" \
-#-e "/TDEApplication/ s|\")|\", true, true, true)|"
+	sed -i "${S}/admin/acinclude.m4.in" \
+       -i "${S}/src/kvilib/tal/kvi_tal_application.cpp" \
+       -e "/TDEApplication/ s|\")|\", true, true, true)|";
         eapply_user
 }
 
@@ -72,7 +72,8 @@ src_configure() {
 		--with-qt-name=tqt
 		--with-qt-library-dir="${TDEDIR}/$(get_libdir)"
 		--with-qt-include-dir="${TDEDIR}/include"
-		--with-qt-moc="${TDEDIR}/bin/tqmoc"
+#		--with-qt-moc="${TDEDIR}/bin/tqmoc"
+		--with-qt-moc="/usr/bin/tmoc"
 )
 	use arts || myconf+=(--without-arts-support)
 	./configure ${myconf[@]} || die
