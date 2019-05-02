@@ -11,7 +11,7 @@ HOMEPAGE="http://www.trinitydesktop.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+webdev +redcore powermanagement"
+IUSE="+webdev +redcore powermanagement xscreensaver"
 KEYWORDS="x86 amd64"
 
 RDEPEND=">=trinity-base/tde-minimal-14.0.6
@@ -31,6 +31,9 @@ RDEPEND=">=trinity-base/tde-minimal-14.0.6
 	>=trinity-apps/kcmautostart-14.0.6
 	redcore? ( x11-themes/redcore-artwork-core )
 	powermanagement? ( trinity-apps/tdepowersave )
+	xscreensaver? ( trinity-base/tdebase[xscreensaver]
+			trinity-base/tdeutils[xscreensaver] 
+			trinity-base/tdetoys )
 "
 
 S=${WORKDIR}
