@@ -56,8 +56,7 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	xinerama? ( x11-proto/xineramaproto )"
-
+"
 
 S="${WORKDIR}/${PN}-r${PV}"
 
