@@ -72,10 +72,22 @@ src_configure() {
 		--with-qt-name=tqt
 		--with-qt-library-dir="${TDEDIR}/$(get_libdir)"
 		--with-qt-include-dir="${TDEDIR}/include"
-#		--with-qt-moc="${TDEDIR}/bin/tqmoc"
 		--with-qt-moc="/usr/bin/tmoc"
 )
 	use arts || myconf+=(--without-arts-support)
 	./configure ${myconf[@]} || die
 
+}
+
+src_compile() {
+	emake symlinks -C src/kvilib/build
+	emake symlinks -C src/kvirc/build
+	sed -i "src/modules/"*"/Makefile" -e "s|-Wl,--no-undefined||"
+	emake
+}
+
+src_install() {
+	make install DESTDIR=${D}
+	mv ${D}${TDEDIR}/share/kvirc/3.4/license/COPYING \
+	${D}${TDEDIR}/share/kvirc/3.4/license/EULA
 }
