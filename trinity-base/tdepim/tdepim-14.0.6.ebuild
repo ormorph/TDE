@@ -11,7 +11,7 @@ DESCRIPTION="Personal Information Management apps from the official Trinity rele
 HOMEPAGE="http://trinitydesktop.org/"
 VER="r14.0.x"
 
-SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"

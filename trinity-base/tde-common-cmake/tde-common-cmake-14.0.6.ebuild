@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 RESTRICT="nomirror"
 MY_PN="cmake"
 
-SRC_URI="https://git.trinitydesktop.org/cgit/${MY_PN}/snapshot/${MY_PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${MY_PN}/snapshot/${MY_PN}-r${PV}.tar.gz"
 
 SLOT="0"
 IUSE=""

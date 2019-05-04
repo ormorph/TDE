@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs
 DESCRIPTION="This is the Trolltech TQt library, version 3"
 HOMEPAGE="http://trinitydesktop.org/"
 
-SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL2+"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="KStreamRipper is a small frontend for the streamripper command"
 HOMEPAGE="http://trinitydesktop.org"
-SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

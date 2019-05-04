@@ -10,7 +10,7 @@ inherit eutils desktop flag-o-matic gnome2-utils
 DESCRIPTION="Yakuake is a Quake-style terminal emulator based on TDE Konsole technology"
 HOMEPAGE="http://trinitydesktop.org/"
 
-SRC_URI="https://git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
