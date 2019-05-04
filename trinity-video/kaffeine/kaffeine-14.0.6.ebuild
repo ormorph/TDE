@@ -30,8 +30,9 @@ DEPEND="
 	media-sound/cdparanoia
 	x11-libs/libXext
 	x11-libs/libXtst
+	dev-libs/libcdio-paranoia
 	xinerama? ( x11-libs/libXinerama )
-	gstreamer? ( media-libs/gstreamer:1.0 
+	gstreamer? ( media-libs/gstreamer:1.0
 		media-plugins/gst-plugins-meta )
 	lame? ( media-sound/lame )
 	dev-libs/glib:2
