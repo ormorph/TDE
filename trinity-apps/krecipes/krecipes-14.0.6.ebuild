@@ -27,9 +27,10 @@ DEPEND="
 	sys-devel/libtool
 	sys-devel/m4
 	app-misc/fdupes
-	mysql? ( virtual/mysql )
-	postgresql? ( dev-db/postgresql )
-	sqlite? ( dev-db/sqlite )
+	mysql? ( dev-qt/tqt3[mysql] )
+	postgresql? ( dev-db/postgresql 
+		dev-qt/tqt3[postgres] )
+	sqlite? ( dev-qt/tqt3[sqlite] )
 "
 RDEPEND="$DEPEND"
 
