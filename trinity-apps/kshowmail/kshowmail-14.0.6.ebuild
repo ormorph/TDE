@@ -59,13 +59,13 @@ src_configure() {
 		--disable-final
 		--enable-closure
 		--enable-rpath
+		--disable-gcc-hidden-visibility
 )
-		use arts || myconf+=(--without-arts-support)
+		use arts || myconf+=(--without-arts)
 	build_arts=$(usex arts yes no) ./configure ${myconf[@]} || die
 
 }
 
 src_install() {
-	MAKEOPTS="-j1"
 	emake install DESTDIR=${D} || die
 }
