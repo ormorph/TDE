@@ -18,7 +18,6 @@ IUSE="+sqlite mysql postgresql"
 DEPEND="
 	trinity-base/tde-common-admin
 	trinity-base/tdelibs
-	trinity-base/tdebase
 	dev-util/desktop-file-utils
 	virtual/pkgconfig
 	sys-devel/autoconf
