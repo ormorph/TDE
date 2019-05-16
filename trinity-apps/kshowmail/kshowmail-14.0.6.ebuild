@@ -47,7 +47,8 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	emake -f admin/Makefile.common
-	myconf=(--prefix="${TDEDIR}"
+	use arts || myconf+=(--without-arts)
+	myconf+=(--prefix="${TDEDIR}"
 		--exec-prefix="${TDEDIR}"
 		--bindir="${TDEDIR}/bin"
 		--datadir="${TDEDIR}/share"
@@ -61,7 +62,6 @@ src_configure() {
 		--enable-rpath
 		--disable-gcc-hidden-visibility
 )
-		use arts || myconf+=(--without-arts)
 	build_arts=$(usex arts yes no) ./configure ${myconf[@]} || die
 
 }
