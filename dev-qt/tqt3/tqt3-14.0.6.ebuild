@@ -14,7 +14,7 @@ LICENSE="GPL2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama +imtqt"
+IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama +imtqt postgres odbc"
 
 RDEPEND="
 	virtual/jpeg:0
@@ -135,6 +135,8 @@ src_configure() {
 	use postgres	&& myconf+=(-plugin-sql-psql -I/usr/include/postgresql/server -I/usr/include/postgresql/pgsql -I/usr/include/postgresql/pgsql/server) || myconf+=(-no-sql-psql)
 	use firebird    && myconf+=(-plugin-sql-ibase -I/opt/firebird/include) || myconf+=(-no-sql-ibase)
 	use sqlite	&& myconf+=(-plugin-sql-sqlite -plugin-sql-sqlite3) || myconf+=(-no-sql-sqlite)
+	use postgres	&& myconf+=(-plugin-sql-psql) || myconf+=(-no-sql-psql)
+	use odbc	&& myconf+=(-plugin-sql-odbc) || myconf+=(-no-sql-odbc)
 	use cups	&& myconf+=(-cups) || myconf+=(-no-cups)
 	use opengl	&& myconf+=(-enable-module=opengl) || myconf+=(-disable-opengl)
 	use debug	&& myconf+=(-debug) || myconf+=(-release -no-g++-exceptions)
