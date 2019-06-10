@@ -1,0 +1,165 @@
+diff -urN tdegraphics-r14.0.6.orig/config.h.cmake tdegraphics-r14.0.6/config.h.cmake
+--- tdegraphics-r14.0.6.orig/config.h.cmake	2019-06-10 17:16:00.978993742 +0300
++++ tdegraphics-r14.0.6/config.h.cmake	2019-06-10 17:16:58.102992582 +0300
+@@ -1,6 +1,7 @@
+ #cmakedefine VERSION "@VERSION@"
+ 
+ // poppler-tqt
++#cmakedefine HAVE_POPPLER_076
+ #cmakedefine HAVE_POPPLER_072
+ #cmakedefine HAVE_POPPLER_071
+ #cmakedefine HAVE_POPPLER_070
+diff -urN tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake
+--- tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake	2019-06-10 17:16:01.188993738 +0300
++++ tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake	2019-06-10 17:17:52.246991482 +0300
+@@ -24,7 +24,7 @@
+   HAVE_POPPLER_030 )
+ tde_restore( CMAKE_REQUIRED_INCLUDES CMAKE_REQUIRED_LIBRARIES )
+ 
+-foreach( _poppler_ver 0.58 0.64 0.70 0.71 0.72 )
++foreach( _poppler_ver 0.58 0.64 0.70 0.71 0.72 0.76 )
+   string( REPLACE "." "" _poppler_str "${_poppler_ver}" )
+   if( NOT DEFINED HAVE_POPPLER_${_poppler_str} )
+     message( STATUS "Performing Test HAVE_POPPLER_${_poppler_str}" )
+diff -urN tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc
+--- tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc	2019-06-10 17:16:01.188993738 +0300
++++ tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc	2019-06-10 17:25:50.582981763 +0300
+@@ -127,23 +127,34 @@
+ 
+ bool Document::scanForFonts( int numPages, TQValueList<FontInfo> *fontList ) const
+ {
+-  GooList *items = data->m_fontInfoScanner->scan( numPages );
++  FONTS_LIST_TYPE *items = data->m_fontInfoScanner->scan( numPages );
+ 
+   if ( NULL == items )
+     return false;
+ 
+-  for ( int i = 0; i < items->getLength(); ++i ) {
++  for ( int i = 0; i < FONTS_LIST_LENGTH(items); ++i ) {
+     TQString fontName;
+-    if (((::FontInfo*)items->get(i))->getName())
+-      fontName = ((::FontInfo*)items->get(i))->getName()->GOO_GET_CSTR();
++    ::FontInfo *fontInfo =
++#if defined(HAVE_POPPLER_076)
++      (*items)[i];
++#else
++      (::FontInfo*)items->get(i);
++#endif
++    if (fontInfo->getName())
++      fontName = fontInfo->getName()->GOO_GET_CSTR();
+ 
+     FontInfo font(fontName,
+-                  ((::FontInfo*)items->get(i))->getEmbedded(),
+-                  ((::FontInfo*)items->get(i))->getSubset(),
+-                  (Poppler::FontInfo::Type)((::FontInfo*)items->get(i))->getType());
++                  fontInfo->getEmbedded(),
++                  fontInfo->getSubset(),
++                  (Poppler::FontInfo::Type)(fontInfo->getType()));
+     fontList->append(font);
+   }
+-# if defined(HAVE_POPPLER_070)
++# if defined(HAVE_POPPLER_076)
++  for (auto entry : *items) {
++    delete entry;
++  }
++  delete items;
++# elif defined(HAVE_POPPLER_070)
+   deleteGooList<::FontInfo>(items);
+ # else
+   deleteGooList(items, ::FontInfo);
+@@ -324,12 +335,12 @@
+   if ( !outline )
+     return NULL;
+ 
+-  CONST_064 GooList * items = outline->getItems();
+-  if ( !items || items->getLength() < 1 )
++  OUTLINE_ITEMS_TYPE * items = outline->getItems();
++  if ( !items || OUTLINE_ITEMS_LENGTH(items) < 1 )
+     return NULL;
+ 
+   TQDomDocument *toc = new TQDomDocument();
+-  if ( items->getLength() > 0 )
++ if ( OUTLINE_ITEMS_LENGTH(items) > 0 )
+     data->addTocChildren( toc, toc, items );
+ 
+   return toc;
+diff -urN tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-link.cc tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-link.cc
+--- tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-link.cc	2019-06-10 17:16:01.188993738 +0300
++++ tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-link.cc	2019-06-10 17:27:53.854979259 +0300
+@@ -53,7 +53,7 @@
+ 		else
+ 		{
+ 			Ref ref = ld->getPageRef();
+-			m_pageNum = data.doc->doc.findPage( ref.num, ref.gen );
++			m_pageNum = data.doc->doc.findPage(FIND_PAGE_ARGS(ref));
+ 		}
+ 		double left = ld->getLeft();
+ 		double bottom = ld->getBottom();
+diff -urN tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc
+--- tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc	2019-06-10 17:16:01.188993738 +0300
++++ tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-private.cc	2019-06-10 17:30:50.351975673 +0300
+@@ -86,13 +86,18 @@
+ }
+ 
+ 
+-void DocumentData::addTocChildren( TQDomDocument * docSyn, TQDomNode * parent, CONST_064 GooList * items )
++void DocumentData::addTocChildren( TQDomDocument * docSyn, TQDomNode * parent, OUTLINE_ITEMS_TYPE * items )
+ {
+-    int numItems = items->getLength();
++ int numItems = OUTLINE_ITEMS_LENGTH(items);
+     for ( int i = 0; i < numItems; ++i )
+     {
+         // iterate over every object in 'items'
+-        OutlineItem * outlineItem = (OutlineItem *)items->get( i );
++        OutlineItem * outlineItem =
++#ifdef HAVE_POPPLER_076
++		(*items)[i];
++#else
++		(OutlineItem *)items->get( i );
++#endif
+ 
+         // 1. create element using outlineItem's title as tagName
+         TQString name;
+@@ -138,7 +143,7 @@
+ 
+         // 3. recursively descend over children
+         outlineItem->open();
+-        CONST_064 GooList * children = outlineItem->getKids();
++        OUTLINE_ITEMS_TYPE * children = outlineItem->getKids();
+         if ( children )
+             addTocChildren( docSyn, &item, children );
+     }
+diff -urN tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h
+--- tdegraphics-r14.0.6.orig/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h	2019-06-10 17:16:01.188993738 +0300
++++ tdegraphics-r14.0.6/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h	2019-06-10 17:33:35.854972310 +0300
+@@ -49,6 +49,21 @@
+ #else
+ #define GOO_GET_CSTR getCString
+ #endif
++#if defined(HAVE_POPPLER_076)
++#include <vector>
++class OutlineItem;
++#define OUTLINE_ITEMS_TYPE const std::vector<OutlineItem*>
++#define OUTLINE_ITEMS_LENGTH(goo) goo->size()
++#define FONTS_LIST_TYPE std::vector<::FontInfo*>
++#define FONTS_LIST_LENGTH(goo) goo->size()
++#define FIND_PAGE_ARGS(ref)	ref
++#else
++#define OUTLINE_ITEMS_TYPE CONST_064 GooList
++#define OUTLINE_ITEMS_LENGTH(goo) goo->getLength()
++#define FONTS_LIST_TYPE GooList
++#define FONTS_LIST_LENGTH(goo) goo->getLength()
++#define FIND_PAGE_ARGS(ref)	ref.num, ref.gen
++#endif
+ 
+ namespace Poppler {
+     
+@@ -99,7 +114,7 @@
+         return m_outputDev;
+     }
+ 
+-    void addTocChildren( TQDomDocument * docSyn, TQDomNode * parent, CONST_064 GooList * items );
++    void addTocChildren( TQDomDocument * docSyn, TQDomNode * parent, OUTLINE_ITEMS_TYPE * items );
+ 
+   class PDFDoc doc;
+   bool locked;
