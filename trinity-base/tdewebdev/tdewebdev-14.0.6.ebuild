@@ -8,7 +8,11 @@ inherit cmake-utils desktop flag-o-matic gnome2-utils
 DESCRIPTION="The package for web developpment"
 HOMEPAGE="http://trinitydesktop.org/"
 
-SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
+SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz
+	http://download.sourceforge.net/quanta/html.tar.bz2
+	http://download.sourceforge.net/quanta/css.tar.bz2
+	http://download.sourceforge.net/quanta/javascript.tar.bz2
+	http://download.sourceforge.net/quanta/php_manual_en_20030401.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -37,6 +41,14 @@ S="${WORKDIR}/${PN}-r${PV}"
 TDEDIR="/opt/trinity"
 
 
+src_unpack() {
+	unpack ${PN}-r${PV}.tar.gz
+	unpack php_manual_en_20030401.tar.bz2
+	cd ${S}
+	unpack css.tar.bz2
+	unpack javascript.tar.bz2
+	unpack html.tar.bz2
+}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
@@ -63,3 +75,17 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+
+src_install() {
+	dodir ${TDEDIR}/share/apps/quanta/doc
+	for i in css html javascript ; do
+	pushd $i
+	./install.sh <<EOF
+${D}/${TDEDIR}/share/apps/quanta/doc
+EOF
+	popd
+	rm -rf $i
+	done
+	cp -a ${WORKDIR}/php ${WORKDIR}/php.docrc ${D}/${TDEDIR}/share/apps/quanta/doc
+	cmake-utils_src_install
+}
