@@ -53,6 +53,7 @@ DEPEND="
         dev-libs/libxslt
         dev-libs/libgcrypt
         dev-libs/libxml2
+	app-text/htmltidy
 "
 RDEPEND="$DEPEND"
 
