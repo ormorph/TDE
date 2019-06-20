@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 
 RDEPEND=">=trinity-base/tdebase-14.0.6
 	>=trinity-base/tde-i18n-14.0.6

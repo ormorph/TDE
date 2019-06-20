@@ -25,7 +25,7 @@ fi
 
 SLOT="0"
 IUSE=""
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 
 RDEPEND=""
 

@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 IUSE="+webdev +redcore powermanagement xscreensaver"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 
 RDEPEND=">=trinity-base/tde-minimal-14.0.6
 	>=trinity-base/tdemultimedia-14.0.6
