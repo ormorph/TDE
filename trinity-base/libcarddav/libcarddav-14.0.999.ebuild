@@ -27,7 +27,7 @@ IUSE=""
 SLOT="0"
 
 DEPEND="
-	dev-qt/tqtinterface"
+	>=dev-qt/tqtinterface-${PV}"
 RDEPEND="${DEPEND}"
 
 if [[ ${PV} = 14.0.999 ]] || [[ ${PV} = 9999 ]]; then

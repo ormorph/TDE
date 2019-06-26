@@ -21,8 +21,7 @@ BDEPEND="
 "
 
 DEPEND="
-	trinity-base/tdelibs
-	trinity-base/tdebase
+	>=dev-qt/tqtinterface-${PV}
 "
 RDEPEND="$DEPEND"
 
