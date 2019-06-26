@@ -92,6 +92,7 @@ sed -i ${S}/mkspecs/*/qmake.conf \
 sed -i ${S}/mkspecs/*/qmake.conf \
   -e "s|QMAKE_INCDIR		=|QMAKE_INCDIR		= /usr/include/tqt|"
 sed -i ${S}/mkspecs/*/qmake.conf  -e "s|\$(QTDIR)|${TQTBASE}|g"
+sed -i ${S}/mkspecs/*/qmake.conf  -e "s|\$(TQTDIR)|${TQTBASE}|g"
 sed -i ${S}/mkspecs/*/qmake.conf -e 's:QMAKE_RPATH.*:QMAKE_RPATH =:'
 sed -i ${S}/config.tests/unix/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(get_libdir)|"
 sed -i ${S}/config.tests/x11/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(get_libdir)|"
