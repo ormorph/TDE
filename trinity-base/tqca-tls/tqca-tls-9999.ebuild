@@ -41,7 +41,7 @@ TDEDIR="/opt/trinity"
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	myconf=" --qtdir=${TDEDIR} "
+	myconf=" --tqtdir=${TDEDIR} "
 	./configure $myconf || die
 }
 
