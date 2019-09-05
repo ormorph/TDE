@@ -98,8 +98,6 @@ sed -i ${S}/config.tests/unix/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(g
 sed -i ${S}/config.tests/x11/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(get_libdir)|"
 sed -i ${S}/config.tests/unix/checkavail -e "s|/lib /usr/lib|/$(get_libdir) /usr/$(get_libdir)|"
 
-sed '/widgets \\/d' -i ${S}/examples/examples.pro
-
 	eapply_user
 }
 
