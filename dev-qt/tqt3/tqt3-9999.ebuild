@@ -156,7 +156,6 @@ src_configure() {
 	./configure ${myconf[@]} || die
 }
 
-
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
@@ -185,4 +184,11 @@ EOF
 		"${S}"/.qmake.cache > "${D}"${TQTBASE}/.qmake.cache
 
 	dodoc FAQ README README-QT.TXT changes*
+	if use examples; then
+		find "${S}"/examples "${S}"/tutorial -name Makefile | \
+			xargs sed -i -e "s:${S}:${TQTBASE}:g"
+
+		cp -r "${S}"/examples "${D}"${TQTBASE}/
+		cp -r "${S}"/tutorial "${D}"${TQTBASE}/
+	fi
 }
