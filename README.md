@@ -25,7 +25,7 @@ Next, set the overlay with the command:
 ```
 Next, determine the version of TDE to install.
 There are several files in the **/var/lib/layman/TDE/package.keywords** directory:
-* the **tde-14.0.6** file corresponds to TDE version 14.1.6;
+* the **tde-14.0.6** file corresponds to TDE version 14.0.6;
 * the **tde-14.0.999** file corresponds to TDE version 14.0.x;
 * the **tde-999** file corresponds to TDE version 14.1.x, master branch;
 
