@@ -28,7 +28,8 @@ DEPEND="
 			x11-libs/libXScrnSaver )
 	opengl? ( dev-qt/tqtinterface[opengl] )
 	ldap? ( net-nds/openldap )
-	sensors? ( sys-apps/lm_sensors )
+	sensors? ( || ( sys-apps/lm_sensors
+	sys-apps/lm-sensors ) )
 	net-libs/libtirpc
 	net-libs/libnsl
 	arts? ( trinity-base/arts )
