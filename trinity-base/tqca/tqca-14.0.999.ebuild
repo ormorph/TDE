@@ -43,7 +43,7 @@ src_configure() {
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
 	myconf=" --tqtdir=${TDEDIR} \
 	--prefix=${D}/${TDEDIR}"
-	./configure $myconf || die
+	QTDIR=$TDEDIR ./configure $myconf || die
 }
 
 src_install() {
