@@ -104,7 +104,6 @@ src_prepare() {
 	rm ${S}/mimetypes/application/x-mplayer2.desktop
 	sed -i '/x-mplayer2.desktop/d' ${S}/mimetypes/application/CMakeLists.txt
 	sed -i '/x-mplayer2.desktop/d' ${S}/mimetypes/application/Makefile.am
-	eapply -p1 ${FILESDIR}/${PN}-icelib.patch
 	cmake-utils_src_prepare
 }
 

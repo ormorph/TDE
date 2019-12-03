@@ -112,7 +112,6 @@ src_prepare() {
 	# no compton
 #	sed -i "twin/CMakeLists.txt" -e "/compton-tde/ s/^/#/"
 	sed -i "${S}/tdm/kfrontend/gentdmconf.c" -e "s|/etc/X11/Xsession|/etc/trinity/X11/Xsession|"
-	eapply -p1 ${FILESDIR}/${PN}-icelib.patch
 	cmake-utils_src_prepare
 }
 
