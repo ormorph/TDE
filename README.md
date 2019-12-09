@@ -36,7 +36,7 @@ Select the required version and create a symbolic link to the file corresponding
 ```
 Select the language to install, for this, use the **L10N** variable in the **/etc/portage/make.conf** file:
 ```
-L10N="de,en"
+L10N="de en"
 ```
 For a minimal installation, run the command:
 ```
