@@ -52,6 +52,9 @@ src_configure() {
 		--datadir="${TDEDIR}/share" \
 		--includedir="${TDEDIR}/include" \
 		--libdir="${TDEDIR}/$(get_libdir)" \
+		--with-qt-dir="${TDEDIR}" \
+		--with-qt-includes="${TDEDIR}/include" \
+		--with-qt-libraries="${TDEDIR}/$(get_libdir)" \
 		--disable-dependency-tracking \
 		--disable-debug \
 		--enable-new-ldflags \
