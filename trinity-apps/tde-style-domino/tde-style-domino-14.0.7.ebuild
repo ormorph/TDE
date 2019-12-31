@@ -29,7 +29,7 @@ DEPEND="
 "
 RDEPEND="$DEPEND"
 
-S="${WORKDIR}/trinity-${P}"
+S="${WORKDIR}/trinity-${PN}-${MY_PV}"
 
 TDEDIR="/opt/trinity"
 
