@@ -25,14 +25,14 @@ Next, set the overlay with the command:
 ```
 Next, determine the version of TDE to install.
 There are several files in the **/var/lib/layman/TDE/package.keywords** directory:
-* the **tde-14.0.6** file corresponds to TDE version 14.0.6;
+* the **tde-14.0.7** file corresponds to TDE version 14.0.7;
 * the **tde-14.0.999** file corresponds to TDE version 14.0.x;
 * the **tde-999** file corresponds to TDE version 14.1.x, master branch;
 
 Select the required version and create a symbolic link to the file corresponding to the selected version:
 ```
 # cd /etc/portage/package.keywords
-# ln -sf /var/lib/layman/TDE/package.keywords/tde-14.0.6
+# ln -sf /var/lib/layman/TDE/package.keywords/tde-14.0.7
 ```
 Select the language to install, for this, use the **L10N** variable in the **/etc/portage/make.conf** file:
 ```
