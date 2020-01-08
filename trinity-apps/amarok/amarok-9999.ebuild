@@ -57,6 +57,12 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	eapply -p0 ${FILESDIR}/${PN}_uic.patch
+	find . -name \*.ui -exec sed -i -e 's|includehint|include|g' '{}' +
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD

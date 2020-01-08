@@ -1,0 +1,123 @@
+--- amarok/src/Options1.ui
++++ amarok/src/Options1.ui
+@@ -686,0 +687,3 @@
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
++    <include location="global" impldecl="in implementation">klineedit.h</include>
++    <include location="global" impldecl="in implementation">kactivelabel.h</include>
+@@ -695,5 +697,0 @@
+-<includehints>
+-    <includehint>kcombobox.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>kactivelabel.h</includehint>
+-</includehints>
+--- amarok/src/Options2.ui
++++ amarok/src/Options2.ui
+@@ -746,0 +747,3 @@
++    <include location="global" impldecl="in implementation">tdefontrequester.h</include>
++    <include location="global" impldecl="in implementation">kcolorbutton.h</include>
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
+@@ -759,9 +761,0 @@
+-<includehints>
+-    <includehint>tdefontrequester.h</includehint>
+-    <includehint>tdefontrequester.h</includehint>
+-    <includehint>tdefontrequester.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
+-    <includehint>kcombobox.h</includehint>
+-</includehints>
+--- amarok/src/Options5.ui
++++ amarok/src/Options5.ui
+@@ -508,0 +509,5 @@
++    <include location="global" impldecl="in implementation">ktextedit.h</include>
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
++    <include location="global" impldecl="in implementation">kcolorbutton.h</include>
++    <include location="global" impldecl="in implementation">tdefontrequester.h</include>
++    <include location="global" impldecl="in implementation">knuminput.h</include>
+@@ -528,3 +528,0 @@
+-<includehints>
+-    <includehint>ktextedit.h</includehint>
+-</includehints>
+--- amarok/src/Options8.ui
++++ amarok/src/Options8.ui
+@@ -292,0 +293,2 @@
++    <include location="global" impldecl="in implementation">kactivelabel.h</include>
++    <include location="global" impldecl="in implementation">klineedit.h</include>
+@@ -298,7 +299,0 @@
+-<includehints>
+-    <includehint>kactivelabel.h</includehint>
+-    <includehint>kactivelabel.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>kactivelabel.h</includehint>
+-</includehints>
+--- amarok/src/dbsetup.ui
++++ amarok/src/dbsetup.ui
+@@ -450,0 +451,3 @@
++    <include location="global" impldecl="in implementation">knuminput.h</include>
++    <include location="global" impldecl="in implementation">klineedit.h</include>
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
+@@ -459,9 +461,0 @@
+-<includehints>
+-    <includehint>knuminput.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>kcombobox.h</includehint>
+-</includehints>
+--- amarok/src/mediadevice/generic/genericmediadeviceconfigdialog.ui
++++ amarok/src/mediadevice/generic/genericmediadeviceconfigdialog.ui
+@@ -436,0 +437 @@
++    <include location="global" impldecl="in implementation">kactivelabel.h</include>
+@@ -460,3 +460,0 @@
+-<includehints>
+-    <includehint>kactivelabel.h</includehint>
+-</includehints>
+--- amarok/src/organizecollectiondialog.ui
++++ amarok/src/organizecollectiondialog.ui
+@@ -565,0 +566,3 @@
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
++    <include location="global" impldecl="in implementation">klineedit.h</include>
++    <include location="global" impldecl="in implementation">kactivelabel.h</include>
+@@ -589,7 +591,0 @@
+-<includehints>
+-    <includehint>kcombobox.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>kactivelabel.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-    <includehint>klineedit.h</includehint>
+-</includehints>
+--- amarok/src/scripts/graphequalizer/eqdialog.ui
++++ amarok/src/scripts/graphequalizer/eqdialog.ui
+@@ -200,0 +201 @@
++    <include location="global" impldecl="in implementation">equalizercanvasview.h</include>
+@@ -209,3 +209,0 @@
+-<includehints>
+-    <includehint>equalizercanvasview.h</includehint>
+-</includehints>
+--- amarok/src/tagguesserconfigdialog.ui
++++ amarok/src/tagguesserconfigdialog.ui
+@@ -192,0 +193,2 @@
++    <include location="global" impldecl="in implementation">tdelistview.h</include>
++    <include location="global" impldecl="in implementation">kpushbutton.h</include>
+@@ -213,9 +214,0 @@
+-<includehints>
+-    <includehint>kdialog.h</includehint>
+-    <includehint>tdelistview.h</includehint>
+-    <includehint>kpushbutton.h</includehint>
+-    <includehint>kpushbutton.h</includehint>
+-    <includehint>kpushbutton.h</includehint>
+-    <includehint>kpushbutton.h</includehint>
+-    <includehint>kpushbutton.h</includehint>
+-</includehints>
+--- amarok/src/scriptmanagerbase.ui
++++ amarok/src/scriptmanagerbase.ui
+@@ -131,0 +132 @@
++    <include location="global" impldecl="in implementation">tdelistview.h</include>
+--- amarok/src/engine/xine/xineconfigbase.ui
++++ amarok/src/engine/xine/xineconfigbase.ui
+@@ -503,0 +504,2 @@
++    <include location="global" impldecl="in implementation">kcombobox.h</include>
++    <include location="global" impldecl="in implementation">knuminput.h</include>
