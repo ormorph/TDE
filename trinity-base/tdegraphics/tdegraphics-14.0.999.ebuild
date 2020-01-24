@@ -67,12 +67,10 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
+src_prepare() {
+	eapply -p1 ${FILESDIR}/poppler-0.82.patch
+	eapply -p1 ${FILESDIR}/poppler-0.83.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {

@@ -1,0 +1,96 @@
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -1,6 +1,7 @@
+ #cmakedefine VERSION "@VERSION@"
+ 
+ // poppler-tqt
++#cmakedefine HAVE_POPPLER_082
+ #cmakedefine HAVE_POPPLER_076
+ #cmakedefine HAVE_POPPLER_072
+ #cmakedefine HAVE_POPPLER_071
+--- a/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake
++++ b/tdefile-plugins/dependencies/poppler-tqt/ConfigureChecks.cmake
+@@ -24,7 +24,7 @@ check_cxx_source_compiles("
+   HAVE_POPPLER_030 )
+ tde_restore( CMAKE_REQUIRED_INCLUDES CMAKE_REQUIRED_LIBRARIES )
+ 
+-foreach( _poppler_ver 0.58 0.64 0.70 0.71 0.72 0.76 )
++foreach( _poppler_ver 0.58 0.64 0.70 0.71 0.72 0.76 0.82 )
+   string( REPLACE "." "" _poppler_str "${_poppler_ver}" )
+   if( NOT DEFINED HAVE_POPPLER_${_poppler_str} )
+     message( STATUS "Performing Test HAVE_POPPLER_${_poppler_str}" )
+--- a/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc
++++ b/tdefile-plugins/dependencies/poppler-tqt/poppler-document.cc
+@@ -127,19 +127,24 @@ TQValueList<FontInfo> Document::fonts() const
+ 
+ bool Document::scanForFonts( int numPages, TQValueList<FontInfo> *fontList ) const
+ {
+-  FONTS_LIST_TYPE *items = data->m_fontInfoScanner->scan( numPages );
++  FONTS_LIST_TYPE items = data->m_fontInfoScanner->scan( numPages );
+ 
++#if !defined(HAVE_POPPLER_082)
+   if ( NULL == items )
+     return false;
++#endif
++#if !defined(HAVE_POPPLER_076)
++  if ( FONTS_LIST_IS_EMPTY(items) ) {
++#  if !defined(HAVE_POPPLER_082)
++    delete items;
++#  endif
++    return false;
++  }
++#endif
+ 
+   for ( int i = 0; i < FONTS_LIST_LENGTH(items); ++i ) {
+     TQString fontName;
+-    ::FontInfo *fontInfo =
+-#if defined(HAVE_POPPLER_076)
+-      (*items)[i];
+-#else
+-      (::FontInfo*)items->get(i);
+-#endif
++    ::FontInfo *fontInfo = FONTS_LIST_GET(items, i);
+     if (fontInfo->getName())
+       fontName = fontInfo->getName()->GOO_GET_CSTR();
+ 
+@@ -149,7 +154,11 @@ bool Document::scanForFonts( int numPages, TQValueList<FontInfo> *fontList ) con
+                   (Poppler::FontInfo::Type)(fontInfo->getType()));
+     fontList->append(font);
+   }
+-# if defined(HAVE_POPPLER_076)
++# if defined(HAVE_POPPLER_082)
++  for (auto entry : items) {
++    delete entry;
++  }
++# elif defined(HAVE_POPPLER_076)
+   for (auto entry : *items) {
+     delete entry;
+   }
+--- a/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h
++++ b/tdefile-plugins/dependencies/poppler-tqt/poppler-private.h
+@@ -54,14 +54,25 @@ class SplashOutputDev;
+ class OutlineItem;
+ #define OUTLINE_ITEMS_TYPE const std::vector<OutlineItem*>
+ #define OUTLINE_ITEMS_LENGTH(goo) goo->size()
++#  if defined(HAVE_POPPLER_082)
+ #define FONTS_LIST_TYPE std::vector<::FontInfo*>
++#define FONTS_LIST_LENGTH(goo) goo.size()
++#define FONTS_LIST_IS_EMPTY(goo) goo.empty()
++#define FONTS_LIST_GET(goo, i) goo[i]
++#  else
++#define FONTS_LIST_TYPE std::vector<::FontInfo*>*
+ #define FONTS_LIST_LENGTH(goo) goo->size()
++#define FONTS_LIST_IS_EMPTY(goo) goo->empty()
++#define FONTS_LIST_GET(goo, i) (*goo)[i]
++#  endif
+ #define FIND_PAGE_ARGS(ref)	ref
+ #else
+ #define OUTLINE_ITEMS_TYPE CONST_064 GooList
+ #define OUTLINE_ITEMS_LENGTH(goo) goo->getLength()
+-#define FONTS_LIST_TYPE GooList
++#define FONTS_LIST_TYPE GooList*
+ #define FONTS_LIST_LENGTH(goo) goo->getLength()
++#define FONTS_LIST_IS_EMPTY(goo) (goo == NULL || goo->getLength() == 0)
++#define FONTS_LIST_GET(goo, i) (::FontInfo*)goo->get(i)
+ #define FIND_PAGE_ARGS(ref)	ref.num, ref.gen
+ #endif
