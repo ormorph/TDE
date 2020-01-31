@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="7"
@@ -55,12 +55,6 @@ pkg_setup() {
 	else
 		export LIBDIRSUFFIX=""
 	fi
-}
-
-src_prepare() {
-	eapply -p0 ${FILESDIR}/${PN}_uic.patch
-	find . -name \*.ui -exec sed -i -e 's|includehint|include|g' '{}' +
-	cmake-utils_src_prepare
 }
 
 src_configure() {
