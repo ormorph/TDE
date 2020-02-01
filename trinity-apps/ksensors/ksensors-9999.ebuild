@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="6"
 
-inherit versionator eutils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Ksensors is a nice lm-sensors frontend for the K Desktop Environment"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -25,6 +25,10 @@ LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
+
+BDEPEND="
+	trinity-base/tde-common-cmake
+"
 
 DEPEND="
 	trinity-base/tde-common-admin
@@ -53,29 +57,17 @@ TDEDIR="/opt/trinity"
 
 
 src_prepare() {
-	cp -rf ${TDEDIR}/share/tde/admin ${S}/
-	cd ${S}/admin
-	libtoolize -c
-	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
-	eapply_user
+	cp -rf ${TDEDIR}/share/cmake .
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
-	emake -f admin/Makefile.common
-	myconf=(--without-arts
-		--prefix="${TDEDIR}"
-		--bindir="${TDEDIR}/bin"
-		--datadir="${TDEDIR}/share"
-		--includedir="${TDEDIR}/include"
-		--libdir="${TDEDIR}/$(get_libdir)"
-		--disable-dependency-tracking
-		--disable-debug
-		--enable-new-ldflags
-		--disable-final
-		--enable-closure
-		--enable-rpath)
-	build_arts=no ./configure ${myconf[@]} || die
+	mycmakeargs=(
+		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
+		-DWITH_GCC_VISIBILITY=OFF
+		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)")
+	cmake-utils_src_configure
 
 }
