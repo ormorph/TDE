@@ -3,7 +3,7 @@
 # $Id$
 EAPI="7"
 
-inherit eutils desktop flag-o-matic gnome2-utils
+inherit eutils desktop flag-o-matic cmake-utils gnome2-utils
 
 DESCRIPTION="TDE Education Project "
 HOMEPAGE="http://trinitydesktop.org/"
@@ -24,10 +24,12 @@ fi
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="-arts"
+IUSE="-arts -ocaml"
 
 BDEPEND="
-	trinity-base/tde-common-admin
+	ocaml? ( dev-lang/ocaml
+		dev-ml/facile )
+	trinity-base/tde-common-cmake
 	sys-devel/autoconf
 	sys-devel/gettext
 	sys-devel/automake
@@ -51,28 +53,24 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-
 src_prepare() {
-	cp -rf ${TDEDIR}/share/tde/admin ${S}/
-	cd ${S}/admin
-	libtoolize -c
-	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
-	eapply_user
+	cp -rf ${TDEDIR}/share/cmake .
+	sed '/scripting/d' -i kig/CMakeLists.txt
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
-	emake -f admin/Makefile.common
-	myconf=(--prefix=${TDEDIR}
-		--with-qt-dir=${TDEDIR}
-		--libdir=${TDEDIR}/$(get_libdir)
-		--disable-kig-python-scripting)
-
-	if use arts ; then
-		./configure ${myconf[@]} || die
-	else
-		build_arts=no ./configure --without-arts ${myconf[@]} || die
-	fi
-
+	mycmakeargs=(
+	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
+	-DCMAKE_INSTALL_RPATH="${TDEDIR}/$(get_libdir)"
+	-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
+	-DWITH_GCC_VISIBILITY=OFF
+	-DWITH_OCAML_SOLVER=$(usex ocaml ON OFF )
+	-DWITH_ARTS=$(usex arts ON OFF )
+	-DWITH_ALL_OPTIONS=ON
+	-DBUILD_ALL=ON
+	)
+	cmake-utils_src_configure
 }
