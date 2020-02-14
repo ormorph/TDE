@@ -67,12 +67,6 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-src_prepare() {
-	eapply -p1 ${FILESDIR}/poppler-0.82.patch
-	eapply -p1 ${FILESDIR}/poppler-0.83.patch
-	cmake-utils_src_prepare
-}
-
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
