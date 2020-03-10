@@ -3,7 +3,7 @@
 # $Id$
 EAPI="6"
 
-inherit versionator eutils desktop flag-o-matic gnome2-utils rpm
+inherit versionator eutils desktop
 
 DESCRIPTION="BitTorrent client for Trinity"
 HOMEPAGE="http://trinitydesktop.org/"

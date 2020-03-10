@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="7"
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils rpm
+inherit cmake-utils desktop
 
 DESCRIPTION="Audio-decoding framework"
 HOMEPAGE="http://trinitydesktop.org/"
