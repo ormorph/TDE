@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-20120 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="6"
 
-inherit versionator eutils desktop flag-o-matic gnome2-utils
+inherit versionator eutils desktop autotools
 
 DESCRIPTION="Gwenview is an image viewer for TDE"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -26,6 +26,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
+WANT_AUTOMAKE=1.15
+
 DEPEND="
 	>=trinity-base/tdelibs-${PV}
 	>=trinity-base/tdebase-${PV}
@@ -33,7 +35,7 @@ DEPEND="
 	dev-util/desktop-file-utils
 	trinity-base/tde-common-admin
 	sys-devel/autoconf
-	sys-devel/automake
+	sys-devel/automake:1.15
 	sys-devel/m4
 	sys-devel/libtool
 	virtual/pkgconfig
