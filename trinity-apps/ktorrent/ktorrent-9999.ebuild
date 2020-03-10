@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="6"
@@ -26,9 +26,11 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="avahi"
 
+
 DEPEND="
 	>=trinity-base/tdelibs-${PV}
 	>=trinity-base/tdebase-${PV}
+	trinity-base/tde-common-admin
 	dev-util/desktop-file-utils
 	sys-devel/autoconf
 	sys-devel/automake
@@ -49,11 +51,8 @@ fi
 
 TDEDIR="/opt/trinity"
 
-src_unpack() {
-	rpm_src_unpack ${A}
-}
-
 src_prepare() {
+	cp ${TDEDIR}/share/tde/admin/* ${S}/admin/
 	cd ${S}/admin
 	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"

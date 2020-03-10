@@ -26,8 +26,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
-WANT_AUTOMAKE=1.15
-
 DEPEND="
 	>=trinity-base/tdelibs-${PV}
 	>=trinity-base/tdebase-${PV}
@@ -35,7 +33,7 @@ DEPEND="
 	dev-util/desktop-file-utils
 	trinity-base/tde-common-admin
 	sys-devel/autoconf
-	sys-devel/automake:1.15
+	sys-devel/automake
 	sys-devel/m4
 	sys-devel/libtool
 	virtual/pkgconfig
