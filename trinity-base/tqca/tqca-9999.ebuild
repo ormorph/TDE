@@ -13,9 +13,11 @@ if [[ ${PV} = 14.0.999 ]]; then
 	inherit git-r3
         EGIT_REPO_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}"
         EGIT_BRANCH="r14.0.x"
+	EGIT_SUBMODULES=()
 elif [[ ${PV} = 9999 ]]; then
 	inherit git-r3
         EGIT_REPO_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}"
+	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 fi
@@ -37,6 +39,11 @@ else
 fi
 
 TDEDIR="/opt/trinity"
+
+src_prepare() {
+	cp -rf ${TDEDIR}/share/cmake .
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
