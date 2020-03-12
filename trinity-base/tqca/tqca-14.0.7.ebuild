@@ -40,7 +40,7 @@ TDEDIR="/opt/trinity"
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	myconf=" --tqtdir=${TDEDIR} \
 	--prefix=${D}/${TDEDIR}"
 	QTDIR=$TDEDIR ./configure $myconf || die
