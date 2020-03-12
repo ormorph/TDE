@@ -63,7 +63,7 @@ src_prepare() {
 src_configure() {
 	export PREFIX=${TDEDIR}
 	unset TDE_FULL_SESSION TDEROOTHOME TDEDIR TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	emake -f admin/Makefile.common
 	myconf=(--without-arts
 		--prefix=${PREFIX}

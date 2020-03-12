@@ -41,7 +41,7 @@ TDEDIR="/opt/trinity"
 
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	./autogen.sh || die
 	./configure --prefix=${TDEDIR} --libdir=${TDEDIR}/$(get_libdir) || die
 }

@@ -29,7 +29,7 @@ TDEDIR="/opt/trinity"
 
 src_configure() {
 	export PREFIX=${TDEDIR}
-	export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
         ./configure --prefix=${PREFIX} \
 		--libdir=${PREFIX}/$(get_libdir) || die
 }

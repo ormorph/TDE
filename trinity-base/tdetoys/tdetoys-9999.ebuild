@@ -67,7 +67,7 @@ pkg_setup() {
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	export QTDIR=$TQT
 	export LIBDIR=/opt/trinity/lib
 	mycmakeargs=(

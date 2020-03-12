@@ -118,7 +118,7 @@ src_prepare() {
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	export PKG_CONFIG_PATH=:/opt/trinity/lib/pkgconfig
+	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:${TDEDIR}/$(get_libdir)
 	if use elficon ; then
 		CXXFLAGS="${CXXFLAGS} -lr"

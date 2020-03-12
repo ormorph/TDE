@@ -55,7 +55,7 @@ fi
 
 src_configure() {
         unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-        export PKG_CONFIG_PATH=:/opt/trinity/$(get_libdir)/pkgconfig
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
         export QTDIR=${TDEDIR}
 	escons configure prefix=${TDEDIR}
 }
