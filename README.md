@@ -29,7 +29,7 @@ There are several files in the **/var/lib/layman/TDE/package.keywords** director
 * the **tde-14.0.999** file corresponds to TDE version 14.0.x;
 * the **tde-999** file corresponds to TDE version 14.1.x, master branch;
 
-**Warning:** _the new version of _**emerge**_ uses the **/etc/portage/package.accept_keywords** directory instead of the **/etc/portage/package.keywords** directory._
+**Warning:** _the new version of _**portage**_ uses the **/etc/portage/package.accept_keywords** directory instead of the **/etc/portage/package.keywords** directory._
 
 Select the required version and create a symbolic link to the file corresponding to the selected version:
 ```
