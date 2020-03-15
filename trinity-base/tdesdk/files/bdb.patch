@@ -1,0 +1,12 @@
+diff -urN tdesdk-9999.orig/kbabel/kbabeldict/modules/dbsearchengine/database.h tdesdk-9999/kbabel/kbabeldict/modules/dbsearchengine/database.h
+--- a/kbabel/kbabeldict/modules/dbsearchengine/database.h
++++ b/kbabel/kbabeldict/modules/dbsearchengine/database.h
+@@ -50,6 +50,8 @@
+ #endif
+ #endif
+ 
++#define DB_VERSION_MINOR 5
++
+ #define uint32 u_int32_t
+ 
+ #include <tqvaluelist.h>

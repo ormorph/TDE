@@ -65,8 +65,13 @@ pkg_setup() {
 	fi
 }
 
-src_configure() {
+src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake .
+	eapply ${FILESDIR}/bdb.patch
+	cmake-utils_src_prepare
+}
+
+src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	mycmakeargs=(
