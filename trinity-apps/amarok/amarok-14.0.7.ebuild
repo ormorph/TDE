@@ -35,6 +35,7 @@ DEPEND="
 	>=trinity-base/tdelibs-${PV}
 	xine? ( media-libs/xine-lib )
 	visual? ( media-libs/libvisual )
+	dev-db/sqlite:3
 	media-libs/libmp4v2
 	media-libs/taglib
 "
@@ -72,6 +73,7 @@ src_configure() {
 	-DLIB_SUFFIX=${LIBDIRSUFFIX}
 	-DWITH_XINE=$(usex xine)
 	-DWITH_LIBVISUAL=$(usex visual)
+	-DWITH_SYSTEM_SQLITE=ON
 	-DWITH_MP4V2=ON
 	-DBUILD_ALL=ON
 #	-DWITH_DAAP=ON
