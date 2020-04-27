@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -23,7 +23,7 @@ LICENSE="GPL2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama postgres odbc"
+IUSE="+cups debug doc examples firebird +ipv6 mysql nas nis +opengl postgres +sqlite xinerama postgres odbc imext"
 
 RDEPEND="
 	virtual/jpeg:0
@@ -91,8 +91,6 @@ sed -i ${S}/mkspecs/*/qmake.conf \
   -e "s|^QMAKE_CFLAGS		=.*|QMAKE_CFLAGS		= ${CFLAGS}|"
 sed -i ${S}/mkspecs/*/qmake.conf \
   -e "s|QMAKE_INCDIR		=|QMAKE_INCDIR		= /usr/include/tqt|"
-sed -i ${S}/mkspecs/*/qmake.conf  -e "s|\$(QTDIR)|${TQTBASE}|g"
-sed -i ${S}/mkspecs/*/qmake.conf  -e "s|\$(TQTDIR)|${TQTBASE}|g"
 sed -i ${S}/mkspecs/*/qmake.conf -e 's:QMAKE_RPATH.*:QMAKE_RPATH =:'
 sed -i ${S}/config.tests/unix/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(get_libdir)|"
 sed -i ${S}/config.tests/x11/*.test -e "s|/usr/lib /lib|/usr/$(get_libdir) /$(get_libdir)|"
@@ -134,9 +132,9 @@ src_configure() {
 	-plugin-imgfmt-mng
 	-qt-style-motif
 	-xkb -xshape -inputmethod -lfontconfig
-	-inputmethod-ext
 	-dlopen-opengl
 	-system-zlib -qt-gif)
+	use imext	&& myconf+=(-inputmethod-ext) || myconf+=(-no-inputmethod-ext)
 	use nas		&& myconf+=(-system-nas-sound)
 	use nis		&& myconf+=(-nis) || myconf+=(-no-nis)
 	use mysql	&& myconf+=(-plugin-sql-mysql -I/usr/include/mysql -L/usr/$(get_libdir)/mysql) || myconf+=(-no-sql-mysql)
@@ -158,6 +156,9 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+
+sed -i ${D}${TQTBASE}/mkspecs/*/qmake.conf  -e "s|\$(QTDIR)|${TQTBASE}|g"
+sed -i ${D}${TQTBASE}/mkspecs/*/qmake.conf  -e "s|\$(TQTDIR)|${TQTBASE}|g"
 
 	cat <<EOF > "${T}"/44tqt3
 PATH="${TQTBASE}/bin"
