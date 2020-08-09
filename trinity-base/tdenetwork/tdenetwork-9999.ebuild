@@ -28,6 +28,7 @@ IUSE="gadu speex openslp meanwhile -arts"
 
 BDEPEND="
 	trinity-base/tde-common-cmake
+	trinity-base/tde-common-libtdevnc
 	sys-devel/gettext
 	sys-apps/coreutils
 	dev-util/desktop-file-utils
@@ -81,6 +82,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply -p0 ${FILESDIR}/${PN}-getopts.patch
+	cp -rf ${TDEDIR}/share/tde/libtdevnc ${S}/
 	cmake-utils_src_prepare
 }
 

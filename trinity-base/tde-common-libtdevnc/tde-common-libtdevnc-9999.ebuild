@@ -1,16 +1,16 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
 inherit eutils
 
 
-DESCRIPTION="Common cmake modules for Trinity Desktop Environment "
+DESCRIPTION="Common libltdl modules for Trinity Desktop Environment "
 HOMEPAGE="http://www.trinitydesktop.org/"
 LICENSE="GPL-2"
 RESTRICT="nomirror"
-MY_PN="cmake"
+MY_PN="libtdevnc"
 
 if [[ ${PV} = 14.0.999 ]]; then
 	inherit git-r3
@@ -27,8 +27,7 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~x86 ~amd64"
 
-RDEPEND="dev-util/cmake
-"
+RDEPEND=""
 
 if [[ ${PV} = 14.0.999 ]] || [[ ${PV} = 9999 ]]; then
 	S="${WORKDIR}/${P}"
@@ -39,12 +38,6 @@ fi
 TDEDIR="/opt/trinity"
 
 src_install() {
-	dodir ${TDEDIR}/share/cmake/modules
-	dodir ${TDEDIR}/share/cmake/templates
-	insinto ${TDEDIR}/share/cmake/modules
-	doins modules/*
-	insinto ${TDEDIR}/share/cmake/templates
-	doins templates/*
-	exeinto ${TDEDIR}/share/cmake
-	doexe *
+	dodir ${TDEDIR}/share/tde/libtdevnc
+	cp -ax ${S}/* ${D}/${TDEDIR}/share/tde/libtdevnc
 }
