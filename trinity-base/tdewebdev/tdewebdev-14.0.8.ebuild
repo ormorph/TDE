@@ -81,9 +81,11 @@ src_unpack() {
 src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	cp -rf /opt/trinity/share/tde/admin ${S}/
-	cd ${S}/admin
+	pushd ${S}/admin
 	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
+	popd
+	eapply "${FILESDIR}/quanta-kmdr.patch"
 	default
 }
 

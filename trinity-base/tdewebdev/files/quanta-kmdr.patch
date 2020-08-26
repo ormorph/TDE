@@ -1,0 +1,719 @@
+--- a/quanta/scripts/checkxml.kmdr	2020-08-26 14:10:20.736398552 +0300
++++ b/quanta/scripts/checkxml.kmdr	2020-08-26 15:07:58.180566736 +0300
+@@ -34,7 +34,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++        <widget class="TQLayoutWidget" row="0" column="0">
+             <property name="name">
+                 <cstring>Layout26</cstring>
+             </property>
+@@ -48,7 +48,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="1" column="0">
++                <widget class="TQLayoutWidget" row="1" column="0">
+                     <property name="name">
+                         <cstring>Layout7</cstring>
+                     </property>
+@@ -162,7 +162,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0" rowspan="1" colspan="3">
++                        <widget class="TQLayoutWidget" row="0" column="0" rowspan="1" colspan="3">
+                             <property name="name">
+                                 <cstring>Layout10</cstring>
+                             </property>
+@@ -216,7 +216,7 @@
+                                 </spacer>
+                             </hbox>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                        <widget class="TQLabel" row="1" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel3</cstring>
+                             </property>
+--- a/quanta/scripts/docbook_table.kmdr	2020-08-26 14:10:20.736398552 +0300
++++ b/quanta/scripts/docbook_table.kmdr	2020-08-26 15:07:58.180566736 +0300
+@@ -27,7 +27,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0" rowspan="1" colspan="2">
++        <widget class="TQLabel" row="0" column="0" rowspan="1" colspan="2">
+             <property name="name">
+                 <cstring>TextLabel1_2</cstring>
+             </property>
+@@ -80,7 +80,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLABEL_OBJECT_NAME_STRING row="3" column="0">
++                <widget class="TQLabel" row="3" column="0">
+                     <property name="name">
+                         <cstring>TextLabel4</cstring>
+                     </property>
+@@ -108,7 +108,7 @@
+                         </stringlist>
+                     </property>
+                 </widget>
+-                <widget class=TQLABEL_OBJECT_NAME_STRING row="4" column="0" rowspan="1" colspan="2">
++                <widget class="TQLabel" row="4" column="0" rowspan="1" colspan="2">
+                     <property name="name">
+                         <cstring>TextLabel5</cstring>
+                     </property>
+@@ -116,7 +116,7 @@
+                         <string>Description:</string>
+                     </property>
+                 </widget>
+-                <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0" rowspan="1" colspan="2">
++                <widget class="TQLabel" row="0" column="0" rowspan="1" colspan="2">
+                     <property name="name">
+                         <cstring>TextLabel1</cstring>
+                     </property>
+@@ -147,7 +147,7 @@
+                         </stringlist>
+                     </property>
+                 </widget>
+-                <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0" rowspan="1" colspan="2">
++                <widget class="TQLabel" row="1" column="0" rowspan="1" colspan="2">
+                     <property name="name">
+                         <cstring>TextLabel2</cstring>
+                     </property>
+--- a/quanta/scripts/dwt.kmdr	2020-08-26 14:10:20.736398552 +0300
++++ b/quanta/scripts/dwt.kmdr	2020-08-26 15:07:58.181566736 +0300
+@@ -52,7 +52,7 @@
+             <property name="name">
+                 <cstring>tabMain</cstring>
+             </property>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -69,7 +69,7 @@
+                     <property name="spacing">
+                         <number>6</number>
+                     </property>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                    <widget class="TQLabel" row="0" column="0">
+                         <property name="name">
+                             <cstring>lblProject</cstring>
+                         </property>
+@@ -98,7 +98,7 @@
+                             </stringlist>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="2" column="0">
++                    <widget class="TQLabel" row="2" column="0">
+                         <property name="name">
+                             <cstring>lblScript</cstring>
+                         </property>
+@@ -135,7 +135,7 @@
+                     </spacer>
+                 </grid>
+             </widget>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -152,7 +152,7 @@
+                     <property name="spacing">
+                         <number>6</number>
+                     </property>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                    <widget class="TQLabel" row="0" column="0">
+                         <property name="name">
+                             <cstring>txtHelp</cstring>
+                         </property>
+--- a/quanta/scripts/gubed_install.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/gubed_install.kmdr	2020-08-26 15:07:58.181566736 +0300
+@@ -94,7 +94,7 @@
+             </rect>
+         </property>
+     </spacer>
+-    <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING>
++    <widget class="TQLayoutWidget">
+         <property name="name">
+             <cstring>Layout5</cstring>
+         </property>
+@@ -116,7 +116,7 @@
+             <property name="spacing">
+                 <number>6</number>
+             </property>
+-            <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++            <widget class="TQLabel" row="1" column="0">
+                 <property name="name">
+                     <cstring>TextLabel2</cstring>
+                 </property>
+@@ -124,7 +124,7 @@
+                     <string>Target directory:</string>
+                 </property>
+             </widget>
+-            <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++            <widget class="TQLabel" row="0" column="0">
+                 <property name="name">
+                     <cstring>TextLabel1</cstring>
+                 </property>
+--- a/quanta/scripts/htmlquickstart.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/htmlquickstart.kmdr	2020-08-26 15:07:58.181566736 +0300
+@@ -61,7 +61,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0" rowspan="1" colspan="4">
++        <widget class="TQLabel" row="0" column="0" rowspan="1" colspan="4">
+             <property name="name">
+                 <cstring>TextLabel1</cstring>
+             </property>
+@@ -186,7 +186,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLabel" row="0" column="0">
+                     <property name="name">
+                         <cstring>TextLabel1_2</cstring>
+                     </property>
+@@ -815,7 +815,7 @@
+                                 </stringlist>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                        <widget class="TQLabel" row="0" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel2</cstring>
+                             </property>
+--- a/quanta/scripts/listwizard.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/listwizard.kmdr	2020-08-26 15:07:58.182566736 +0300
+@@ -34,7 +34,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="3" column="0">
++        <widget class="TQLayoutWidget" row="3" column="0">
+             <property name="name">
+                 <cstring>Layout12</cstring>
+             </property>
+@@ -150,7 +150,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout7</cstring>
+                     </property>
+@@ -183,7 +183,7 @@
+                                 <string>Select or enter in this spin box the number of list entries or steps that should be created by the wizard. After using the wizard, you can add (or remove) more entries or steps manually.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                        <widget class="TQLabel" row="0" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel2</cstring>
+                             </property>
+@@ -198,7 +198,7 @@
+                 </widget>
+             </grid>
+         </widget>
+-        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++        <widget class="TQLabel" row="0" column="0">
+             <property name="name">
+                 <cstring>TextLabel1_2_2</cstring>
+             </property>
+--- a/quanta/scripts/meinproc.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/meinproc.kmdr	2020-08-26 15:07:58.182566736 +0300
+@@ -124,7 +124,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout10</cstring>
+                     </property>
+@@ -181,7 +181,7 @@
+                         </spacer>
+                     </hbox>
+                 </widget>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="1" column="0">
++                <widget class="TQLayoutWidget" row="1" column="0">
+                     <property name="name">
+                         <cstring>Layout4</cstring>
+                     </property>
+@@ -195,7 +195,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING>
++                        <widget class="TQLabel">
+                             <property name="name">
+                                 <cstring>TextLabel3</cstring>
+                             </property>
+--- a/quanta/scripts/picturewizard.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/picturewizard.kmdr	2020-08-26 15:07:58.183566736 +0300
+@@ -34,7 +34,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="3" column="0">
++        <widget class="TQLayoutWidget" row="3" column="0">
+             <property name="name">
+                 <cstring>Layout12</cstring>
+             </property>
+@@ -125,7 +125,7 @@
+                 </widget>
+             </grid>
+         </widget>
+-        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++        <widget class="TQLabel" row="0" column="0">
+             <property name="name">
+                 <cstring>TextLabel1_2_2</cstring>
+             </property>
+@@ -286,7 +286,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout5</cstring>
+                     </property>
+@@ -498,7 +498,7 @@
+                                 <string>Enter the description of the image here. For instance, a screenshot of a configuration dialog should be described as "Configuration dialog.". This text will be used as caption text if the box below is checked.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="2" column="0">
++                        <widget class="TQLabel" row="2" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel2_2_2</cstring>
+                             </property>
+@@ -509,7 +509,7 @@
+                                 <string>Select the image format here.  The image format is usually reflects the file extension of your image file (.png corresponds to PNG in the drop down, .jpg corresponds to JPG, etc.).</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                        <widget class="TQLabel" row="1" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel2_2</cstring>
+                             </property>
+@@ -536,7 +536,7 @@
+                                 <string>Enter the file name of the image here, including the extension (.png, .jpg, etc.). Enter only the file name, not the location (path) of the image file. The image files should be located in the same folder as the DocBook sources.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                        <widget class="TQLabel" row="0" column="0">
+                             <property name="name">
+                                 <cstring>TextLabel2</cstring>
+                             </property>
+--- a/quanta/scripts/scriptinfo.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/scriptinfo.kmdr	2020-08-26 15:07:58.183566736 +0300
+@@ -29,7 +29,7 @@
+             <property name="name">
+                 <cstring>TabWidget1</cstring>
+             </property>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -46,7 +46,7 @@
+                     <property name="spacing">
+                         <number>6</number>
+                     </property>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="1" rowspan="1" colspan="2">
++                    <widget class="TQLabel" row="0" column="1" rowspan="1" colspan="2">
+                         <property name="name">
+                             <cstring>TextLabel1_3</cstring>
+                         </property>
+@@ -61,7 +61,7 @@
+                             <string>Please fill in all fields</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                    <widget class="TQLabel" row="1" column="0">
+                         <property name="name">
+                             <cstring>TextLabel1</cstring>
+                         </property>
+@@ -90,7 +90,7 @@
+                             <string>Enter the script name with the extension</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="8" column="0">
++                    <widget class="TQLabel" row="8" column="0">
+                         <property name="name">
+                             <cstring>TextLabel5</cstring>
+                         </property>
+@@ -127,7 +127,7 @@
+                             <string>The location of your up-to-date file on the web</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="3" column="0">
++                    <widget class="TQLabel" row="3" column="0">
+                         <property name="name">
+                             <cstring>TextLabel2</cstring>
+                         </property>
+@@ -135,7 +135,7 @@
+                             <string>Script author:</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="7" column="0">
++                    <widget class="TQLabel" row="7" column="0">
+                         <property name="name">
+                             <cstring>TextLabel4</cstring>
+                         </property>
+@@ -200,7 +200,7 @@
+                             <string>If other include in about</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="2" column="0">
++                    <widget class="TQLabel" row="2" column="0">
+                         <property name="name">
+                             <cstring>TextLabel1_4</cstring>
+                         </property>
+@@ -208,7 +208,7 @@
+                             <string>Editor/Executor:</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="4" column="0">
++                    <widget class="TQLabel" row="4" column="0">
+                         <property name="name">
+                             <cstring>TextLabel3</cstring>
+                         </property>
+@@ -216,7 +216,7 @@
+                             <string>Author email:</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="5" column="0">
++                    <widget class="TQLabel" row="5" column="0">
+                         <property name="name">
+                             <cstring>TextLabel1_2</cstring>
+                         </property>
+@@ -224,7 +224,7 @@
+                             <string>Web address:</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="6" column="0">
++                    <widget class="TQLabel" row="6" column="0">
+                         <property name="name">
+                             <cstring>TextLabel2_2</cstring>
+                         </property>
+@@ -344,7 +344,7 @@
+                             <string>Optional: External program executor</string>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="9" column="0">
++                    <widget class="TQLabel" row="9" column="0">
+                         <property name="name">
+                             <cstring>TextLabel6</cstring>
+                         </property>
+@@ -397,7 +397,7 @@
+                     </widget>
+                 </grid>
+             </widget>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+--- a/quanta/scripts/tablewizard.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/tablewizard.kmdr	2020-08-26 15:07:58.183566736 +0300
+@@ -27,7 +27,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="3" column="0">
++        <widget class="TQLayoutWidget" row="3" column="0">
+             <property name="name">
+                 <cstring>Layout10</cstring>
+             </property>
+@@ -142,7 +142,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout12</cstring>
+                     </property>
+@@ -156,7 +156,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0" rowspan="1" colspan="2">
++                        <widget class="TQLabel" row="0" column="0" rowspan="1" colspan="2">
+                             <property name="name">
+                                 <cstring>ColumnLabel</cstring>
+                             </property>
+@@ -167,7 +167,7 @@
+                                 <string>Select or enter in this spin box the number of columns that should be created by the wizard.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="2" column="0">
++                        <widget class="TQLabel" row="2" column="0">
+                             <property name="name">
+                                 <cstring>TableIdLabel</cstring>
+                             </property>
+@@ -243,7 +243,7 @@
+                                 <string>Select or enter in this spin box the number of rows that should be created by the wizard. After using the wizard, you can add (or remove) more rows. To add more rows,  add the same number of &lt;entry&gt; tags per &lt;row&gt; tag as in the rest of the table.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0" rowspan="1" colspan="2">
++                        <widget class="TQLabel" row="1" column="0" rowspan="1" colspan="2">
+                             <property name="name">
+                                 <cstring>LinesLabel</cstring>
+                             </property>
+@@ -254,7 +254,7 @@
+                                 <string>Select or enter in this spin box the number of rows that should be created by the wizard. After using the wizard, you can add (or remove) more rows. To add more rows,  add the same number of &lt;entry&gt; tags per &lt;row&gt; tag as in the rest of the table.</string>
+                             </property>
+                         </widget>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING row="3" column="0">
++                        <widget class="TQLabel" row="3" column="0">
+                             <property name="name">
+                                 <cstring>TableTitleLabel5</cstring>
+                             </property>
+@@ -391,7 +391,7 @@
+                 </widget>
+             </grid>
+         </widget>
+-        <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++        <widget class="TQLabel" row="0" column="0">
+             <property name="name">
+                 <cstring>TableTypeLabel</cstring>
+             </property>
+--- a/quanta/scripts/tidy.kmdr	2020-08-26 14:10:20.737398552 +0300
++++ b/quanta/scripts/tidy.kmdr	2020-08-26 15:07:58.184566736 +0300
+@@ -29,7 +29,7 @@
+             <property name="name">
+                 <cstring>TabWidget1</cstring>
+             </property>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -63,7 +63,7 @@
+                             <property name="spacing">
+                                 <number>6</number>
+                             </property>
+-                            <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                            <widget class="TQLabel" row="1" column="0">
+                                 <property name="name">
+                                     <cstring>TextLabel4</cstring>
+                                 </property>
+@@ -108,7 +108,7 @@
+                             </stringlist>
+                         </property>
+                     </widget>
+-                    <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                    <widget class="TQLabel" row="1" column="0">
+                         <property name="name">
+                             <cstring>TextLabel1</cstring>
+                         </property>
+@@ -258,7 +258,7 @@
+                     </widget>
+                 </grid>
+             </widget>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -275,7 +275,7 @@
+                     <property name="spacing">
+                         <number>6</number>
+                     </property>
+-                    <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                    <widget class="TQLayoutWidget" row="0" column="0">
+                         <property name="name">
+                             <cstring>Layout1</cstring>
+                         </property>
+@@ -379,7 +379,7 @@
+                                     </stringlist>
+                                 </property>
+                             </widget>
+-                            <widget class=TQLABEL_OBJECT_NAME_STRING row="0" column="0">
++                            <widget class="TQLabel" row="0" column="0">
+                                 <property name="name">
+                                     <cstring>TextLabel1_2</cstring>
+                                 </property>
+@@ -443,7 +443,7 @@
+                                     </stringlist>
+                                 </property>
+                             </widget>
+-                            <widget class=TQLABEL_OBJECT_NAME_STRING row="1" column="0">
++                            <widget class="TQLabel" row="1" column="0">
+                                 <property name="name">
+                                     <cstring>TextLabel2</cstring>
+                                 </property>
+@@ -515,7 +515,7 @@
+                     </widget>
+                 </grid>
+             </widget>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+@@ -791,7 +791,7 @@
+                     </widget>
+                 </grid>
+             </widget>
+-            <widget class=TQWIDGET_OBJECT_NAME_STRING>
++            <widget class="TQWidget">
+                 <property name="name">
+                     <cstring>tab</cstring>
+                 </property>
+--- a/quanta/scripts/xmlval.kmdr	2020-08-26 14:10:20.738398552 +0300
++++ b/quanta/scripts/xmlval.kmdr	2020-08-26 15:07:58.184566736 +0300
+@@ -70,7 +70,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout10</cstring>
+                     </property>
+@@ -130,7 +130,7 @@
+                         </spacer>
+                     </hbox>
+                 </widget>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="1" column="0">
++                <widget class="TQLayoutWidget" row="1" column="0">
+                     <property name="name">
+                         <cstring>Layout4</cstring>
+                     </property>
+@@ -144,7 +144,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING>
++                        <widget class="TQLabel">
+                             <property name="name">
+                                 <cstring>TextLabel3</cstring>
+                             </property>
+@@ -187,7 +187,7 @@
+                         </widget>
+                     </hbox>
+                 </widget>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="3" column="0">
++                <widget class="TQLayoutWidget" row="3" column="0">
+                     <property name="name">
+                         <cstring>Layout5</cstring>
+                     </property>
+@@ -201,7 +201,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING>
++                        <widget class="TQLabel">
+                             <property name="name">
+                                 <cstring>TextLabel4</cstring>
+                             </property>
+@@ -296,7 +296,7 @@
+                         </widget>
+                     </hbox>
+                 </widget>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="2" column="0">
++                <widget class="TQLayoutWidget" row="2" column="0">
+                     <property name="name">
+                         <cstring>Layout11</cstring>
+                     </property>
+@@ -352,7 +352,7 @@
+                         </spacer>
+                     </hbox>
+                 </widget>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="4" column="0">
++                <widget class="TQLayoutWidget" row="4" column="0">
+                     <property name="name">
+                         <cstring>Layout6</cstring>
+                     </property>
+@@ -366,7 +366,7 @@
+                         <property name="spacing">
+                             <number>6</number>
+                         </property>
+-                        <widget class=TQLABEL_OBJECT_NAME_STRING>
++                        <widget class="TQLabel">
+                             <property name="name">
+                                 <cstring>TextLabel5</cstring>
+                             </property>
+--- a/quanta/scripts/xsltproc.kmdr	2020-08-26 14:10:20.738398552 +0300
++++ b/quanta/scripts/xsltproc.kmdr	2020-08-26 15:07:58.185566737 +0300
+@@ -27,7 +27,7 @@
+         <property name="spacing">
+             <number>6</number>
+         </property>
+-        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="1" column="0">
++        <widget class="TQLayoutWidget" row="1" column="0">
+             <property name="name">
+                 <cstring>Layout5</cstring>
+             </property>
+@@ -121,7 +121,7 @@
+                 <property name="spacing">
+                     <number>6</number>
+                 </property>
+-                <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING row="0" column="0">
++                <widget class="TQLayoutWidget" row="0" column="0">
+                     <property name="name">
+                         <cstring>Layout17</cstring>
+                     </property>
+@@ -159,7 +159,7 @@
+                                 </stringlist>
+                             </property>
+                         </widget>
+-                        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING>
++                        <widget class="TQLayoutWidget">
+                             <property name="name">
+                                 <cstring>Layout15</cstring>
+                             </property>
+@@ -173,7 +173,7 @@
+                                 <property name="spacing">
+                                     <number>6</number>
+                                 </property>
+-                                <widget class=TQLABEL_OBJECT_NAME_STRING>
++                                <widget class="TQLabel">
+                                     <property name="name">
+                                         <cstring>TextLabel1</cstring>
+                                     </property>
+@@ -199,7 +199,7 @@
+                                 </widget>
+                             </hbox>
+                         </widget>
+-                        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING>
++                        <widget class="TQLayoutWidget">
+                             <property name="name">
+                                 <cstring>Layout14</cstring>
+                             </property>
+@@ -213,7 +213,7 @@
+                                 <property name="spacing">
+                                     <number>6</number>
+                                 </property>
+-                                <widget class=TQLABEL_OBJECT_NAME_STRING>
++                                <widget class="TQLabel">
+                                     <property name="name">
+                                         <cstring>TextLabel2</cstring>
+                                     </property>
+@@ -233,7 +233,7 @@
+                                 </widget>
+                             </hbox>
+                         </widget>
+-                        <widget class=TQLAYOUTWIDGET_OBJECT_NAME_STRING>
++                        <widget class="TQLayoutWidget">
+                             <property name="name">
+                                 <cstring>Layout13</cstring>
+                             </property>
+@@ -247,7 +247,7 @@
+                                 <property name="spacing">
+                                     <number>6</number>
+                                 </property>
+-                                <widget class=TQLABEL_OBJECT_NAME_STRING>
++                                <widget class="TQLabel">
+                                     <property name="name">
+                                         <cstring>TextLabel1_2</cstring>
+                                     </property>
