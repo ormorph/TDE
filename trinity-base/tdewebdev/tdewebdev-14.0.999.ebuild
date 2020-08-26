@@ -85,7 +85,6 @@ src_prepare() {
 	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	popd
-	eapply "${FILESDIR}/quanta-kmdr.patch"
 	default
 }
 
