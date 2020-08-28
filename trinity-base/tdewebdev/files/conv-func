@@ -1,0 +1,13 @@
+conv_f(){
+
+	while read file
+	do
+		if grep OBJECT_NAME_STRING ${file} >/dev/null ; then
+		while read object
+		do
+			Array=($object)
+			sed -e "s|${Array[0]}|${Array[1]}|g" -i ${file}
+		done < <(cat ${FILESDIR}/tde_obj_list)
+		fi
+	done  < <(find -type f)
+}
