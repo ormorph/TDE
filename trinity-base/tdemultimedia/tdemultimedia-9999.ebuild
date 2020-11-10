@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
 IUSE="+kmix arts juk noatun kaboodle kscd kcddb tdemid krec mpeg gstreamer cdparanoia xine flac taglib doc ogg audiofile"
 

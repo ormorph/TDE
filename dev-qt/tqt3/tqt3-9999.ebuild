@@ -78,7 +78,7 @@ TQTBASE="/opt/trinity"
 pkg_setup() {
 	export SYSCONFDIR=${D}/etc/trinity
 
-	if [[ "$ARCH" == "amd64" ]]; then
+	if [[ "$CHOST" == *64* ]]; then
 		export PLATFORM="linux-g++-64"
 	else
 		export PLATFORM="linux-g++"

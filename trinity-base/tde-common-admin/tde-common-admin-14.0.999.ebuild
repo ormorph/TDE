@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
 inherit eutils
 
@@ -25,7 +25,7 @@ fi
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 
 RDEPEND="sys-devel/libtool
 	sys-devel/automake
@@ -42,5 +42,8 @@ TDEDIR="/opt/trinity"
 
 src_install() {
 	dodir ${TDEDIR}/share/tde/admin
+	libtoolize -c || die
+	cp -Rp /usr/share/aclocal/libtool.m4 "libtool.m4.in" || die
+	cp -Rp /usr/share/libtool/build-aux/config* . || die
 	cp -ax ${S}/* ${D}/${TDEDIR}/share/tde/admin
 }

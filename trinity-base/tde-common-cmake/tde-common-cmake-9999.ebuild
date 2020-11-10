@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
 inherit eutils
 
@@ -25,7 +25,7 @@ fi
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 
 RDEPEND="dev-util/cmake
 "
@@ -40,11 +40,10 @@ TDEDIR="/opt/trinity"
 
 src_install() {
 	dodir ${TDEDIR}/share/cmake/modules
-	dodir ${TDEDIR}/share/cmake/templates
 	insinto ${TDEDIR}/share/cmake/modules
 	doins modules/*
-	insinto ${TDEDIR}/share/cmake/templates
-	doins templates/*
 	exeinto ${TDEDIR}/share/cmake
 	doexe *
+	insinto ${TDEDIR}/share/cmake/templates
+	doins templates/*
 }

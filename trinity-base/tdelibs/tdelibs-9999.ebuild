@@ -3,8 +3,6 @@
 # $Id$
 EAPI="7"
 
-#: ${CMAKE_MAKEFILE_GENERATOR:=emake}
-
 inherit cmake-utils  desktop flag-o-matic gnome2-utils 
 
 DESCRIPTION="Trinity libraries needed by all TDE programs."
@@ -24,9 +22,10 @@ else
 	SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 fi
 
+MY_SLOT="14"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE+=" alsa avahi -arts cups consolekit fam -jpeg2k lua lzma networkmanager openexr
 	spell sudo tiff utempter upower udisks old_udisks +xcomposite +xrandr elficon"
 
@@ -168,7 +167,7 @@ src_install() {
 		libdirs="${TDEDIR}/${libdir}:${libdirs}"
 	done
 
-	cat <<EOF >"${D}/etc/env.d/45trinitypaths-${SLOT}" # number goes down with version upgrade
+	cat <<EOF >"${D}/etc/env.d/45trinitypaths-${MY_SLOT}" # number goes down with version upgrade
 PATH=${TDEDIR}/bin
 ROOTPATH=${TDEDIR}/sbin:${TDEDIR}/bin
 LDPATH=${libdirs#:}${TDEDIR}/$(get_libdir)/trinity:
@@ -185,7 +184,7 @@ EOF
 	# Make sure the target for the revdep-rebuild stuff exists. Fixes bug 184441.
 	dodir /etc/revdep-rebuild
 
-cat <<EOF >"${D}/etc/revdep-rebuild/50-trinity-${SLOT}"
+cat <<EOF >"${D}/etc/revdep-rebuild/50-trinity-${MY_SLOT}"
 SEARCH_DIRS="${TDEDIR}/bin ${TDEDIR}/lib*"
 EOF
 

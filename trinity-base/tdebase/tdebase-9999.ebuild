@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,8 +24,8 @@ fi
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon +xcomposite"
+KEYWORDS="~arm ~arm64 ~x86 ~amd64"
+IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon +xcomposite elogind"
 
 BDEPEND="
 	trinity-base/tde-common-cmake
@@ -216,6 +216,9 @@ src_install() {
 		dodir /etc/pam.d
 		insinto /etc/pam.d
 		doins ${FILESDIR}/{kcheckpass-trinity,tdescreensaver-trinity,tdm-trinity}
+		if use elogind ; then
+			echo "session optional pam_elogind.so" >>${D}/etc/pam.d/tdm-trinity
+		fi
 	fi
 	insinto /etc/trinity/X11
 	doins ${FILESDIR}/Xsession

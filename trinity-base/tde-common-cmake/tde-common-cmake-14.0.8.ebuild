@@ -25,7 +25,7 @@ fi
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 
 RDEPEND="dev-util/cmake
 "

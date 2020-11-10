@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
-inherit versionator eutils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop flag-o-matic gnome2-utils
 
 DESCRIPTION="Lipstik style for TDE"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -26,16 +26,16 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
+BDEPEND="
+	sys-devel/libtool
+	virtual/pkgconfig
+	sys-devel/gettext
+	app-misc/fdupes
+	trinity-base/tde-common-cmake
+"
 DEPEND="
 	>=trinity-base/tdelibs-${PV}
 	>=trinity-base/tdebase-${PV}
-	dev-util/desktop-file-utils
-	sys-devel/autoconf
-	sys-devel/automake
-	sys-devel/m4
-	sys-devel/libtool
-	virtual/pkgconfig
-	app-misc/fdupes
 "
 RDEPEND="$DEPEND"
 
@@ -45,35 +45,30 @@ else
 	S="${WORKDIR}/${PN}-r${PV}"
 fi
 
+TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-
-src_prepare() {
-	cp ${TDEDIR}/share/tde/admin/* ${S}/admin/
-	cd ${S}/admin
-	libtoolize -c
-	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
-	eapply_user
-}
-
 src_configure() {
+	cp -rf ${TDEDIR}/share/cmake ${S}/
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
-	emake -f admin/Makefile.common
-	build_arts=no ./configure --without-arts \
-		--prefix="${TDEDIR}" \
-		--exec-prefix="${TDEDIR}" \
-		--datadir="${TDEDIR}/share" \
-		--includedir="${TDEDIR}/include" \
-		--libdir="${TDEDIR}/$(get_libdir)" \
-		--with-qt-dir="${TDEDIR}" \
-		--with-qt-includes="${TDEDIR}/include" \
-		--with-qt-libraries="${TDEDIR}/$(get_libdir)" \
-		--disable-dependency-tracking \
-		--disable-debug \
-		--enable-new-ldflags \
-		--enable-final \
-		--enable-closure \
-		--enable-rpath \
-		--disable-gcc-hidden-visibility || die
+	mycmakeargs=(
+	-DCMAKE_BUILD_TYPE="RelWithDebInfo"
+	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
+	-DBIN_INSTALL_DIR="${TDEDIR}/bin"
+	-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
+	-DCMAKE_SKIP_RPATH=OFF
+	-DCMAKE_INSTALL_RPATH="${TDEDIR}/$(get_libdir)"
+	-DCMAKE_VERBOSE_MAKEFILE=ON
+	-DWITH_GCC_VISIBILITY=OFF
+	-DINCLUDE_INSTALL_DIR="${TDEDIR}/include"
+	-DQTC_QT_ONLY=false
+	-DQTC_STYLE_SUPPORT=true
+	-DSHARE_INSTALL_PREFIX="${TDEDIR}/share"
+	-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
+	-DBUILD_ALL=ON
+	)
+
+	 cmake-utils_src_configure || die
 }

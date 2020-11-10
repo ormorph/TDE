@@ -13,28 +13,16 @@ if [[ ${PV} = 14.0.999 ]]; then
         EGIT_REPO_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}"
         EGIT_BRANCH="r14.0.x"
 	EGIT_SUBMODULES=()
-	SRC_URI="http://download.sourceforge.net/quanta/html.tar.bz2
-	http://download.sourceforge.net/quanta/css.tar.bz2
-	http://download.sourceforge.net/quanta/javascript.tar.bz2
-	http://download.sourceforge.net/quanta/php_manual_en_20030401.tar.bz2"
 elif [[ ${PV} = 9999 ]]; then
 	inherit git-r3
         EGIT_REPO_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}"
 	EGIT_SUBMODULES=()
-	SRC_URI="http://download.sourceforge.net/quanta/html.tar.bz2
-	http://download.sourceforge.net/quanta/css.tar.bz2
-	http://download.sourceforge.net/quanta/javascript.tar.bz2
-	http://download.sourceforge.net/quanta/php_manual_en_20030401.tar.bz2"
 else
-	SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz
-	http://download.sourceforge.net/quanta/html.tar.bz2
-	http://download.sourceforge.net/quanta/css.tar.bz2
-	http://download.sourceforge.net/quanta/javascript.tar.bz2
-	http://download.sourceforge.net/quanta/php_manual_en_20030401.tar.bz2"
+	SRC_URI="https://mirror.git.trinitydesktop.org/cgit/${PN}/snapshot/${PN}-r${PV}.tar.gz"
 fi
 
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
 IUSE=""
 
@@ -71,16 +59,18 @@ src_unpack() {
 	else
 		unpack ${PN}-r${PV}.tar.gz
 	fi
-	unpack php_manual_en_20030401.tar.bz2
+	unpack ${FILESDIR}/arch/php_manual_en_20030401.tar.bz2
 	cd ${S}
-	unpack css.tar.bz2
-	unpack javascript.tar.bz2
-	unpack html.tar.bz2
+	unpack ${FILESDIR}/arch/css.tar.bz2
+	unpack ${FILESDIR}/arch/javascript.tar.bz2
+	unpack ${FILESDIR}/arch/html.tar.bz2
 }
 
 src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	cp -rf /opt/trinity/share/tde/admin ${S}/
+	source ${FILESDIR}/conv-func
+	conv_f
 	pushd ${S}/admin
 	libtoolize -c
 	cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
