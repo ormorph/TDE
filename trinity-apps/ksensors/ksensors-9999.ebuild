@@ -41,8 +41,7 @@ DEPEND="
         sys-devel/automake
         sys-devel/libtool
         sys-devel/m4
-	|| ( sys-apps/lm_sensors
-	sys-apps/lm-sensors )
+	sys-apps/lm-sensors
 "
 RDEPEND="$DEPEND"
 
