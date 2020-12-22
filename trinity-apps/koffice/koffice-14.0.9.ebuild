@@ -90,6 +90,10 @@ src_prepare() {
         cp -Rp /usr/share/aclocal/libtool.m4 "${S}/admin/libtool.m4.in"
 	sed -i "${S}/kexi/migration/keximigratetest.cpp" \
        -e "/TDEApplication/ s|\");|\", true, true, true);|"
+
+	sed -i -e "s:TESTSDIR =.*:TESTSDIR=:" ${S}/chalk/core/Makefile.am \
+                `ls ${S}/chalk/colorspaces/*/Makefile.am`
+
 	if ! use arts ; then
 	   sed -i "s/-lsoundserver_idl -lmcop//" ${S}/kpresenter/Makefile.am
 	fi
@@ -122,4 +126,19 @@ src_configure() {
 		build_arts=no ./configure --without-arts ${myconf[@]} || die
 	fi
 	sed 's#-std=c++11#-std=c++98#' -i ${S}/filters/kspread/qpro/libqpro/src/Makefile 
+}
+
+src_install() {
+	local KOFSUBDIRS="lib interfaces autocorrect chalk doc karbon kchart kdgantt kformula kivio koshell kounavail kpresenter kspread kugar mimetypes pics plugins servicetypes templates tools kword kplato kexi filters"
+	local dir
+	for dir in ${KOFSUBDIRS}
+	do
+		pushd "${dir}" 2>/dev/null || die
+			if [[ "${dir}" == "chalk" ]] ; then
+				make install DESTDIR=${D} || die
+			else
+				emake install DESTDIR=${D}
+			fi
+		popd 2>/dev/null || die
+	done
 }
