@@ -43,13 +43,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
@@ -58,7 +51,7 @@ src_configure() {
 	mycmakeargs=(
 		-DCMAKE_CXX_FLAGS="-L${TQT}/lib"
 		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
-		-DLIB_SUFFIX=${LIBDIRSUFFIX}
+		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
 	)
 
 	 cmake-utils_src_configure

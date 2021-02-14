@@ -35,8 +35,7 @@ BDEPEND="
 	app-misc/fdupes
 "
 DEPEND="
-	>=trinity-base/tdebase-${PV}
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/openssl
 	net-libs/gnutls
 	dev-db/sqlite
@@ -71,14 +70,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_prepare() {
 	eapply -p0 ${FILESDIR}/${PN}-getopts.patch

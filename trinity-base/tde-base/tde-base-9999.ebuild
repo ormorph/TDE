@@ -14,21 +14,21 @@ SLOT="0"
 IUSE="+webdev +redcore powermanagement xscreensaver"
 KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 
-RDEPEND=">=trinity-base/tde-minimal-${PV}
-	>=trinity-base/tdemultimedia-${PV}
-	>=trinity-base/tdeutils-${PV}
-	>=trinity-base/tdegraphics-${PV}
-	webdev? ( >=trinity-base/tdewebdev-${PV} )
-	>=trinity-apps/dolphin-${PV}
-	>=trinity-apps/gwenview-${PV}
+RDEPEND="~trinity-base/tde-minimal-${PV}
+	~trinity-base/tdemultimedia-${PV}
+	~trinity-base/tdeutils-${PV}
+	~trinity-base/tdegraphics-${PV}
+	webdev? ( ~trinity-base/tdewebdev-${PV} )
+	~trinity-apps/dolphin-${PV}
+	~trinity-apps/gwenview-${PV}
 	trinity-apps/tde-style-baghira
 	trinity-apps/tde-style-domino
 	trinity-apps/tde-style-ia-ora
 	trinity-apps/tde-style-lipstik
 	trinity-apps/tde-style-qtcurve
 	trinity-apps/twin-style-crystal
-	>=trinity-apps/kbfx-${PV}
-	>=trinity-apps/kcmautostart-${PV}
+	~trinity-apps/kbfx-${PV}
+	~trinity-apps/kcmautostart-${PV}
 	redcore? ( x11-themes/redcore-artwork-core )
 	powermanagement? ( trinity-apps/tdepowersave )
 	xscreensaver? ( trinity-base/tdebase[xscreensaver]

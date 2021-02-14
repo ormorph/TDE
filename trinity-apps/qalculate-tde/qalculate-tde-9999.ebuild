@@ -31,7 +31,7 @@ SLOT="0"
 DEPEND="
 	trinity-base/tde-common-admin
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
 	sci-libs/libqalculate
 	sci-libs/cln
 	virtual/pkgconfig

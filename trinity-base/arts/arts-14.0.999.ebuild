@@ -54,14 +54,6 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
 	cp -rf ${TDEDIR}/share/tde/libltdl/. ${S}/libltdl || die
 	cmake-utils_src_prepare
@@ -76,7 +68,7 @@ src_configure() {
 	mycmakeargs=(
 		-DCMAKE_CXX_FLAGS="-L${TQT}/lib"
 		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
-		-DLIB_SUFFIX=${LIBDIRSUFFIX}
+		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
 		-DWITH_MAD=$(usex mp3)
 		-DWITH_ALSA=$(usex alsa)
 		-DWITH_VORBIS=$(usex vorbis)

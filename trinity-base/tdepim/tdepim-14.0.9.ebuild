@@ -33,12 +33,11 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/glib:2
 	arts? ( trinity-base/arts )
-	>=trinity-base/libcaldav-${PV}
-	>=trinity-base/libcarddav-${PV}
+	~trinity-base/libcaldav-${PV}
+	~trinity-base/libcarddav-${PV}
 	app-crypt/gpgme
 	app-admin/gamin
 	net-misc/curl

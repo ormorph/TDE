@@ -27,8 +27,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-util/desktop-file-utils
 	sys-devel/autoconf
 	sys-devel/automake

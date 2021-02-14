@@ -33,8 +33,7 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	net-dns/libidn
 	app-admin/gamin
 	dev-libs/libpcre

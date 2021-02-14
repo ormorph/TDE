@@ -36,7 +36,7 @@ BDEPEND="
 	trinity-base/tde-common-cmake
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
         trinity-base/tdesdk
         dev-libs/libxslt
         dev-libs/libgcrypt

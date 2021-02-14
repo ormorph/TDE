@@ -65,14 +65,6 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
 	cp -rf ${TDEDIR}/share/tde/admin ${S}/
 	cd ${S}/admin

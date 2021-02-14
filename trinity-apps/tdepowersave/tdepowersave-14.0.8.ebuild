@@ -33,8 +33,7 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/dbus-tqt
 	dev-libs/dbus-1-tqt
 	x11-base/xorg-proto
@@ -51,14 +50,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .

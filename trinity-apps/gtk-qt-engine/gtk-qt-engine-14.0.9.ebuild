@@ -36,8 +36,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 "
 RDEPEND="${DEPEND}"
 

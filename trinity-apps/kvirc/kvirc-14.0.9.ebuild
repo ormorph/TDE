@@ -29,8 +29,7 @@ IUSE="arts"
 SLOT="0"
 
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/libtool

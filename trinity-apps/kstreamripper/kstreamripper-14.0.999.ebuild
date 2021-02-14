@@ -29,8 +29,7 @@ IUSE=""
 
 DEPEND="
 	dev-lang/python:2.7
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-util/desktop-file-utils
 	sys-devel/autoconf
 	sys-devel/automake

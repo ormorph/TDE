@@ -27,10 +27,9 @@ SLOT="0"
 IUSE="-arts -akode"
 
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
-	>=trinity-base/tdemultimedia-${PV}
-	akode? ( >=trinity-base/akode-${PV} )
+	~trinity-base/tdelibs-${PV}
+	~trinity-base/tdemultimedia-${PV}
+	akode? ( ~trinity-base/akode-${PV} )
 	dev-libs/glib
 	dev-util/desktop-file-utils
 	trinity-base/tde-common-admin

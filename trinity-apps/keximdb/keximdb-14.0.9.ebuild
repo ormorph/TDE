@@ -33,8 +33,8 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	=trinity-apps/koffice-${PV}
+	~trinity-base/tdelibs-${PV}
+	~trinity-apps/koffice-${PV}
 "
 RDEPEND="$DEPEND"
 

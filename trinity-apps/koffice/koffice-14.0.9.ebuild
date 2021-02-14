@@ -31,9 +31,9 @@ SLOT="0"
 DEPEND="
 	trinity-base/tde-common-admin
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-apps/koffice-i18n-${PV}
-	>=trinity-base/tdegraphics-${PV}
+	~trinity-base/tdelibs-${PV}
+	~trinity-apps/koffice-i18n-${PV}
+	~trinity-base/tdegraphics-${PV}
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/libtool

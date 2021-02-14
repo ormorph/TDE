@@ -34,8 +34,7 @@ BDEPEND="
 "
 
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-util/desktop-file-utils
 	virtual/pkgconfig
 "

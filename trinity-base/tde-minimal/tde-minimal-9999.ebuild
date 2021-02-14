@@ -14,8 +14,8 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 
-RDEPEND=">=trinity-base/tdebase-${PV}
-	>=trinity-base/tde-i18n-${PV}
+RDEPEND="~trinity-base/tdebase-${PV}
+	~trinity-base/tde-i18n-${PV}
 "
 
 S=${WORKDIR}

@@ -53,7 +53,7 @@ DEPEND="
 		dev-libs/dbus-tqt
 		dev-libs/dbus-1-tqt )
 	elficon? ( trinity-apps/libr
-		>=trinity-base/tdelibs-${PV}[elficon] )
+		~trinity-base/tdelibs-${PV}[elficon] )
 	media-libs/libart_lgpl
 	x11-base/xorg-server
 	x11-apps/setxkbmap
@@ -63,7 +63,7 @@ DEPEND="
 	x11-libs/libfontenc
 	x11-base/xorg-proto
 	x11-apps/bdftopcf
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/libconfig
 	dev-libs/cyrus-sasl
 	dev-libs/libgamin
@@ -86,7 +86,7 @@ DEPEND="
 	virtual/libusb:0
 	net-libs/rpcsvc-proto
 	xcomposite? ( x11-libs/libXcomposite
-		>=trinity-base/tdelibs-${PV}[xcomposite] )
+		~trinity-base/tdelibs-${PV}[xcomposite] )
 "
 RDEPEND="$DEPEND"
 
@@ -98,13 +98,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_prepare() {
 #	epatch ${FILESDIR}/one.patch

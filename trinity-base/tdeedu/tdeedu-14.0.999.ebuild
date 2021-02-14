@@ -38,7 +38,6 @@ BDEPEND="
 "
 
 DEPEND="
-	>=trinity-base/tdebase-${PV}
 	dev-util/desktop-file-utils
 	app-misc/fdupes
 "

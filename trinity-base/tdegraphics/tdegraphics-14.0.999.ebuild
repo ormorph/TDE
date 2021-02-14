@@ -31,9 +31,8 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdebase-${PV}
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdemultimedia-${PV}
+	~trinity-base/tdelibs-${PV}
+	~trinity-base/tdemultimedia-${PV}
 	paper? ( app-text/libpaper )
 	dev-libs/libgamin
 	net-dns/libidn
@@ -72,7 +71,6 @@ src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	mycmakeargs=(
-	-DLIB_SUFFIX=${LIBDIRSUFFIX}
 	-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 	-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"

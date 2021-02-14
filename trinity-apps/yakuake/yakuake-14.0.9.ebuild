@@ -30,8 +30,7 @@ SLOT="0"
 
 DEPEND="
 	trinity-base/tde-common-admin
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/libtool

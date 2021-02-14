@@ -24,7 +24,7 @@ fi
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
-IUSE="-noatun -arts -atlantikdesigner kicker kaddressbook"
+IUSE="arts atlantikdesigner noatun kicker kaddressbook"
 
 BDEPEND="
 	trinity-base/tde-common-cmake
@@ -32,11 +32,10 @@ BDEPEND="
 	app-misc/fdupes
 "
 DEPEND="
-	>=trinity-base/tdebase-${PV}
-	>=trinity-base/tdelibs-${PV}
-	atlantikdesigner? ( >=trinity-base/tdegames-${PV} )
-	noatun? ( >=trinity-base/tdemultimedia-${PV} )
-	kaddressbook? ( >=trinity-base/tdepim-${PV} )
+	~trinity-base/tdelibs-${PV}
+	atlantikdesigner? ( ~trinity-base/tdegames-${PV} )
+	noatun? ( ~trinity-base/tdemultimedia-${PV} )
+	kaddressbook? ( ~trinity-base/tdepim-${PV} )
 	sys-libs/db
 	virtual/jpeg
 	media-libs/libsdl

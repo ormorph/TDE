@@ -31,8 +31,7 @@ SLOT="0"
 DEPEND="
 	trinity-base/tde-common-admin
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	virtual/pkgconfig
 	dev-util/desktop-file-utils
 	app-misc/fdupes

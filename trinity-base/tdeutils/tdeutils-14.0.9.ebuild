@@ -36,8 +36,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/glib:2
 	net-analyzer/net-snmp
 	dev-lang/python
@@ -63,14 +62,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .

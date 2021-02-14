@@ -32,9 +32,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 SLOT="0"
 
-DEPEND="
-	trinity-base/tde-common-cmake
-	>=trinity-base/tdebase-${PV}"
+DEPEND="~trinity-base/tdelibs-${PV}
+	trinity-base/tde-common-cmake"
 RDEPEND="${DEPEND}"
 
 
@@ -51,14 +50,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .

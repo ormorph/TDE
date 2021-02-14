@@ -36,7 +36,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-libs/dbus-1-tqt
 	dev-libs/dbus-tqt
 	virtual/udev

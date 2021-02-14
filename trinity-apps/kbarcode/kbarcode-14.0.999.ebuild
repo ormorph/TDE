@@ -33,8 +33,7 @@ BDEPEND="
 	sys-devel/gettext
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	virtual/acl
 	net-dns/libidn
 	dev-libs/openssl

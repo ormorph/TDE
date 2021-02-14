@@ -33,7 +33,7 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
+	~trinity-base/tdelibs-${PV}
 	virtual/acl
 	cron? ( virtual/cron )
 "
@@ -47,14 +47,6 @@ fi
 
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
-
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
 
 src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .

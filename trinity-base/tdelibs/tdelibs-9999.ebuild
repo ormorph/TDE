@@ -47,7 +47,7 @@ MY_DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXrender
 	alsa? ( media-libs/alsa-lib )
-	avahi? ( net-dns/avahi )
+	avahi? ( trinity-base/avahi-tqt )
 	cups? ( >=net-print/cups-1.1.19 )
 	fam? ( virtual/fam )
 	jpeg2k? ( media-libs/jasper )
@@ -61,8 +61,8 @@ MY_DEPEND="
 	lzma? ( app-arch/xz-utils )
 	xrandr? ( >=x11-libs/libXrandr-1.2 )
 	xcomposite? ( x11-libs/libXcomposite )
-	arts? ( >=trinity-base/arts-${PV} )
-	elficon? ( >=trinity-apps/libr-${PV} )"
+	arts? ( ~trinity-base/arts-${PV} )
+	elficon? ( ~trinity-apps/libr-${PV} )"
 # NOTE: upstream lacks avahi support, so the usex flag is currenly masked
 # TODO: add elfres support via libr (not in portage now)
 
@@ -71,10 +71,10 @@ BDEPEND="
 	trinity-base/tde-common-libltdl
 "
 DEPEND+=" ${MY_DEPEND}
-	>=trinity-base/tqca-${PV}
-	>=trinity-base/tqca-tls-${PV}
-	>=trinity-base/libcaldav-${PV}
-	>=trinity-base/libcarddav-${PV}
+	~trinity-base/tqca-${PV}
+	~trinity-base/tqca-tls-${PV}
+	~trinity-base/libcaldav-${PV}
+	~trinity-base/libcarddav-${PV}
 	dev-python/sip
 	"
 RDEPEND+=" ${MY_DEPEND}
@@ -92,14 +92,6 @@ else
 	S="${WORKDIR}/${PN}-r${PV}"
 fi
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
 	cp -rf ${TDEDIR}/share/tde/libltdl/. ${S}/libltdl || die
 	rm ${S}/mimetypes/application/x-mplayer2.desktop
@@ -115,7 +107,7 @@ src_configure() {
 	export LD_LIBRARY_PATH={$LD_LIBRARY_PATH}:${TDEDIR}/$(get_libdir)
 	mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
-		-DLIB_SUFFIX=${LIBDIRSUFFIX}
+		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
 		-platform linux-g++-64 
 		-DWITH_LIBIDN=ON
 		-DWITH_SSL=ON

@@ -28,8 +28,7 @@ IUSE="avahi"
 
 
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	trinity-base/tde-common-admin
 	dev-util/desktop-file-utils
 	sys-devel/autoconf

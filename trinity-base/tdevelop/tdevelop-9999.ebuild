@@ -34,9 +34,8 @@ BDEPEND="
 "
 DEPEND="
 	dev-qt/tqt3
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
-	>=trinity-base/tdesdk-${PV}
+	~trinity-base/tdelibs-${PV}
+	~trinity-base/tdesdk-${PV}
 	dev-lang/perl
 	sys-devel/gettext
 	dev-util/ctags

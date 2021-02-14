@@ -34,8 +34,7 @@ BDEPEND="
 	trinity-base/tde-common-cmake
 "
 DEPEND="
-	>=trinity-base/tdelibs-${PV}
-	>=trinity-base/tdebase-${PV}
+	~trinity-base/tdelibs-${PV}
 	dev-util/desktop-file-utils
 	net-dns/libidn
 	app-admin/gamin

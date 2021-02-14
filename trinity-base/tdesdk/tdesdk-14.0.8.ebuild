@@ -33,7 +33,6 @@ BDEPEND="
 	dev-util/desktop-file-utils
 "
 DEPEND="
-	>=trinity-base/tdebase-${PV}
 	trinity-base/tdepim
 	virtual/acl
 	net-dns/libidn
@@ -57,14 +56,6 @@ fi
 TQT="/opt/trinity"
 TDEDIR="/opt/trinity"
 
-pkg_setup() {
-	if [[ "$ARCH" == "amd64" ]]; then
-		export LIBDIRSUFFIX="64"
-	else
-		export LIBDIRSUFFIX=""
-	fi
-}
-
 src_prepare() {
 	cp -rf ${TDEDIR}/share/cmake .
 	eapply ${FILESDIR}/bdb.patch
@@ -77,7 +68,7 @@ src_configure() {
 	mycmakeargs=(
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -std=c++11"
 	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
-	-DLIB_SUFFIX=${LIBDIRSUFFIX}
+	-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
 	-DWITH_DBSEARCHENGINE=ON
 	-DWITH_KCAL=ON
 	-DBUILD_ALL=ON
