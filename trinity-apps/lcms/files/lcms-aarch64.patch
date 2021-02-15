@@ -1,0 +1,20 @@
+--- a/config.guess	2021-02-15 18:23:49.151237146 +0300
++++ b/config.guess	2021-02-15 18:25:55.580563976 +0300
+@@ -159,6 +159,7 @@
+ 	case "${UNAME_MACHINE_ARCH}" in
+ 	    armeb) machine=armeb-unknown ;;
+ 	    arm*) machine=arm-unknown ;;
++            aarch64) machine=aarch64-unknown ;;
+ 	    sh3el) machine=shl-unknown ;;
+ 	    sh3eb) machine=sh-unknown ;;
+ 	    *) machine=${UNAME_MACHINE_ARCH}-unknown ;;
+@@ -831,6 +832,9 @@
+     arm*:Linux:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-linux-gnu
+ 	exit ;;
++    aarch64:Linux:*:*)
++        echo ${UNAME_MACHINE}-unknown-linux-gnu
++        exit ;;
+     cris:Linux:*:*)
+ 	echo cris-axis-linux-gnu
+ 	exit ;;

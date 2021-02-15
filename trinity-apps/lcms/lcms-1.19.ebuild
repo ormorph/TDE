@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-EAPI="6"
+EAPI="7"
 
 
-inherit eutils desktop flag-o-matic gnome2-utils
+inherit eutils
 
 
 DESCRIPTION="A lightweight, speed optimized color management engine"
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.littlecms.com"
 SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="1"
 IUSE=""
 
@@ -23,7 +23,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-#S="${WORKDIR}/applications/${PN}"
+PATCHES=( ${FILESDIR}/${PN}-aarch64.patch )
 
 TDEDIR="/opt/trinity"
 
