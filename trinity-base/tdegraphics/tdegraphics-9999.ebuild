@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="+pdf paper t1lib"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	dev-util/desktop-file-utils
 "
 DEPEND="
@@ -70,6 +70,7 @@ src_configure() {
 	cp -rf ${TDEDIR}/share/cmake .
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
+	append-cxxflags "-std=c++11"
 	mycmakeargs=(
 	-DCMAKE_BUILD_TYPE="RelWithDebInfo"
 	-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"

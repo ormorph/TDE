@@ -29,7 +29,7 @@ IUSE="+lcms +bzip2 +paper +ruby +freetype +png +utempter +graphicsmagick +postgr
 SLOT="0"
 
 DEPEND="
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	>=dev-qt/tqtinterface-${PV}
 	~trinity-base/tdelibs-${PV}
 	~trinity-apps/koffice-i18n-${PV}

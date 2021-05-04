@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="+pdf paper t1lib"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	dev-util/desktop-file-utils
 "
 DEPEND="

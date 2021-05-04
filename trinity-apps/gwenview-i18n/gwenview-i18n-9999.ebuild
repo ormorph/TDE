@@ -30,7 +30,7 @@ IUSE=""
 BDEPEND="
 	sys-devel/gettext
 	dev-util/cmake
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 
 DEPEND="

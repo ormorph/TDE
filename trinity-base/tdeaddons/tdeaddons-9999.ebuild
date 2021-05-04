@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="arts atlantikdesigner noatun kicker kaddressbook"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	virtual/pkgconfig
 	app-misc/fdupes
 "

@@ -29,7 +29,7 @@ IUSE="xscreensaver klaptopdaemon"
 SLOT="0"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	sys-devel/gettext
 	virtual/pkgconfig
 	app-misc/fdupes

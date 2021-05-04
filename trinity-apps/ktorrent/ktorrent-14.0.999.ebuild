@@ -29,7 +29,7 @@ IUSE="avahi"
 
 DEPEND="
 	~trinity-base/tdelibs-${PV}
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	dev-util/desktop-file-utils
 	sys-devel/autoconf
 	sys-devel/automake

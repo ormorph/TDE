@@ -32,7 +32,7 @@ DEPEND="
 	akode? ( ~trinity-base/akode-${PV} )
 	dev-libs/glib
 	dev-util/desktop-file-utils
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/m4

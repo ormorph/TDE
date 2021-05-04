@@ -31,7 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 	app-misc/fdupes
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 DEPEND="
 	~trinity-base/tdelibs-${PV}

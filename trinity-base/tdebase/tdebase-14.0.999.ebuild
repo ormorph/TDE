@@ -28,7 +28,7 @@ KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 IUSE+=" -arts +pam avahi samba ldap +xdmcp +dbus +opengl +openexr xscreensaver +upower +tsak  xinerama +sensors +xrandr +xrender +xtest elficon +xcomposite elogind"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}

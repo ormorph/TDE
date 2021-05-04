@@ -3,7 +3,7 @@
 # $Id$
 EAPI="7"
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="multimedia applications from the TDE"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -35,9 +35,10 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 DEPEND="
+	~trinity-base/tdelibs-${PV}
 	gstreamer? ( media-libs/gstreamer:1.0 )
 	flac? ( media-libs/flac )
 	audiofile? ( media-libs/audiofile )

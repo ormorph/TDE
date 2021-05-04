@@ -27,7 +27,7 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	app-misc/fdupes
 	virtual/pkgconfig
 	dev-util/desktop-file-utils

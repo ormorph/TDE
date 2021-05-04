@@ -4,7 +4,7 @@
 
 EAPI="7"
 
-inherit cmake-utils multilib flag-o-matic gnome2-utils
+inherit cmake-utils
 
 DESCRIPTION=""
 HOMEPAGE="http://trinitydesktop.org/"
@@ -27,6 +27,9 @@ KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 SLOT="0"
 IUSE=""
 
+BDEPEND="
+        ~trinity-base/tde-common-cmake-${PV}
+"
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}
 "

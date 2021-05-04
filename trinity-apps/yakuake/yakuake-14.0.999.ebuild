@@ -29,7 +29,7 @@ IUSE="-arts"
 SLOT="0"
 
 DEPEND="
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	~trinity-base/tdelibs-${PV}
 	sys-devel/autoconf
 	sys-devel/automake

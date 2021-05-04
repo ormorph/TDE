@@ -29,7 +29,7 @@ IUSE=""
 SLOT="0"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	sys-devel/gettext
 	sys-devel/libtool
 	dev-util/desktop-file-utils

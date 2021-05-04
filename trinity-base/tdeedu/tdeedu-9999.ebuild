@@ -24,12 +24,12 @@ fi
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 SLOT="0"
-IUSE="-arts -ocaml"
+IUSE="-arts -ocaml -python"
 
 BDEPEND="
 	ocaml? ( dev-lang/ocaml
 		dev-ml/facile )
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	sys-devel/autoconf
 	sys-devel/gettext
 	sys-devel/automake
@@ -40,6 +40,8 @@ BDEPEND="
 DEPEND="
 	dev-util/desktop-file-utils
 	app-misc/fdupes
+	python? ( dev-libs/boost[python] )
+	~trinity-base/tdelibs-${PV}
 "
 RDEPEND="$DEPEND"
 
@@ -61,6 +63,7 @@ src_prepare() {
 src_configure() {
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
+	append-cxxflags "-std=c++11"
 	mycmakeargs=(
 	-DCMAKE_INSTALL_PREFIX=${TDEDIR}
 	-DCMAKE_INSTALL_RPATH="${TDEDIR}/$(get_libdir)"
@@ -68,6 +71,7 @@ src_configure() {
 	-DWITH_GCC_VISIBILITY=OFF
 	-DWITH_OCAML_SOLVER=$(usex ocaml ON OFF )
 	-DWITH_ARTS=$(usex arts ON OFF )
+	-DWITH_KIG_PYTHON_SCRIPTING=$(usex python ON OFF )
 	-DWITH_ALL_OPTIONS=ON
 	-DBUILD_ALL=ON
 	)

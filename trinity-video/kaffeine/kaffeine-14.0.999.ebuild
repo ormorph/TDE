@@ -29,7 +29,7 @@ IUSE="alsa jack mp3 nas vorbis xinerama gstreamer lame"
 SLOT="0"
 
 DEPEND="
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	>=dev-qt/tqtinterface-${PV}
 	>=trinity-base/tdelibs-${PV}
 	sys-devel/libtool

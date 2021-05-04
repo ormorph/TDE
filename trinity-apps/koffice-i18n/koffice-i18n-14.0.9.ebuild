@@ -31,7 +31,7 @@ IUSE=""
 SLOT="0"
 
 DEPEND="
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	>=dev-qt/tqtinterface-${PV}
 	~trinity-base/tdelibs-${PV}
 "

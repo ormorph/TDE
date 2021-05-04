@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="kcddb"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	dev-util/desktop-file-utils
 	virtual/pkgconfig
 	app-misc/fdupes

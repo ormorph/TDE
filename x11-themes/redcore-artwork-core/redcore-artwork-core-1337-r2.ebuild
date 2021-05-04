@@ -1,7 +1,7 @@
 # Copyright 2016 Redcore Linux
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 inherit eutils
 
 DESCRIPTION="Offical Redcore Linux Core Artwork"

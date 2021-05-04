@@ -27,8 +27,8 @@ SLOT="0"
 IUSE="gadu speex openslp meanwhile -arts"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
-	trinity-base/tde-common-libtdevnc
+	~trinity-base/tde-common-cmake-${PV}
+	~trinity-base/tde-common-libtdevnc-${PV}
 	sys-devel/gettext
 	sys-apps/coreutils
 	dev-util/desktop-file-utils

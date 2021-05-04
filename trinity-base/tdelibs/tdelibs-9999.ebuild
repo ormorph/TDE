@@ -67,8 +67,8 @@ MY_DEPEND="
 # TODO: add elfres support via libr (not in portage now)
 
 BDEPEND="
-	trinity-base/tde-common-cmake
-	trinity-base/tde-common-libltdl
+	~trinity-base/tde-common-cmake-${PV}
+	~trinity-base/tde-common-libltdl-${PV}
 "
 DEPEND+=" ${MY_DEPEND}
 	~trinity-base/tqca-${PV}
@@ -108,7 +108,6 @@ src_configure() {
 	mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX=${TDEDIR}
 		-DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)"
-		-platform linux-g++-64 
 		-DWITH_LIBIDN=ON
 		-DWITH_SSL=ON
 		-DWITH_LIBART=ON

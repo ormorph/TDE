@@ -33,7 +33,7 @@ IUSE=""
 SLOT="0"
 
 DEPEND="~trinity-base/tdelibs-${PV}
-	trinity-base/tde-common-cmake"
+	~trinity-base/tde-common-cmake-${PV}"
 RDEPEND="${DEPEND}"
 
 

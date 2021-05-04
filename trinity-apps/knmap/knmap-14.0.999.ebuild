@@ -27,7 +27,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	~trinity-base/tdelibs-${PV}
 	dev-util/desktop-file-utils
 	virtual/pkgconfig

@@ -67,8 +67,8 @@ MY_DEPEND="
 # TODO: add elfres support via libr (not in portage now)
 
 BDEPEND="
-	trinity-base/tde-common-cmake
-	trinity-base/tde-common-libltdl
+	~trinity-base/tde-common-cmake-${PV}
+	~trinity-base/tde-common-libltdl-${PV}
 "
 DEPEND+=" ${MY_DEPEND}
 	~trinity-base/tqca-${PV}

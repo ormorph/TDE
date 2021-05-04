@@ -3,7 +3,7 @@
 # $Id$
 EAPI="7"
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="TDE Development Kit"
 HOMEPAGE="http://trinitydesktop.org/"
@@ -27,12 +27,13 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	sys-devel/libtool
 	app-misc/fdupes
 	dev-util/desktop-file-utils
 "
 DEPEND="
+	~trinity-base/tdelibs-${PV}
 	trinity-base/tdepim
 	virtual/acl
 	net-dns/libidn

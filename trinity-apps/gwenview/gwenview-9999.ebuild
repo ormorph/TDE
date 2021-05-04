@@ -30,7 +30,7 @@ DEPEND="
 	~trinity-base/tdelibs-${PV}
 	~trinity-apps/gwenview-i18n-${PV}
 	dev-util/desktop-file-utils
-	trinity-base/tde-common-admin
+	~trinity-base/tde-common-admin-${PV}
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/m4

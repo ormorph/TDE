@@ -28,7 +28,7 @@ IUSE=""
 
 BDEPEND="
 	dev-util/desktop-file-utils
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 
 DEPEND="

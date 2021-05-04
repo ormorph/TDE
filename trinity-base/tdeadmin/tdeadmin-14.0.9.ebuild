@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="lilo cron"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	sys-devel/libtool
 	app-misc/fdupes
 	dev-util/desktop-file-utils

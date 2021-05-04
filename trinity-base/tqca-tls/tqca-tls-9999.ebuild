@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="6"
+EAPI="7"
 
-inherit eutils versionator multilib flag-o-matic gnome2-utils
+inherit cmake-utils
 
 DESCRIPTION=""
 HOMEPAGE="http://trinitydesktop.org/"
@@ -25,6 +25,10 @@ KEYWORDS="~arm ~arm64 ~x86 ~amd64"
 SLOT="0"
 IUSE=""
 
+BDEPEND="
+        ~trinity-base/tde-common-cmake-${PV}
+"
+
 DEPEND="
 	>=dev-qt/tqtinterface-${PV}
 	dev-libs/openssl
@@ -39,12 +43,21 @@ fi
 
 TDEDIR="/opt/trinity"
 
+src_prepare() {
+        cp -rf ${TDEDIR}/share/cmake .
+        cmake-utils_src_prepare
+}
+
 src_configure() {
-	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
-	myconf=" --tqtdir=${TDEDIR} "
-	./configure $myconf || die
+        unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
+        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
+        mycmakeargs=(
+                -DCMAKE_INSTALL_PREFIX=${TDEDIR}
+                -DWITH_GCC_VISIBILITY=OFF
+                -DLIB_INSTALL_DIR="${TDEDIR}/$(get_libdir)")
+        cmake-utils_src_configure
 }
 
 src_install() {
-	emake install INSTALL_ROOT=${D}
+        cmake-utils_src_install
 }

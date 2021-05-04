@@ -29,7 +29,7 @@ IUSE="xscreensaver gnokii -arts"
 SLOT="0"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	dev-util/desktop-file-utils
 "
 DEPEND="

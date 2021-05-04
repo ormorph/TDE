@@ -32,8 +32,8 @@ BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 	sys-devel/libtool
-	trinity-base/tde-common-admin
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-admin-${PV}
+	~trinity-base/tde-common-cmake-${PV}
 "
 DEPEND="
 	~trinity-base/tdelibs-${PV}

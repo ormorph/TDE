@@ -29,7 +29,7 @@ IUSE="xscreensaver gnokii -arts"
 SLOT="0"
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 	dev-util/desktop-file-utils
 "
 DEPEND="
@@ -70,6 +70,7 @@ src_configure() {
 	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
 	export QTDIR=$TQT
 	export LIBDIR=/opt/trinity/lib
+	append-cxxflags "-std=c++11"
 	mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"

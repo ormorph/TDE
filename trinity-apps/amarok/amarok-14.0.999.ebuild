@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="+xine visual "
 
 BDEPEND="
-	trinity-base/tde-common-cmake
+	~trinity-base/tde-common-cmake-${PV}
 "
 DEPEND="
 	sys-apps/dbus
