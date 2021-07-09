@@ -67,6 +67,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags "-std=c++11"
 	cp -rf ${TDEDIR}/share/cmake ${S}/
 	unset TDE_FULL_SESSION TDEROOTHOME TDE_SESSION_UID TDEHOME TDE_MULTIHEAD
 	PKG_CONFIG_PATH=$PKG_CONFIG_PATH:${TDEDIR}/$(get_libdir)/pkgconfig
