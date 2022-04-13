@@ -48,3 +48,4 @@ For a basic installation, run the command:
 ```
 # emerge -av tde-base
 ```
+**PS:** It is currently recommended to use the official [Trinity Desktop](https://mirror.git.trinitydesktop.org/gitea/TDE/tde-packaging-gentoo) repository.
